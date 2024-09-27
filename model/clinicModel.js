@@ -1,31 +1,18 @@
-const mongoose = require('mongoose');
+import mongoose, { model } from 'mongoose'
 
 const ClinicSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  isbn: {
-    type: String,
-    required: true
-  },
-  author: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String
-  },
-  published_date: {
-    type: Date
-  },
-  publisher: {
-    type: String
-  },
-  updated_date: {
-    type: Date,
-    default: Date.now
-  }
-});
+      name:{
+          type: String,
+          required: true,
+          unique: true
+      },
+      place:{
+          type: String, //add require to make it a mandatory parameter
+          required: true //add unique constrain to prevent duplicates
+      }
+  })
 
-module.exports = Clinic = mongoose.model('clinic', ClinicSchema);
+  const Clinic = mongoose.model('Clinic', ClinicSchema);
+  export default Clinic;
+
+// model.exports = Clinic = mongoose.model('clinic', ClinicSchema);
