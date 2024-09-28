@@ -1,18 +1,21 @@
-import mongoose, { model } from 'mongoose'
+const mongoose = require('mongoose');
 
-const ClinicSchema = new mongoose.Schema({
-      name:{
-          type: String,
-          required: true,
-          unique: true
-      },
-      place:{
-          type: String, //add require to make it a mandatory parameter
-          required: true //add unique constrain to prevent duplicates
-      }
-  })
+const clinicSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    age: {
+        type: Number,
+        required: true
+        // unique: true // Uncomment if you want to enforce uniqueness on age
+    },
+    admit_Date: {
+        type: Date,
+        required: true
+    }
+});
 
-  const Clinic = mongoose.model('Clinic', ClinicSchema);
-  export default Clinic;
-
-// model.exports = Clinic = mongoose.model('clinic', ClinicSchema);
+const Clinic = mongoose.model('Clinic', clinicSchema);
+module.exports = Clinic; // Corrected here
