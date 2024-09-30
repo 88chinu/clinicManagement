@@ -1,20 +1,25 @@
-const express = require ( "express")
-const connectDB = require ("./config/db.js")
-const clinicRoutes = require ( "./routes/clinicRoutes.js")
+const express = require('express');
+const connectDB = require('./config/db');
+const clinicRoutes = require('./routes/clinicRoutes'); // Import room routes
 
-const app = express()
-const PORT = process.env.PORT || 7000
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-connectDB()
+// Connect to MongoDB
+connectDB();
 
-app.use(express.json)
+// Middleware to parse JSON requests
+app.use(express.json());
 
+// Basic route for home page
 app.get("/", (req, res) => {
     res.send("Well-come to my HOME page of Clinic_Management");
 });
 
-app.use('/api',clinicRoutes)
+// Use room routes with prefix '/api'
+app.use('/api', clinicRoutes);
 
+// Start the server
 app.listen(PORT, () => {
-    console.log(`My web process at http://localhost:${PORT}`)
-})
+    console.log(`Server running at http://localhost:${PORT}`);
+});

@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Green Valley Clinic",
+        "age": 5,
+        "admit_Date": "2023-01-15T00:00:00Z"
+    },
+    {
+        "name": "Sunnydale Health Center",
+        "age": 3,
+        "admit_Date": "2022-05-10T00:00:00Z"
+    },
+    {
+        "name": "Lakeside Medical Group",
+        "age": 10,
+        "admit_Date": "2021-08-25T00:00:00Z"
+    },
+    {
+        "name": "Riverside Clinic",
+        "age": 2,
+        "admit_Date": "2023-07-30T00:00:00Z"
+    },
+    {
+        "name": "Mountainview Hospital",
+        "age": 15,
+        "admit_Date": "2019-11-05T00:00:00Z"
+    }
+]

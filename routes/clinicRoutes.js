@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const clinicController = require('../controllers/clinicController'); // Ensure this path is correct
+const clinicController = require('../controllers/clinicController.js');
 
-// Define the routes
-router.post('/clinics', clinicController.createClinic);
-router.get('/clinics', clinicController.getAllPasentes);
-router.get('/clinics/:id', clinicController.getPasentById);
-// router.put('/clinics/:id', clinicController.updateBook);
-// router.delete('/clinics/:id', clinicController.deleteBook);
+// Routes for Room CRUD operations
+router.post('/clinics', clinicController.createAppointment);      // Create a new room
+router.get('/clinics', clinicController.getAllPatient);      // Get all rooms
+router.get('/clinics/:id', clinicController.getPatientById );  // Get a single room by ID
+router.put('/clinics/:id', clinicController.updatePatient);   // Update a room by ID
+router.delete('/clinics/:id', clinicController.deletePatient);// Delete a room by ID
 
-module.exports = router; // Use router instead of clinicRoutes
+module.exports = router;

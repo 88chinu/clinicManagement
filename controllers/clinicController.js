@@ -1,54 +1,60 @@
-const ClinicModel = require('../model/clinicModel');
+const ClinicModel = require('../model/clinicModel.js');  // Import Room model
 
-exports.createClinic = async(req,res) => {
+// Create a new Room
+exports.createAppointment = async (req, res) => {
     try {
-        let singleClinic = new clickModel({ name: req.body.name, 
-            age: req.body.age, admit_Date: req.body.admit_Date });
-
-        singleClinic = await singleClinic.save();
-        res.send(singleClinic);
+        let newClinic = new ClinicModel({
+            Patient_name: req.body.name, age: req.body.age, admit_Date: req.body.admit_Date
+        });
+        newClinic = await newClinic.save(); // Save the new room to the database
+        res.send(newClinic); // Send the saved room as a response
     } catch (err) {
-        res.status(400).send(err.message);
+        res.status(400).send(err.message); // Send an error response if something goes wrong
     }
-}
+};
 
-exports.getAllPasentes = async (req, res) => {
+// Get all rooms
+exports.getAllPatient = async (req, res) => {
     try {
-        const allPasentes = await ClinicModel.find();
-        res.send(allPasentes);
+        const allPatient = await ClinicModel.find(); // Get all rooms from the database
+        res.send(allPatient); // Send all rooms as a response
     } catch (err) {
-        res.status(400).send(err.message);
+        res.status(400).send(err.message); // Send an error response if something  wrong
     }
-}
+};
 
-exports.getPasentById = async (req, res) => {
+// Get a room by ID
+exports.getPatientById = async (req, res) => {
     try {
-        const PasentById = await ClinicModel.findById(req.params.id);
-        if (!pasentById) return res.status(404).send('No Pasent found in database');
-        res.send(pasentById);
+        const patientById = await ClinicModel.findById(req.params.id); // Find room by ID
+        if (!patientById) return res.status(404).send('Patient not found in database'); // If room is not found, return 404
+        res.send(patientById); // Send the room as a response
     } catch (err) {
-        res.status(400).send(err.message);
+        res.status(400).send(err.message); // Send an error response if something goes wrong
     }
-}
+};
 
-// exports.updateBook = async (req, res) => {
-//     try {
-//         const bookById = await BookModel.findByIdAndUpdate(req.params.id, { title: req.body.title, author: req.body.author }, { new: true });
-//         if (!bookById) return res.status(404).send('Book not found in database');
-//         res.send(bookById);
-//         console.log("Book updated successfully");
-//     } catch (err) {
-//         res.status(400).send(err.message);
-//     }
-// }
+// Update a room by ID
+exports.updatePatient = async (req, res) => {
+    try {
+        const updatedPatient = await ClinicModel.findByIdAndUpdate(req.params.id, {
+            Patient_name: req.body.name, age: req.body.age, admit_Date: req.body.admit_Date
+        }, { new: true }); // Return the updated room
 
-// exports.deleteBook = async (req, res) => {
-//     try {
-//         const bookById = await BookModel.findByIdAndDelete(req.params.id);
-//         if (!bookById) return res.status(404).send('Book not found in database');
-//         res.status(204).send();
-//         res.send("Book deleted successfully");
-//     } catch (err) {
-//         res.status(400).send(err.message);
-//     }
-// }
+        if (!updatedPatient) return res.status(404).send('Patient not found in database'); // If room is not found, return 404
+        res.send(updatedPatient); // Send the updated room as a response
+    } catch (err) {
+        res.status(400).send(err.message); // Send an error response if something goes wrong
+    }
+};
+
+// Delete a room by ID
+exports.deletePatient = async (req, res) => {
+    try {
+        const patientById = await ClinicModel.findByIdAndDelete(req.params.id); // Find room by ID and delete it
+        if (!patientById) return res.status(404).send('Patient not found in database'); // If room is not found, return 404
+        res.send("Patient deleted successfully"); // Send success message
+    } catch (err) {
+        res.status(400).send(err.message); // Send an error response if something goes wrong
+    }
+};
