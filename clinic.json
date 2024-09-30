@@ -1,27 +1,82 @@
 [
     {
-        "name": "Green Valley Clinic",
-        "age": 5,
-        "admit_Date": "2023-01-15T00:00:00Z"
+        "name": "John Doe",
+        "age": 30,
+        "gender": "Male",
+        "contact_number": "123-456-7890",
+        "admit_Date": "2023-09-01T10:00:00Z",
+        "medical_history": ["diabetes", "hypertension"]
     },
     {
-        "name": "Sunnydale Health Center",
-        "age": 3,
-        "admit_Date": "2022-05-10T00:00:00Z"
+        "name": "Jane Smith",
+        "age": 25,
+        "gender": "Female",
+        "contact_number": "987-654-3210",
+        "admit_Date": "2023-09-05T14:30:00Z",
+        "medical_history": ["asthma"]
     },
     {
-        "name": "Lakeside Medical Group",
-        "age": 10,
-        "admit_Date": "2021-08-25T00:00:00Z"
+        "name": "Alice Johnson",
+        "age": 40,
+        "gender": "Female",
+        "contact_number": "555-123-4567",
+        "admit_Date": "2023-09-10T09:00:00Z",
+        "medical_history": ["none"]
     },
     {
-        "name": "Riverside Clinic",
-        "age": 2,
-        "admit_Date": "2023-07-30T00:00:00Z"
+        "name": "Bob Brown",
+        "age": 35,
+        "gender": "Male",
+        "contact_number": "444-987-6543",
+        "admit_Date": "2023-09-15T11:15:00Z",
+        "medical_history": ["allergy"]
     },
     {
-        "name": "Mountainview Hospital",
-        "age": 15,
-        "admit_Date": "2019-11-05T00:00:00Z"
+        "name": "Charlie White",
+        "age": 28,
+        "gender": "Non-binary",
+        "contact_number": "333-555-7890",
+        "admit_Date": "2023-09-20T08:45:00Z",
+        "medical_history": ["none"]
+    },
+    {
+        "name": "David Black",
+        "age": 50,
+        "gender": "Male",
+        "contact_number": "222-333-4444",
+        "admit_Date": "2023-09-22T12:00:00Z",
+        "medical_history": ["heart disease"]
+    },
+    {
+        "name": "Emma Green",
+        "age": 45,
+        "gender": "Female",
+        "contact_number": "666-777-8888",
+        "admit_Date": "2023-09-25T14:30:00Z",
+        "medical_history": ["high cholesterol"]
+    },
+    {
+        "name": "Frank Wright",
+        "age": 32,
+        "gender": "Male",
+        "contact_number": "999-888-7777",
+        "admit_Date": "2023-09-28T09:15:00Z",
+        "medical_history": ["none"]
+    },
+    {
+        "name": "Grace Lee",
+        "age": 27,
+        "gender": "Female",
+        "contact_number": "555-666-7777",
+        "admit_Date": "2023-09-30T10:30:00Z",
+        "medical_history": ["migraines"]
+    },
+    {
+        "name": "Henry King",
+        "age": 60,
+        "gender": "Male",
+        "contact_number": "444-555-6666",
+        "admit_Date": "2023-10-01T11:45:00Z",
+        "medical_history": ["arthritis", "diabetes"]
     }
 ]

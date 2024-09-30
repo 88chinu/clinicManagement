@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const clinicRoutes = require('./routes/clinicRoutes'); // Import room routes
+const clinicRoutes = require('./routes/clinicRoutes'); // Import patientinfo routes
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
     res.send("Well-come to my HOME page of Clinic_Management");
 });
 
-// Use room routes with prefix '/api'
+// Use patientinfo routes with prefix '/api'
 app.use('/api', clinicRoutes);
 
 // Start the server
