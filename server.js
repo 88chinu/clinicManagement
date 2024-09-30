@@ -1,9 +1,9 @@
 const express = require('express');
-const connectDB = require('./config/db');
-const clinicRoutes = require('./routes/clinicRoutes'); // Import patientinfo routes
+const connectDB = require('./config/db.js');
+const router = require('./routes/clinicRoutes.js'); // Import clinic routes
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7000;
 
 // Connect to MongoDB
 connectDB();
@@ -13,11 +13,11 @@ app.use(express.json());
 
 // Basic route for home page
 app.get("/", (req, res) => {
-    res.send("Well-come to my HOME page of Clinic_Management");
+    res.send("WELL_COME TO MY CLINIC MANAGEMENT PROJECT");
 });
 
-// Use patientinfo routes with prefix '/api'
-app.use('/api', clinicRoutes);
+// Use clinic routes with prefix '/api'
+app.use('/api', router);
 
 // Start the server
 app.listen(PORT, () => {

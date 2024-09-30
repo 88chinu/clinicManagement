@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require ('mongoose');
 
 const clinicSchema = new mongoose.Schema({
-    name: {
+    Patient_name: {
         type: String,
         required: true,
         unique: true
@@ -22,10 +22,6 @@ const clinicSchema = new mongoose.Schema({
     admit_Date: {
         type: Date,
         require: true
-    },
-    medical_history: {
-        type: String,
-        default: []
     }
 });
 

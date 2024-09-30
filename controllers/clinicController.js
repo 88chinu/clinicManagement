@@ -3,13 +3,12 @@ const ClinicModel = require('../model/clinicModel.js');  // Import clinic model
 // Create a new patientinfo
 exports.createAppointment = async (req, res) => {
     try {
-        let newClinic = new ClinicModel({
+        let newPatient = new ClinicModel({
             Patient_name: req.body.name, age: req.body.age, gender:req.body.gender, 
-            contact_number:req.body.contact_number, admit_Date: req.body.admit_Date,
-            medical_history:req.body.medical_history
+            contact_number:req.body.contact_number, admit_Date: req.body.admit_Date
         });
-        newClinic = await newClinic.save(); // Save the new patientinfo to the database
-        res.send(newClinic); // Send the saved patientinfo as a response
+        newPatient = await newPatient.save(); // Save the new patientinfo to the database
+        res.send(newPatient); // Send the saved patientinfo as a response
     } catch (err) {
         res.status(400).send(err.message); // Send an error response if something goes wrong
     }
@@ -28,7 +27,7 @@ exports.getAllPatient = async (req, res) => {
 // Get a patientinfo by ID
 exports.getPatientById = async (req, res) => {
     try {
-        const patientById = await ClinicModel.findById(req.params.id); // Find room by ID
+        const patientById = await ClinicModel.findById(req.params.id); // Find patientinfo by ID
         if (!patientById) return res.status(404).send('Patient not found in database'); // If patientinfo is not found, return 404
         res.send(patientById); // Send the patientinfo as a response
     } catch (err) {
