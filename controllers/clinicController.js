@@ -5,7 +5,8 @@ exports.createAppointment = async (req, res) => {
     try {
         let newPatient = new ClinicModel({
             Patient_name: req.body.name, age: req.body.age, gender:req.body.gender, 
-            contact_number:req.body.contact_number, admit_Date: req.body.admit_Date
+            contact_number:req.body.contact_number, admit_Date: req.body.admit_Date,
+            admit:req.body.admit
         });
         newPatient = await newPatient.save(); // Save the new patientinfo to the database
         res.send(newPatient); // Send the saved patientinfo as a response
@@ -41,7 +42,7 @@ exports.updatePatient = async (req, res) => {
         const updatedPatient = await ClinicModel.findByIdAndUpdate(req.params.id, {
             Patient_name: req.body.name, age: req.body.age, gender:req.body.gender, 
             contact_number:req.body.contact_number, admit_Date: req.body.admit_Date,
-            medical_history:req.body.medical_history
+            medical_history:req.body.medical_history,admit:req.body.admit
         }, { new: true }); // Return the updated patientinfo
 
         if (!updatedPatient) return res.status(404).send('Patient not found in database'); // If patientinfo is not found, return 404

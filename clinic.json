@@ -5,7 +5,8 @@
         "gender": "Male",
         "contact_number": "123-456-7890",
         "admit_Date": "2023-09-01T10:00:00Z",
-        "medical_history": ["diabetes", "hypertension"]
+        "medical_history": ["diabetes", "hypertension"],
+        "admit": true
     },
     {
         "name": "Jane Smith",
@@ -13,7 +14,8 @@
         "gender": "Female",
         "contact_number": "987-654-3210",
         "admit_Date": "2023-09-05T14:30:00Z",
-        "medical_history": ["asthma"]
+        "medical_history": ["asthma"],
+        "admit": false
     },
     {
         "name": "Alice Johnson",
@@ -21,7 +23,8 @@
         "gender": "Female",
         "contact_number": "555-123-4567",
         "admit_Date": "2023-09-10T09:00:00Z",
-        "medical_history": ["none"]
+        "medical_history": ["none"],
+        "admit": true
     },
     {
         "name": "Bob Brown",
@@ -29,7 +32,8 @@
         "gender": "Male",
         "contact_number": "444-987-6543",
         "admit_Date": "2023-09-15T11:15:00Z",
-        "medical_history": ["allergy"]
+        "medical_history": ["allergy"],
+        "admit": false
     },
     {
         "name": "Charlie White",
@@ -37,7 +41,8 @@
         "gender": "Non-binary",
         "contact_number": "333-555-7890",
         "admit_Date": "2023-09-20T08:45:00Z",
-        "medical_history": ["none"]
+        "medical_history": ["none"],
+        "admit": true
     },
     {
         "name": "David Black",
@@ -45,7 +50,8 @@
         "gender": "Male",
         "contact_number": "222-333-4444",
         "admit_Date": "2023-09-22T12:00:00Z",
-        "medical_history": ["heart disease"]
+        "medical_history": ["heart disease"],
+        "admit": true
     },
     {
         "name": "Emma Green",
@@ -53,7 +59,8 @@
         "gender": "Female",
         "contact_number": "666-777-8888",
         "admit_Date": "2023-09-25T14:30:00Z",
-        "medical_history": ["high cholesterol"]
+        "medical_history": ["high cholesterol"],
+        "admit": false
     },
     {
         "name": "Frank Wright",
@@ -61,7 +68,8 @@
         "gender": "Male",
         "contact_number": "999-888-7777",
         "admit_Date": "2023-09-28T09:15:00Z",
-        "medical_history": ["none"]
+        "medical_history": ["none"],
+        "admit": true
     },
     {
         "name": "Grace Lee",
@@ -69,7 +77,8 @@
         "gender": "Female",
         "contact_number": "555-666-7777",
         "admit_Date": "2023-09-30T10:30:00Z",
-        "medical_history": ["migraines"]
+        "medical_history": ["migraines"],
+        "admit": false
     },
     {
         "name": "Henry King",
@@ -77,6 +86,42 @@
         "gender": "Male",
         "contact_number": "444-555-6666",
         "admit_Date": "2023-10-01T11:45:00Z",
-        "medical_history": ["arthritis", "diabetes"]
-    }
+        "medical_history": ["arthritis", "diabetes"],
+        "admit": true
+    },
+    
+        {
+            "Patient_name": "John Doe",
+            "age": 30,
+            "gender": "Male",
+            "contact_number": "123-456-7890",
+            "admit_Date": "2024-09-15T00:00:00Z",
+            "admit": true
+        },
+        {
+            "Patient_name": "Jane Smith",
+            "age": 28,
+            "gender": "Female",
+            "contact_number": "098-765-4321",
+            "admit_Date": "2024-09-20T00:00:00Z",
+            "admit": false
+        },
+        {
+            "Patient_name": "Alex Taylor",
+            "age": 22,
+            "gender": "Non-binary",
+            "contact_number": "555-123-4567",
+            "admit_Date": "2024-09-22T00:00:00Z",
+            "admit": true
+        },
+        {
+            "Patient_name": "Jamie Lee",
+            "age": 35,
+            "gender": "Other",
+            "contact_number": "444-321-9876",
+            "admit_Date": "2024-09-25T00:00:00Z",
+            "admit": false
+        }
+    
+    
 ]

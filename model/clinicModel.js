@@ -22,7 +22,10 @@ const clinicSchema = new mongoose.Schema({
     admit_Date: {
         type: Date,
         require: true
-    }
+    },
+    admit:{
+        type: Boolean
+      }
 });
 
 const Clinic = mongoose.model('Clinic', clinicSchema);
