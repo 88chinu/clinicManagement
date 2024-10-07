@@ -47,22 +47,18 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
           <div className="box-container">
             <h2>Add Patient</h2>
             <form onSubmit={handleSubmit} className="form-container">
-              <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="input-field"
-              />
-              <input
-                type="number"
-                placeholder="Age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                required
-                className="input-field"
-              />
+
+              <input type="text" placeholder="Name"  value={name} onChange={(e) => setName(e.target.value)} required className="input-field"/>
+
+              <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required className="input-field" />
+
+              <input type="number" placeholder="contact-number" value={Number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
+
+              <select type='select' placeholder="Select Gender" name="Sgender" value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option> </select>
+
               <div className="button-group">
                 <button type="submit" className="btn btn-add">Add Patient</button>
                 <button type="button" className="btn btn-cancel" onClick={() => navigate('/')}>Cancel</button>
