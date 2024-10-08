@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import Notification from './Notification';
+import Notification from './Notification';
 
 const API_URL = process.env.REACT_APP_API_URL
 
 const PatientAdd = ({ onPatientAdd = () => { } }) => {
     const [name,setName] = useState('')
     const [age,setAge] = useState('')
-    const [gender,setGender] = useState('')
     const [co_number,setNumber] = useState('')
+    const [gender,setGender] = useState('')
     const navigate = useNavigate()
     const [showNotification,setShowNotification] = useState(null)
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!name || !age) return
+        if (!name || !age || !co_number || !gender) return
 
         try {
             const response = await axios.post(API_URL, { name, age, gender, co_number });
@@ -52,7 +52,7 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
 
               <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required className="input-field" />
 
-              <input type="number" placeholder="contact-number" value={Number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
+              <input type="number" placeholder="contact-number" value={co_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
 
               <select type='select' placeholder="Select Gender" name="Sgender" value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
                 <option value="Male">Male</option>

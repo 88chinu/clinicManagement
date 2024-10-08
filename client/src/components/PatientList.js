@@ -1,8 +1,8 @@
-// src/components/PersonList.js
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+import Notification from './Notification';
 
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -23,25 +23,30 @@ const PatientList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="box-container">
       <h1>All Patient List</h1>
-      <Link to="/add">Add Patient</Link>
+      <Link to="/add" className="btn btn-add add-person-button">Add Patient</Link>
       <table>
         <thead>
           <tr>
             <th>Name</th>
+            <th> </th>
             <th>Age</th>
+            <th> </th>
+            <th>Contact No</th>
+            <th> </th>
+            <th>Gender</th>
           </tr>
         </thead>
         <tbody>
-          {patient.map(patient => (
-            <tr key={patient.id}>
-              <td>
-                <Link to={`/patient/${patient.id}`}>
-                  {patient.name}
-                </Link>
-              </td>
+          {patient.map(patient => (<tr key={patient.id} className="person-name"><td>
+                <Link to={`/patient/${patient.id}`}>{patient.name}</Link></td>
+                <td> </td>
               <td>{patient.age}</td>
+              <td> </td>
+              <td>{patient.co_number}</td>
+              <td> </td>
+              <td>{patient.gender}</td>
             </tr>
           ))}
         </tbody>
