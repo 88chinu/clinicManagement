@@ -1,5 +1,5 @@
 {
-  "persons": [
+  "patients": [
     {
       "id": "a02d",
       "name": "sesdev",
@@ -12,13 +12,6 @@
       "name": "sai",
       "age": "32",
       "co_number": "9987655412",
-      "gender": "Female"
-    },
-    {
-      "id": "dc78",
-      "name": "sdcs",
-      "age": "232",
-      "co_number": "9012231237",
       "gender": "Female"
     },
     {

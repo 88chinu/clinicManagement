@@ -40,7 +40,7 @@ const PatientList = () => {
         </thead>
         <tbody>
           {patient.map(patient => (<tr key={patient.id} className="person-name"><td>
-                <Link to={`/patients/${patient.id}`}>{patient.name}</Link></td>
+                <Link to={`/detail/${patient.id}`}>{patient.name}</Link></td>
                 <td> </td>
               <td>{patient.age}</td>
               <td> </td>

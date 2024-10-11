@@ -4,6 +4,7 @@ import axios from 'axios';
 import Notification from './Notification';
 
 const API_URL = process.env.REACT_APP_API_URL;
+console.log(API_URL)
 
 const PatientDetail = () => {
   const { id } = useParams();
@@ -30,7 +31,7 @@ const PatientDetail = () => {
     try {
       await axios.delete(`${API_URL}/${id}`);
       setShowNotification({ type: 'success', text: 'Patient deleted successfully!' });
-      setTimeout(() => navigate('/'), 3000); // Navigate after showing notification for 3 seconds
+      setTimeout(() => navigate('/'), 1000); // Navigate after showing notification for 3 seconds
     } catch (error) {
       console.error('Error deleting patient:', error);
       setShowNotification({ type: 'error', text: 'Error deleting patient.' });
@@ -54,12 +55,6 @@ const PatientDetail = () => {
       <h1>{patient.name}</h1>
       <div className="patient-info">
         <p>Age: {patient.age}</p>
-      </div>
-      <div className="patient-info">
-        <p>Number: {patient.co_number}</p>
-      </div>
-      <div className="patient-info">
-        <p>Gender: {patient.gender}</p>
       </div>
       <div className="patient-actions">
         <Link to={`/edit/${patient.id}`} className="btn btn-update">Edit</Link>
