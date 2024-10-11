@@ -51,14 +51,17 @@ const PatientDetail = () => {
   }
 
   return (
-    <div className="box-container">
-      <h1>{patient.name}</h1>
-      <div className="patient-info">
-        <p>Age: {patient.age}</p>
-      </div>
+    <div className="box-container"><h2>Name: {patient.name}</h2>
+      <div className="patient-info"><p>Age: {patient.age}</p>
+
+      <div className="patient-info"><p>Contact info: {patient.co_number}</p></div>
+
+      <div className="patient-info"><p>Gender: {patient.gender}</p></div> </div>
       <div className="patient-actions">
         <Link to={`/edit/${patient.id}`} className="btn btn-update">Edit</Link>
+
         <button onClick={deletePatient} className="btn btn-delete">Delete</button>
+
         <Link to="/" className="btn btn-back">Back to Home</Link>
       </div>
       {showNotification && <Notification message={showNotification} onClose={handleCloseNotification} />}

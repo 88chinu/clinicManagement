@@ -8,13 +8,6 @@
       "gender": "Male"
     },
     {
-      "id": "167f",
-      "name": "sai",
-      "age": "32",
-      "co_number": "9987655412",
-      "gender": "Female"
-    },
-    {
       "id": "2043",
       "name": "chinu",
       "age": "30",
@@ -30,7 +23,7 @@
     },
     {
       "id": "2f67",
-      "name": "nirmal",
+      "name": "Nirmal",
       "age": "78",
       "gender": "Other",
       "co_number": "5674837658"

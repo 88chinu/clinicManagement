@@ -31,7 +31,7 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
             setShowNotification({ type: 'success', text: `Patient "${response.data.name}" added successfully!` });
       
             // Navigate to the new person's detail page
-            setTimeout(() => navigate(`/patient/${newPatientId}`), 1000); // Wait for 1 seconds before navigating
+            setTimeout(() => navigate(`/detail/${newPatientId}`), 1000); // Wait for 1 seconds before navigating
           } catch (error) {
             console.error('Error adding the patient:', error);
             setShowNotification({ type: 'error', text: 'Failed to add the patient. Please try again.' });
@@ -54,7 +54,7 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
 
               <input type="number" placeholder="contact-number" value={co_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
 
-              <select type='select' placeholder="Select Gender" name="Sgender" value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
+              <select type='select' placeholder="SelectGender" value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option> </select>

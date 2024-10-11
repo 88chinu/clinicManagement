@@ -32,10 +32,6 @@ const PatientList = () => {
             <th>Name</th>
             <th> </th>
             <th>Age</th>
-            <th> </th>
-            <th>Contact No</th>
-            <th> </th>
-            <th>Gender</th>
           </tr>
         </thead>
         <tbody>
@@ -43,10 +39,6 @@ const PatientList = () => {
                 <Link to={`/detail/${patient.id}`}>{patient.name}</Link></td>
                 <td> </td>
               <td>{patient.age}</td>
-              <td> </td>
-              <td>{patient.co_number}</td>
-              <td> </td>
-              <td>{patient.gender}</td>
             </tr>
           ))}
         </tbody>
