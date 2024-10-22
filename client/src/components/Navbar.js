@@ -68,16 +68,15 @@ const Navbar = () => {
               </MenuItem>
             ))}
           </Menu>
-          {/* <IconButton
+           <IconButton
             color="primary"
             component="a"
-            href="https://github.com/bscCohort/bkmgmt-deploy"
+            href="https://github.com/88chinu/clinicManagement"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-          > */}
-            <GitHubIcon />
-          {/* </IconButton> */}
+          >           <GitHubIcon />
+          </IconButton> 
         </Box>
       </Toolbar>
     </AppBar>
