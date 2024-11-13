@@ -6,6 +6,7 @@ import PatientAdd from './components/createPatient';
 import PatientEdit from './components/updatePatient';
 import Footer from './components/footer';
 import Navbar from './components/Navbar';
+import HomePage from './components/HomePage';
 import './App.css'
 
 const App = () => {

@@ -74,8 +74,8 @@ const Navbar = () => {
             href="https://github.com/88chinu/clinicManagement"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
-          >           <GitHubIcon />
+            aria-label="GitHub">
+            <GitHubIcon />
           </IconButton> 
         </Box>
       </Toolbar>

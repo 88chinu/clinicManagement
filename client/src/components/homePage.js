@@ -6,19 +6,19 @@ const HomePage = () => {
     return (
       <Container maxWidth="lg" sx={{ textAlign: 'center', py: 5 }}>
         <Typography variant="h2" component="h1" color="primary" gutterBottom>
-          Welcome to the Book Management System
+          Welcome to the Clinic Management System
         </Typography>
         <Typography variant="h5" gutterBottom>
-          Manage your books efficiently and effectively.
+          Manage Patients efficiently.
         </Typography>
         <Box mt={4}>
         <Button 
           component={Link} 
-          to="/book-list" // Updated to link to the ShowBookList component
+          to="/PatientList" // Updated to link to the PatirntList component
           color="primary" 
           variant="contained"
         >
-          View Books
+          View Patients
         </Button>
       </Box>
       </Container>
