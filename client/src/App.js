@@ -6,7 +6,7 @@ import PatientAdd from './components/createPatient';
 import PatientEdit from './components/updatePatient';
 import Footer from './components/footer';
 import Navbar from './components/Navbar';
-import HomePage from './components/HomePage';
+import HomePage from './components/homePage';
 import './App.css'
 
 const App = () => {
@@ -15,10 +15,11 @@ const App = () => {
             <div className="box-container">
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<PatientList />} />
+                    <Route path="/list" element={<PatientList />} />
                     <Route path="/add" element={<PatientAdd />} />
                     <Route path="/edit/:id" element={<PatientEdit />} />
                     <Route path="/detail/:id" element={<PatientDetail />} />
+                    <Route exact path='/' element={<HomePage />} />
                 </Routes>
             </div>
             <Footer />

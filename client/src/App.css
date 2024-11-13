@@ -10,11 +10,8 @@
   max-width: auto;
   /* Changed from fixed width to max-width */
   margin: 40px auto;
-}
-
-
-*{
   background-color:rgb(53, 240, 152);
+
 }
 
 /* Form Styles */

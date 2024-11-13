@@ -14,7 +14,7 @@ const HomePage = () => {
         <Box mt={4}>
         <Button 
           component={Link} 
-          to="/PatientList" // Updated to link to the PatirntList component
+          to="/list" // Updated to link to the PatirntList component
           color="primary" 
           variant="contained"
         >
