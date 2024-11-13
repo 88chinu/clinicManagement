@@ -21,3 +21,8 @@ const HomePage = () => {
           View Books
         </Button>
       </Box>
+      </Container>
+  );
+};
+
+export default HomePage;
