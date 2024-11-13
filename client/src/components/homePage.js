@@ -11,3 +11,13 @@ const HomePage = () => {
         <Typography variant="h5" gutterBottom>
           Manage your books efficiently and effectively.
         </Typography>
+        <Box mt={4}>
+        <Button 
+          component={Link} 
+          to="/book-list" // Updated to link to the ShowBookList component
+          color="primary" 
+          variant="contained"
+        >
+          View Books
+        </Button>
+      </Box>
