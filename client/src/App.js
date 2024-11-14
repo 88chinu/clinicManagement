@@ -7,7 +7,7 @@ import PatientEdit from './components/updatePatient';
 import Footer from './components/footer';
 import Navbar from './components/Navbar';
 import HomePage from './components/homePage';
-import './App.css'
+import './App.css'; // Make sure this contains your CSS
 
 const App = () => {
     return (

@@ -4,13 +4,12 @@ import { Container, Typography, Button, Box } from '@mui/material';
 
 const HomePage = () => {
     return (
-      // <img src="/workspace/clinicManagement/client/src/61802.jpg" alt="backgroung">
       <Container maxWidth="lg" sx={{ textAlign: 'center', py: 5 }}>
         <Typography variant="h2" component="h1" color="primary" gutterBottom>
           Welcome to the Clinic Management System
         </Typography>
         <Typography variant="h5" gutterBottom>
-          Manage Patients efficiently.
+          Manage Patients Efficiently
         </Typography>
         <Box mt={4}>
         <Button 
@@ -23,7 +22,6 @@ const HomePage = () => {
         </Button>
       </Box>
       </Container>
-    //  </img>
   );
 };
 

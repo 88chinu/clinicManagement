@@ -15,7 +15,7 @@ const Footer = () => (
     }}
   >
     <Typography variant="h6" gutterBottom>
-      Built with ❤️ by Chinmaya Panigrahi
+      Built with ❤️ by Chinmaya
     </Typography>
     <Typography variant="body2" sx={{ mt: 2 }}>
       © {new Date().getFullYear()} Bsc student | All Rights Reserved
