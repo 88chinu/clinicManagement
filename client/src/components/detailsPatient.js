@@ -62,7 +62,7 @@ const PatientDetail = () => {
 
         <button onClick={deletePatient} className="btn btn-delete">Delete</button>
 
-        <Link to="/" className="btn btn-back">Back to Home</Link>
+        <Link to="/list" className="btn btn-back">Back to Home</Link>
       </div>
       {showNotification && <Notification message={showNotification} onClose={handleCloseNotification} />}
     </div>

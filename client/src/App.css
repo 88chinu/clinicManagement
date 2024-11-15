@@ -80,6 +80,9 @@ footer{
   background-color: #dc3545;
 }
 
+.btn-back{
+  background-color: #ffc107;
+}
 /* Add these to your global CSS file */
 
 @media (max-width: 768px) {
