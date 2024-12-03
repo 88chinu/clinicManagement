@@ -37,19 +37,10 @@ const Navbar = () => {
           Clinic Management Project
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Button
-            color="primary"
-            component={RouterLink}
-            to="/"
-            startIcon={<HomeIcon />}
-          >
+          <Button color="primary" component={RouterLink} to="/" startIcon={<HomeIcon />} >
             Home
           </Button>
-          <Button
-            color="primary"
-            onClick={handleNotesClick}
-            startIcon={<MenuBookIcon />} // Added icon here
-          >
+          <Button color="primary" onClick={handleNotesClick} startIcon={<MenuBookIcon />} >
             Notes
           </Button>
           <Menu

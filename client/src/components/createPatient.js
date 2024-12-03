@@ -54,10 +54,11 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
 
               <input type="number" placeholder="contact-number" value={co_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
 
-              <select type='select' placeholder="SelectGender" value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option> </select>
+              <select value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
+            <option value="" disabled>Select Gender</option> {/* Prompt option */}
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option> </select>
 
               <div className="button-group">
                 <button type="submit" className="btn btn-add">Add Patient</button>

@@ -12,12 +12,8 @@ const HomePage = () => {
           Manage Patients Efficiently
         </Typography>
         <Box mt={4}>
-        <Button 
-          component={Link} 
-          to="/list" // Updated to link to the PatirntList component
-          color="primary" 
-          variant="contained"
-        >
+        <Button component={Link} to="/list" color="primary" 
+          variant="contained" >
           View Patients
         </Button>
       </Box>

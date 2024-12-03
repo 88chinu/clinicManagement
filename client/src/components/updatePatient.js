@@ -58,6 +58,7 @@ const PatientEdit = () => {
         <input type="number" placeholder="contact-number" value={patient.co_number} onChange={handleChange} required className="input-field" />
         
         <select type='select' placeholder="Select Gender" value={patient.gender} onChange={handleChange} required className='input-field'>
+            <option value="" disabled>Select Gender</option> {/* Prompt option */}
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option> </select>
