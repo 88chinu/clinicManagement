@@ -1,5 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, Box } from '@mui/material';
+import rosePineTheme from './container/Theme';
+
+
 import PatientList from './components/PatientList';
 import PatientDetail from './components/detailsPatient';
 import PatientAdd from './components/createPatient';
@@ -11,7 +16,10 @@ import './App.css'; // Make sure this contains your CSS
 
 const App = () => {
     return (
+        <ThemeProvider theme={rosePineTheme}>
+      <CssBaseline />
         <Router>
+        <Box display="flex" flexDirection="column" minHeight="100vh">
             <div className="box-container">
                 <Navbar />
                 <Routes>
@@ -23,7 +31,10 @@ const App = () => {
                 </Routes>
             </div>
             <Footer />
+            </Box>
         </Router>
+
+        </ThemeProvider>
     );
 };
 
