@@ -1,96 +1,104 @@
 
 import { createTheme } from '@mui/material/styles';
 
-const rosePineColors = {
-    base: '#191724',
-    surface: '#1f1d2e',
-    overlay: '#26233a',
-    muted: '#6e6a86',
-    subtle: '#908caa',
-    text: '#e0def4',
-    love: '#eb6f92',
-    gold: '#f6c177',
-    rose: '#ebbcba',
-    pine: '#31748f',
-    foam: '#9ccfd8',
-    iris: '#c4a7e7',
-    highlightLow: '#21202e',
-    highlightMed: '#403d52',
-    highlightHigh: '#524f67',
-  };
-  
-  const rosePineTheme = createTheme({
+const clinicThemeColors = {
+    base: '#ffffff',
+    surface: '#f9f9f9',
+    overlay: '#e0e0e0',
+    muted: '#9e9e9e',
+    subtle: '#bdbdbd',
+    text: '#333333',
+    primaryMain: '#00796b', // Calming teal
+    secondaryMain: '#0288d1', // Trustworthy blue
+    error: '#d32f2f', // Alert red
+    warning: '#f9a825', // Attention yellow
+    info: '#0288d1', // Consistent blue
+    success: '#388e3c', // Positive green
+    highlightLow: '#f5f5f5',
+    highlightMed: '#eeeeee',
+    highlightHigh: '#e0e0e0',
+};
+
+const clinicManagementTheme = createTheme({
     palette: {
-      mode: 'dark',
-      background: {
-        default: rosePineColors.base,
-        paper: rosePineColors.surface,
-      },
-      primary: {
-        main: rosePineColors.rose,
-      },
-      secondary: {
-        main: rosePineColors.pine,
-      },
-      error: {
-        main: rosePineColors.love,
-      },
-      warning: {
-        main: rosePineColors.gold,
-      },
-      info: {
-        main: rosePineColors.foam,
-      },
-      success: {
-        main: rosePineColors.pine,
-      },
-      text: {
-        primary: rosePineColors.text,
-        secondary: rosePineColors.subtle,
-      },
+        mode: 'light',
+        background: {
+            default: clinicThemeColors.base,
+            paper: clinicThemeColors.surface,
+        },
+        primary: {
+            main: clinicThemeColors.primaryMain,
+        },
+        secondary: {
+            main: clinicThemeColors.secondaryMain,
+        },
+        error: {
+            main: clinicThemeColors.error,
+        },
+        warning: {
+            main: clinicThemeColors.warning,
+        },
+        info: {
+            main: clinicThemeColors.info,
+        },
+        success: {
+            main: clinicThemeColors.success,
+        },
+        text: {
+            primary: clinicThemeColors.text,
+            secondary: clinicThemeColors.muted,
+        },
     },
     typography: {
-      fontFamily: '"Fira Sans", "Roboto", "Helvetica", "Arial", sans-serif',
-      h1: {
-        fontFamily: '"Space Mono", monospace',
-      },
-      h2: {
-        fontFamily: '"Space Mono", monospace',
-      },
-      h3: {
-        fontFamily: '"Space Mono", monospace',
-      },
-      h4: {
-        fontFamily: '"Space Mono", monospace',
-      },
-      h5: {
-        fontFamily: '"Space Mono", monospace',
-      },
-      h6: {
-        fontFamily: '"Space Mono", monospace',
-      },
+        fontFamily: '"Lato", "Roboto", "Helvetica", "Arial", sans-serif',
+        h1: {
+            fontFamily: '"Roboto Slab", serif',
+        },
+        h2: {
+            fontFamily: '"Roboto Slab", serif',
+        },
+        h3: {
+            fontFamily: '"Roboto Slab", serif',
+        },
+        h4: {
+            fontFamily: '"Roboto Slab", serif',
+        },
+        h5: {
+            fontFamily: '"Roboto Slab", serif',
+        },
+        h6: {
+            fontFamily: '"Roboto Slab", serif',
+        },
+        body1: {
+            fontFamily: '"Lato", sans-serif',
+        },
+        body2: {
+            fontFamily: '"Lato", sans-serif',
+        },
     },
     components: {
-      MuiAppBar: {
-        styleOverrides: {
-          root: {
-            backgroundColor: rosePineColors.surface,
-          },
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: clinicThemeColors.primaryMain,
+                    color: clinicThemeColors.text, // Ensures the text is visible on the AppBar
+                },
+            },
+        },        
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none',
+                    borderRadius: '8px',
+                },
+            },
         },
-      },
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            textTransform: 'none',
-          },
+        MuiCssBaseline: {
+            styleOverrides: `
+                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto+Slab:wght@400;700&display=swap');
+            `,
         },
-      },
-      MuiCssBaseline: {
-        styleOverrides: `
-          @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
-        `,
-      }
     },
-  });
-  
-  export default rosePineTheme;
+});
+
+export default clinicManagementTheme;

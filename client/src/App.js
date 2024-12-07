@@ -20,8 +20,8 @@ const App = () => {
       <CssBaseline />
         <Router>
         <Box display="flex" flexDirection="column" minHeight="100vh">
+        <Navbar />
             <div className="box-container">
-                <Navbar />
                 <Routes>
                     <Route path="/list" element={<PatientList />} />
                     <Route path="/add" element={<PatientAdd />} />
