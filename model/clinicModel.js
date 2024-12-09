@@ -23,7 +23,7 @@ const clinicSchema = new mongoose.Schema({
         type: Date,
         require: true
     },
-    admit:{
+    previous_admit:{
         type: Boolean
       }
 });

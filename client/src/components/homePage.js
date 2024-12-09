@@ -12,9 +12,9 @@ const HomePage = () => {
           Manage Patients Efficiently
         </Typography>
         <Box mt={4}>
-        <Button component={Link} to="/list" color="primary" 
+        <Button component={Link} to="/add" color="primary" 
           variant="contained" >
-          View Patients
+          Create Patients
         </Button>
       </Box>
       </Container>

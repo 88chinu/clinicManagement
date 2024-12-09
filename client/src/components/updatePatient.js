@@ -8,7 +8,7 @@ console.log(API_URL)
 const PatientEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [patient, setPatient] = useState({ name: '', age: '' ,co_number:'',gender:''});
+  const [patient, setPatient] = useState({Patient_name: '', age: '' ,gender:'', contact_number:'',admit_Date:'', previous_admit:''});
 
   useEffect(() => {
     const fetchPatient = async () => {
@@ -23,8 +23,8 @@ const PatientEdit = () => {
   }, [id]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPatient({ ...patient, [name]: value });
+    const { Patient_name, value } = e.target;
+    setPatient({ ...patient, [Patient_name]: value });
   };
 
   const handleUpdate = async (e) => {
@@ -49,19 +49,27 @@ const PatientEdit = () => {
     <div className="box-container">
       <h1>Update Patient</h1>
       <form onSubmit={handleUpdate} className="form-container">
-        <input type="text" name="name" placeholder="Name" value={patient.name} onChange={handleChange}
+        <input type="text" name="Patient_name" placeholder="Name" value={patient.Patient_namename} onChange={handleChange}
           required className="input-field"/>
 
         <input type="number" name="age" placeholder="Age" value={patient.age} onChange={handleChange}
           required className="input-field"/>
-
-        <input type="number" placeholder="contact-number" value={patient.co_number} onChange={handleChange} required className="input-field" />
         
         <select type='select' placeholder="Select Gender" value={patient.gender} onChange={handleChange} required className='input-field'>
             <option value="" disabled>Select Gender</option> {/* Prompt option */}
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option> </select>
+
+            <input type="number" placeholder="contact-number" value={patient.contact_number} onChange={handleChange} required className="input-field" />
+
+            <input type="date" placeholder="admit date" value={patient.admit_Date} onChange={handleChange} required className="input-field" />
+
+            <select type='select' placeholder="Select Gender" value={patient.previous_admit} onChange={handleChange} required className='input-field'>
+            <option value="" disabled>Select Previously Admit</option> {/* Prompt option */}
+            <option value="true">Yes</option>
+            <option value="false">Never</option> </select>
+
 
         <div className="person-actions">
           <button type="submit" className="btn btn-update">Update</button>

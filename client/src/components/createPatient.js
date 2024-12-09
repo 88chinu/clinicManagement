@@ -6,19 +6,21 @@ import Notification from './Notification';
 const API_URL = process.env.REACT_APP_API_URL
 
 const PatientAdd = ({ onPatientAdd = () => { } }) => {
-    const [name,setName] = useState('')
+    const [Patient_name,setName] = useState('')
     const [age,setAge] = useState('')
-    const [co_number,setNumber] = useState('')
     const [gender,setGender] = useState('')
+    const [contact_number,setNumber] = useState('')
+    const [admit_Date,setDate] = useState('')
+    const [previous_admit,setAdmit] = useState('')
     const navigate = useNavigate()
     const [showNotification,setShowNotification] = useState(null)
     
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!name || !age || !co_number || !gender) return
+        if (!Patient_name || !age || !contact_number || !gender || !admit_Date || !previous_admit) return
 
         try {
-            const response = await axios.post(API_URL, { name, age, gender, co_number });
+            const response = await axios.post(API_URL, { Patient_name, age, gender, contact_number, admit_Date, previous_admit });
             const newPatientId = response.data.id;
             
             // Clear form fields
@@ -26,6 +28,8 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
             setAge('');
             setGender('');
             setNumber('');
+            setDate('');
+            setAdmit('');
       
             // Show success notification
             setShowNotification({ type: 'success', text: `Patient "${response.data.name}" added successfully!` });
@@ -48,17 +52,24 @@ const PatientAdd = ({ onPatientAdd = () => { } }) => {
             <h2>Add Patient</h2>
             <form onSubmit={handleSubmit} className="form-container">
 
-              <input type="text" placeholder="Name"  value={name} onChange={(e) => setName(e.target.value)} required className="input-field"/>
+              <input type="text" placeholder="Name"  value={Patient_name} onChange={(e) => setName(e.target.value)} required className="input-field"/>
 
               <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required className="input-field" />
-
-              <input type="number" placeholder="contact-number" value={co_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
 
               <select value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
             <option value="" disabled>Select Gender</option> {/* Prompt option */}
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option> </select>
+
+            <input type="number" placeholder="contact-number" value={contact_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
+
+            <input type="date" placeholder="enter admit date" value={admit_Date} onChange={(e) => setDate(e.target.value)} required className="input-field" />
+
+            <select value={previous_admit} onChange={(e) => setAdmit(e.target.value)} required className='input-field'>
+            <option value="" disabled>Select previous_admit or not</option> {/* Prompt option */}
+            <option value="true">Yes</option>
+            <option value="false">Never</option></select>
 
               <div className="button-group">
                 <button type="submit" className="btn btn-add">Add Patient</button>

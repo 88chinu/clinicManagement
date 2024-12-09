@@ -51,12 +51,18 @@ const PatientDetail = () => {
   }
 
   return (
-    <div className="box-container"><h2>Name: {patient.name}</h2>
+    <div className="box-container"><h2>Name: {patient.Patient_name}</h2>
+
       <div className="patient-info"><p>Age: {patient.age}</p>
 
-      <div className="patient-info"><p>Contact info: {patient.co_number}</p></div>
-
       <div className="patient-info"><p>Gender: {patient.gender}</p></div> </div>
+
+      <div className="patient-info"><p>Contact info: {patient.contact_number}</p></div>
+
+      <div className="patient-info"><p>Admit Date: {patient.admit_date}</p></div>
+
+      <div className="patient-info"><p>Previous Admit: {patient.previous_admit}</p></div>
+
       <div className="patient-actions">
         <Link to={`/edit/${patient.id}`} className="btn btn-update">Edit</Link>
 
