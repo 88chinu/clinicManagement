@@ -48,6 +48,15 @@
       "age": "45",
       "gender": "Female",
       "co_number": "4567833343"
+    },
+    {
+      "id": "19f8",
+      "Patient_name": "chinmaya",
+      "age": "24",
+      "gender": "Male",
+      "contact_number": "6789065412",
+      "admit_Date": "2024-12-02",
+      "previous_admit": "no"
     }
   ]
 }

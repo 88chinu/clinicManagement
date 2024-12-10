@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 // Use the API URL from the environment variables
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const CreatePatient = (props) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [patient, setPatient] = useState({
     Patient_name: '',
     age: '',
@@ -19,66 +19,52 @@ const CreatePatient = (props) => {
   });
 
   const onChange = (e) => {
-    setPatient({ ...patient, [e.target.Patient_name]: e.target.value });
+    setPatient({ ...patient, [e.target.name]: e.target.value });
   };
+  
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      // POST request to the API with the patient data
-      const response = await axios.post(`${API_URL}/patients`, {
-        Patient_name: patient.Patient_name,
-        age: patient.age,
-        gender: patient.gender,
-        contact_number: patient.contact_number,
-        admit_Date: patient.admit_Date,
-        previous_admit: patient.previous_admit,
+    console.log(patient)
+    axios
+    // .post("/api/clinics", patient)
+    .post("https://5000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/patients", patient)
+      .then((res) => {
+        setPatient({
+          Patient_name: '',
+    age: '',
+    gender: '',
+    contact_number: '',
+    admit_Date: '',
+    previous_admit: '',
+        });
+        toast.success('Patient added successfully!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'dark',
+          transition: Slide,
+        });
+        // setTimeout(() => {
+        //   navigate('/');
+        // }, 5000);
+      })
+      .catch((err) => {
+        console.error('Error in creating patient:', err);
+        toast.error('Something went wrong, try again!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'dark',
+          transition: Slide,
+        });
       });
-
-      const newPatientId = response.data.id;
-
-      // Clear the form
-      setPatient({
-        Patient_name: '',
-        age: '',
-        gender: '',
-        contact_number: '',
-        admit_Date: '',
-        previous_admit: '',
-      });
-
-      // Show success toast notification
-      toast.success('Patient added successfully!', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-        transition: Slide,
-      });
-
-      // Navigate to the patient's detail page
-      setTimeout(() => {
-        navigate(`/detail/${newPatientId}`);
-      }, 5000);
-    } catch (error) {
-      console.error('Error adding the patient:', error);
-      toast.error('Failed to add the patient. Please try again.', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'dark',
-        transition: Slide,
-      });
-    }
   };
 
   return (
