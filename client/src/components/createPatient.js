@@ -1,84 +1,202 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Notification from './Notification';
 
-const API_URL = process.env.REACT_APP_API_URL
+// Use the API URL from the environment variables
+const API_URL = process.env.REACT_APP_API_URL;
 
-const PatientAdd = ({ onPatientAdd = () => { } }) => {
-    const [Patient_name,setName] = useState('')
-    const [age,setAge] = useState('')
-    const [gender,setGender] = useState('')
-    const [contact_number,setNumber] = useState('')
-    const [admit_Date,setDate] = useState('')
-    const [previous_admit,setAdmit] = useState('')
-    const navigate = useNavigate()
-    const [showNotification,setShowNotification] = useState(null)
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        if (!Patient_name || !age || !contact_number || !gender || !admit_Date || !previous_admit) return
+const CreatePatient = (props) => {
+  const navigate = useNavigate();
+  const [patient, setPatient] = useState({
+    Patient_name: '',
+    age: '',
+    gender: '',
+    contact_number: '',
+    admit_Date: '',
+    previous_admit: '',
+  });
 
-        try {
-            const response = await axios.post(API_URL, { Patient_name, age, gender, contact_number, admit_Date, previous_admit });
-            const newPatientId = response.data.id;
-            
-            // Clear form fields
-            setName('');
-            setAge('');
-            setGender('');
-            setNumber('');
-            setDate('');
-            setAdmit('');
-      
-            // Show success notification
-            setShowNotification({ type: 'success', text: `Patient "${response.data.name}" added successfully!` });
-      
-            // Navigate to the new person's detail page
-            setTimeout(() => navigate(`/detail/${newPatientId}`), 1000); // Wait for 1 seconds before navigating
-          } catch (error) {
-            console.error('Error adding the patient:', error);
-            setShowNotification({ type: 'error', text: 'Failed to add the patient. Please try again.' });
-          }
-        };
-      
-        const handleCloseNotification = () => {
-          setShowNotification(null);
-        };
-      
-      
-        return (
-          <div className="box-container">
-            <h2>Add Patient</h2>
-            <form onSubmit={handleSubmit} className="form-container">
+  const onChange = (e) => {
+    setPatient({ ...patient, [e.target.Patient_name]: e.target.value });
+  };
 
-              <input type="text" placeholder="Name"  value={Patient_name} onChange={(e) => setName(e.target.value)} required className="input-field"/>
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-              <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} required className="input-field" />
+    try {
+      // POST request to the API with the patient data
+      const response = await axios.post(`${API_URL}/patients`, {
+        Patient_name: patient.Patient_name,
+        age: patient.age,
+        gender: patient.gender,
+        contact_number: patient.contact_number,
+        admit_Date: patient.admit_Date,
+        previous_admit: patient.previous_admit,
+      });
 
-              <select value={gender} onChange={(e) => setGender(e.target.value)} required className='input-field'>
-            <option value="" disabled>Select Gender</option> {/* Prompt option */}
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option> </select>
+      const newPatientId = response.data.id;
 
-            <input type="number" placeholder="contact-number" value={contact_number} onChange={(e) => setNumber(e.target.value)} required className="input-field" />
+      // Clear the form
+      setPatient({
+        Patient_name: '',
+        age: '',
+        gender: '',
+        contact_number: '',
+        admit_Date: '',
+        previous_admit: '',
+      });
 
-            <input type="date" placeholder="enter admit date" value={admit_Date} onChange={(e) => setDate(e.target.value)} required className="input-field" />
+      // Show success toast notification
+      toast.success('Patient added successfully!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Slide,
+      });
 
-            <select value={previous_admit} onChange={(e) => setAdmit(e.target.value)} required className='input-field'>
-            <option value="" disabled>Select previous_admit or not</option> {/* Prompt option */}
-            <option value="true">Yes</option>
-            <option value="false">Never</option></select>
+      // Navigate to the patient's detail page
+      setTimeout(() => {
+        navigate(`/detail/${newPatientId}`);
+      }, 5000);
+    } catch (error) {
+      console.error('Error adding the patient:', error);
+      toast.error('Failed to add the patient. Please try again.', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Slide,
+      });
+    }
+  };
 
-              <div className="button-group">
-                <button type="submit" className="btn btn-add">Add Patient</button>
-                <button type="button" className="btn btn-cancel" onClick={() => navigate('/')}>Cancel</button>
-              </div>
-            </form>
-            {showNotification && <Notification message={showNotification} onClose={handleCloseNotification} />}
+  return (
+    <div className="CreatePatient">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Slide}
+      />
+
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 m-auto">
+            <br />
+            <Link to="/" className="btn btn-outline-warning float-left">
+              Show Patient List
+            </Link>
           </div>
-        );
-      };
-      
-      export default PatientAdd;
+          <div className="col-md-8 m-auto">
+            <h1 className="display-4 text-center">Add Patient</h1>
+            <p className="lead text-center">Create new patient record</p>
+
+            <form noValidate onSubmit={onSubmit}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Patient Name"
+                  name="Patient_name"
+                  className="form-control"
+                  value={patient.Patient_name}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
+
+              <div className="form-group">
+                <input
+                  type="number"
+                  placeholder="Age"
+                  name="age"
+                  className="form-control"
+                  value={patient.age}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
+
+              <div className="form-group">
+                <select
+                  name="gender"
+                  className="form-control"
+                  value={patient.gender}
+                  onChange={onChange}
+                >
+                  <option value="" disabled>
+                    Select Gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <br />
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Contact Number"
+                  name="contact_number"
+                  className="form-control"
+                  value={patient.contact_number}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
+
+              <div className="form-group">
+                <input
+                  type="date"
+                  placeholder="Admit Date"
+                  name="admit_Date"
+                  className="form-control"
+                  value={patient.admit_Date}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Previous Admit"
+                  name="previous_admit"
+                  className="form-control"
+                  value={patient.previous_admit}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
+
+              <input
+                type="submit"
+                className="btn btn-outline-warning btn-block mt-4"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CreatePatient;
