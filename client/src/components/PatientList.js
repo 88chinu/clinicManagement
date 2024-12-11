@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Typography, Grid, Button, Container, CircularProgress, Box } from '@mui/material';
 
-import BookCard from './BookCard';
+import PatientCard from './PatientCard';
 
-const API_URL = process.env.REACT_APP_API_URL;
-console.log(API_URL)
+console.log(process.env.REACT_APP_API_URL)
 
-function PatientDetail (){
+function PatientList (){
   const[patients, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-    .get(`/api/clinics`)
+    .get(`/api/patients`)
     .then((res) => {
+      console.log('Response from /patients:', res.data);
       setData(res.data)
       setLoading(false)
     })
@@ -59,7 +59,7 @@ function PatientDetail (){
           ) : (
             patients.map((patient, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <BookCard patient={patient} />
+                <PatientCard patient={patient} />
               </Grid>
             ))
           )}
@@ -70,4 +70,4 @@ function PatientDetail (){
 
 };
 
-export default PatientDetail;
+export default PatientList;

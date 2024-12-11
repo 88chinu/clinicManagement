@@ -1,134 +1,161 @@
-// import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import axios from 'axios';
-// import { Typography, Grid, Button, Container, CircularProgress, Box } from '@mui/material';
-// import Notification from './Notification';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link as RouterLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import {
+  Container,
+  Paper,
+  Typography,
+  Grid,
+  Button,
+  Card,
+  CardMedia,
+  Divider,
+  Box,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
-// import BookCard from './BookCard';
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(4),
+  marginTop: theme.spacing(4),
+  marginBottom: theme.spacing(4),
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: theme.shadows[3],
+}));
 
-// const API_URL = process.env.REACT_APP_API_URL;
-// console.log(API_URL)
+const DetailsPatient = () => {
+  const [patient, setPatient] = useState({});
+  const [openDialog, setOpenDialog] = useState(false);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    axios
+      .get(`/api/books/${id}`)
+      .then((res) => {
+        setPatient(res.data);
+      })
+      .catch((err) => {
+        console.log('Error from ShowBookDetails');
+      });  
+  }, [id]);
+  const onDeleteClick = () => {
+    setOpenDialog(true);
+  };
 
+  const handleDeleteConfirm = () => {
+    axios
+      .delete(`/api/books/${id}`)
+      .then((res) => {
+        navigate('/book-list');
+      })
+      .catch((err) => {
+        console.log('Error from ShowBookDetails_deleteClick');
+      });
+    setOpenDialog(false);
+  };
 
-// const PatientDetail = () => {
-//   const { id } = useParams();
-//   const navigate = useNavigate();
-//   const [patient, setPatient] = useState(null);
-//   const [showNotification, setShowNotification] = useState(null);
+  const handleDeleteCancel = () => {
+    setOpenDialog(false);
+  };
 
+  return (
+    <Container maxWidth="md">
+      <StyledPaper>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={4}>
+            <Card>
+              <CardMedia
+                component="img"
+                height="300"
+                image="https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
+                alt={patient.name}
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Typography variant="h4" component="h1" gutterBottom>
+              {patient.id}
+            </Typography>
+            <Typography variant="h6" color="textSecondary" gutterBottom>
+              by {patient.name}
+            </Typography>
+            <Divider sx={{ my: 2 }} />
+            
+            {/* Display book details one after another */}
+            <Box display="flex" flexDirection="column">
+              <Typography variant="body1" paragraph>
+                {patient.description}
+              </Typography>
+              <Typography variant="body1">ID: {patient._id}</Typography>
+              <Typography variant="body1">Name: {patient.name}</Typography>
+              <Typography variant="body1">Age: {patient.age}</Typography>
+              <Typography variant="body1">Gender: {patient.gender}</Typography>
+              <Typography variant="body1">Contact_number: {patient.co_number}</Typography>
+            </Box>
 
-//   useEffect(() => {
-//     const fetchPatient = async () => {
-//       try {
-//         console.log('Fetching patient data...');
-//         const response = await axios.get(`${API_URL}/${id}`);
-//         console.log('Patient data:', response.data);
-//         setPatient(response.data);
-//       } catch (error) {
-//         console.error('Error fetching patient:', error.response || error.message);
-//         setShowNotification({ type: 'error', text: 'Error loading patient details.' });
-//       }
-//     };
-//     fetchPatient();
-//     // axios
-//     // .get(`/api/clinics`)
-//     // .then((res) => {
-//     //   setData(res.data)
-//     //   setLoading(false)
-//     // })
-//     // .catch((err) => {
-//     //   console.log('Error from ShowBookList ->', err);
-//     //   setLoading(false); // Set loading to false even on error
-//     // });
-//   }, []);
-
-//   const deletePatient = async () => {
-//     try {
-//       await axios.delete(`${API_URL}/${id}`);
-//       setShowNotification({ type: 'success', text: 'Patient deleted successfully!' });
-//       setTimeout(() => navigate('/'), 1000); // Navigate after showing notification for 3 seconds
-//     } catch (error) {
-//       console.error('Error deleting patient:', error);
-//       setShowNotification({ type: 'error', text: 'Error deleting patient.' });
-//     }
-//   };
-
-//   const handleCloseNotification = () => {
-//     setShowNotification(null);
-//   };
-
-//   if (!patient && !showNotification) {
-//     return <div className="box-container">Loading...</div>;
-//   }
-
-//   if (!patient && showNotification) {
-//     return <div className="box-container">Error loading patient details.</div>;
-//   }
-
-//    return (
-//     <div className="box-container"><h2>Name: {patient.Patient_name}</h2>
-
-//       <div className="patient-info"><p>Age: {patient.age}</p>
-
-//       <div className="patient-info"><p>Gender: {patient.gender}</p></div> </div>
-
-//       <div className="patient-info"><p>Contact info: {patient.contact_number}</p></div>
-
-//       <div className="patient-info"><p>Admit Date: {patient.admit_date}</p></div>
-
-//       <div className="patient-info"><p>Previous Admit: {patient.previous_admit}</p></div>
-
-//       <div className="patient-actions">
-//         <Link to={`/edit/${patient.id}`} className="btn btn-update">Edit</Link>
-
-//         <button onClick={deletePatient} className="btn btn-delete">Delete</button>
-
-//         <Link to="/list" className="btn btn-back">Back to Home</Link>
-//       </div>
-//       {showNotification && <Notification message={showNotification} onClose={handleCloseNotification} />}
-//     </div>
-// //     <Container maxWidth= "lg" sx= {{ py : 1}}>
-
-// //       <Typography variant='h3' component="h1" color= "primary" gutterBottom>
-// //         PatientList
-// //       </Typography>
-
-// //       <Button
-// //         component={Link}
-// //         to="/add"
-// //         color="primary"
-// //         variant="contained"
-// //         sx={{ mb: 4 }}
-// //       >
-// //         Add New Patient
-// //       </Button>
-
-// //       {loading ? (
-// //         // Show a loading spinner while data is being fetched
-// //         <Box display="flex" justifyContent="center" mt={4}>
-// //           <CircularProgress />
-// //         </Box>
+          </Grid>
+        </Grid>
         
-// //       ) : (
-// //         <Grid container spacing={3}>
-// //           {patients.length === 0 ? (
-// //             <Grid item xs={12}>
-// //               <Typography variant="h6" color="text.secondary">
-// //                 No patients found!
-// //               </Typography>
-// //             </Grid>
-// //           ) : (
-// //             patients.map((patient, index) => (
-// //               <Grid item xs={12} sm={6} md={4} key={index}>
-// //                 <BookCard patient={patient} />
-// //               </Grid>
-// //             ))
-// //           )}
-// //         </Grid>
-// //       )}
-// //     </Container>
-//     );
+        <Box mt={4} display="flex" justifyContent="space-between">
+          <Button
+            startIcon={<ArrowBackIcon />}
+            component={RouterLink}
+            to="/list"
+            variant="outlined"
+          >
+            Back to person List
+          </Button>
+          <Box>
+            <Button
+              startIcon={<EditIcon />}
+              component={RouterLink}
+              to={`/edit/${patient._id}`}
+              variant="contained"
+              color="primary"
+              sx={{ mr: 1 }}
+            >
+              Edit Book
+            </Button>
+            <Button
+              startIcon={<DeleteIcon />}
+              onClick={onDeleteClick}
+              variant="contained"
+              color="error"
+            >
+              Delete Book
+            </Button>
+          </Box>
+        </Box>
+      </StyledPaper>
 
-//  };
+      {/* Keep the dialog unchanged */}
+      <Dialog
+        open={openDialog}
+        onClose={handleDeleteCancel}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this book? This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDeleteCancel} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDeleteConfirm} color="error" autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Container>
+  );
+};
 
-// export default PatientDetail;
+export default  DetailsPatient

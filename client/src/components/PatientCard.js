@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const BookCard = ({ patient }) => {
+const PatientCard = ({ patient }) => {
   return (
     <Card
       sx={{
@@ -20,7 +20,7 @@ const BookCard = ({ patient }) => {
     >
       <img
         src= 'https://images.app.goo.gl/eGZAJFou3cjHfYCR7'
-        alt='Books'
+        alt='Patientes'
         style={{ height: 200, objectFit: 'cover', width: '100%' }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
@@ -59,4 +59,4 @@ const BookCard = ({ patient }) => {
   );
 };
 
-export default BookCard;
+export default PatientCard;

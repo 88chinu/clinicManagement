@@ -1,55 +1,6 @@
 {
   "patients": [
     {
-      "id": "a02d",
-      "name": "sesdev",
-      "age": "22",
-      "co_number": "9097643123",
-      "gender": "Male"
-    },
-    {
-      "id": "2043",
-      "name": "chinu",
-      "age": "30",
-      "co_number": "7765423456",
-      "gender": "Male"
-    },
-    {
-      "id": "58dd",
-      "name": "suman",
-      "age": "56",
-      "gender": "Female",
-      "co_number": "5678943201"
-    },
-    {
-      "id": "2f67",
-      "name": "Nirmal",
-      "age": "78",
-      "gender": "Other",
-      "co_number": "5674837658"
-    },
-    {
-      "id": "4785",
-      "name": "Aditya",
-      "age": "48",
-      "gender": "Other",
-      "co_number": "8432456786"
-    },
-    {
-      "id": "3d58",
-      "name": "chinmaya",
-      "age": "67",
-      "gender": "Other",
-      "co_number": "7896543234"
-    },
-    {
-      "id": "61ba",
-      "name": "regfd",
-      "age": "45",
-      "gender": "Female",
-      "co_number": "4567833343"
-    },
-    {
       "id": "19f8",
       "Patient_name": "chinmaya",
       "age": "24",
@@ -57,6 +8,15 @@
       "contact_number": "6789065412",
       "admit_Date": "2024-12-02",
       "previous_admit": "no"
+    },
+    {
+      "id": "fffe",
+      "Patient_name": "amar",
+      "age": "45",
+      "gender": "Male",
+      "contact_number": "6789066785",
+      "admit_Date": "2024-09-23",
+      "previous_admit": "yes"
     }
   ]
 }
