@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeModeProvider } from './components/ThemeModeProvider';
 import { CssBaseline, Box, Container } from '@mui/material';
-import  clinicManagementTheme from './container/Theme';
+// import  clinicManagementTheme from './container/Theme';
 
 import PatientList from './components/PatientList';
 import PatientDetail from './components/detailsPatient';
@@ -16,7 +16,7 @@ import HomePage from './components/homePage';
 
 const App = () => {
     return (
-        <ThemeProvider theme={ clinicManagementTheme}>
+        <ThemeModeProvider>
             <CssBaseline />
             <Router>
                 <Box display="flex" flexDirection="column" minHeight="100vh">
@@ -34,7 +34,7 @@ const App = () => {
                     <Footer />
                 </Box>
             </Router>
-        </ThemeProvider>
+            </ThemeModeProvider>
     );
 };
 
