@@ -34,12 +34,12 @@ const DetailsPatient = () => {
   
   useEffect(() => {
     axios
-      .get(`/api/books/${id}`)
+      .get(`/api/Patients/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
       .catch((err) => {
-        console.log('Error from ShowBookDetails');
+        console.log('Error from PatientsDetails');
       });  
   }, [id]);
   const onDeleteClick = () => {
@@ -48,12 +48,12 @@ const DetailsPatient = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`/api/books/${id}`)
+      .delete(`/api/Patients/${id}`)
       .then((res) => {
-        navigate('/book-list');
+        navigate('/list');
       })
       .catch((err) => {
-        console.log('Error from ShowBookDetails_deleteClick');
+        console.log('Error from PatientsDetails_deleteClick');
       });
     setOpenDialog(false);
   };
@@ -71,7 +71,7 @@ const DetailsPatient = () => {
               <CardMedia
                 component="img"
                 height="300"
-                image="https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
+                image="https://images.app.goo.gl/eGZAJFou3cjHfYCR7"
                 alt={patient.name}
               />
             </Card>

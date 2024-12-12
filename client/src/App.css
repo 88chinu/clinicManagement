@@ -43,7 +43,7 @@ footer{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: white;
+  color: rgb(20, 2, 2);
   text-decoration: none;
   min-width: 120px;
   /* Added minimum width */

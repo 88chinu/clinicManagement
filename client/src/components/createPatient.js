@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -173,10 +174,16 @@ const CreatePatient = (props) => {
               </div>
               <br />
 
-              <input
-                type="submit"
-                className="btn btn-outline-warning btn-block mt-4"
-              />
+              <Button
+  type="submit"
+  variant="outlined"
+  color="secondary"
+  fullWidth
+  sx={{ mt: 4 }}
+>
+  Submit
+</Button>
+
             </form>
           </div>
         </div>
