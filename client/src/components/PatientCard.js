@@ -19,17 +19,17 @@ const PatientCard = ({ patient }) => {
       }}
     >
       <img
-        src= 'https://images.app.goo.gl/eGZAJFou3cjHfYCR7'
+        src= 'https://images.app.goo.gl/FTRGXVKzr1yvkv2A9'
         alt='Patientes'
         style={{ height: 200, objectFit: 'cover', width: '100%' }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography variant="h6" component="div" color="primary" gutterBottom>
-          <Link to={`/detail/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link to={`/detail/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}> Name : 
             {patient.Patient_name}
           </Link>
         </Typography>
-        <Typography variant="subtitle1" color="text.secondary">
+        <Typography variant="subtitle1" color="text.secondary">Age : 
           {patient.age}
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}
@@ -39,7 +39,7 @@ const PatientCard = ({ patient }) => {
                       display: '-webkit-box',
                       WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
-                    }}>
+                    }}>Co_number : 
           {patient.contact_number}
         </Typography>
       </CardContent>

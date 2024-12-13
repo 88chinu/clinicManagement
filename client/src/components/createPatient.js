@@ -28,8 +28,7 @@ const CreatePatient = (props) => {
     e.preventDefault();
     console.log(patient)
     axios
-    // .post("/api/clinics", patient)
-    .post("https://5000-88chinu-clinicmanagement-wpi7z907wk4.ws-us117.gitpod.io/api/patients", patient)
+    .post("https://5000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/patients", patient)
       .then((res) => {
         setPatient({
           Patient_name: '',

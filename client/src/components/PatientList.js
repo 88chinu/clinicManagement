@@ -13,17 +13,32 @@ function PatientList (){
 
   useEffect(() => {
     axios
-    .get(`/api/patients`)
-    .then((res) => {
-      console.log('Response from /patients:', res.data);
-      setData(res.data)
-      setLoading(false)
-    })
-    .catch((err) => {
-      console.log('Error from PatientList ->', err);
-      setLoading(false); // Set loading to false even on error
-    });
+      .get("https://5000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/patients")
+      .then((res) => {
+        console.log("Fetched patients:", res.data);
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching patients:", err);
+        setLoading(false);
+      });
   }, []);
+  
+
+  // useEffect(() => {
+  //   axios
+  //   .get(`/api/patients`)
+  //   .then((res) => {
+  //     console.log('Response from /patients:', res.data);
+  //     setData(res.data)
+  //     setLoading(false)
+  //   })
+  //   .catch((err) => {
+  //     console.log('Error from PatientList ->', err);
+  //     setLoading(false); // Set loading to false even on error
+  //   });
+  // }, []);
 
    return (
     <Container maxWidth= "lg" sx= {{ py : 1}}>
