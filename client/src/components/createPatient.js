@@ -162,17 +162,20 @@ const CreatePatient = (props) => {
               <br />
 
               <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Previous Admit"
+              <select
                   name="previous_admit"
                   className="form-control"
                   value={patient.previous_admit}
                   onChange={onChange}
-                />
+                >
+                  <option value="" disabled>
+                    Previous Admit
+                  </option>
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+                </select>
               </div>
               <br />
-
               <Button
   type="submit"
   variant="outlined"
