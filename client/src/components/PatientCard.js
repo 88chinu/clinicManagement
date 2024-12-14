@@ -19,7 +19,7 @@ const PatientCard = ({ patient }) => {
       }}
     >
       <img
-        src= 'https://images.app.goo.gl/FTRGXVKzr1yvkv2A9'
+        src= 'https://images.app.goo.gl/sWU3ZTCuWeu5qB8L9'
         alt='Patientes'
         style={{ height: 200, objectFit: 'cover', width: '100%' }}
       />
@@ -39,8 +39,8 @@ const PatientCard = ({ patient }) => {
                       display: '-webkit-box',
                       WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
-                    }}>Co_number : 
-          {patient.contact_number}
+                    }}> Gender : 
+          {patient.gender}
         </Typography>
       </CardContent>
       <Box sx={{ p: 2, mt: 'auto' }}>
