@@ -18,6 +18,7 @@ const PatientCard = ({ patient }) => {
         },
       }}
     >
+      <Link to={`/detail/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
       <img
         src= 'https://images.app.goo.gl/sWU3ZTCuWeu5qB8L9'
         alt='Patientes'
@@ -25,9 +26,7 @@ const PatientCard = ({ patient }) => {
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography variant="h6" component="div" color="primary" gutterBottom>
-          <Link to={`/detail/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}> Name : 
-            {patient.Patient_name}
-          </Link>
+           Name : {patient.Patient_name} 
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">Age : 
           {patient.age}
@@ -42,7 +41,7 @@ const PatientCard = ({ patient }) => {
                     }}> Gender : 
           {patient.gender}
         </Typography>
-      </CardContent>
+      </CardContent> </Link>
       <Box sx={{ p: 2, mt: 'auto' }}>
         <Button
           component={Link}

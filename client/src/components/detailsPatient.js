@@ -26,7 +26,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.shadows[3],
 }));
 
-const DetailsPatient = () => {
+const PatientDetails = () => {
   const [patient, setPatient] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
   const { id } = useParams();
@@ -34,7 +34,8 @@ const DetailsPatient = () => {
   
   useEffect(() => {
     axios
-      .get(`/api/Patients/${id}`)
+    .get(`/patients/${id}`)
+      // .get(`/api/Patients/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
@@ -48,7 +49,7 @@ const DetailsPatient = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`/api/Patients/${id}`)
+      .delete(`/patients/${id}`)
       .then((res) => {
         navigate('/list');
       })
@@ -71,8 +72,8 @@ const DetailsPatient = () => {
               <CardMedia
                 component="img"
                 height="300"
-                image="https://images.app.goo.gl/eGZAJFou3cjHfYCR7"
-                alt={patient.name}
+                image="https://images.app.goo.gl/sWU3ZTCuWeu5qB8L9"
+                alt={patient.Patient_name}
               />
             </Card>
           </Grid>
@@ -81,7 +82,7 @@ const DetailsPatient = () => {
               {patient.id}
             </Typography>
             <Typography variant="h6" color="textSecondary" gutterBottom>
-              by {patient.name}
+              by {patient.Patient_name}
             </Typography>
             <Divider sx={{ my: 2 }} />
             
@@ -91,10 +92,13 @@ const DetailsPatient = () => {
                 {patient.description}
               </Typography>
               <Typography variant="body1">ID: {patient._id}</Typography>
-              <Typography variant="body1">Name: {patient.name}</Typography>
+              <Typography variant="body1">Name: {patient.patient_name}</Typography>
               <Typography variant="body1">Age: {patient.age}</Typography>
               <Typography variant="body1">Gender: {patient.gender}</Typography>
-              <Typography variant="body1">Contact_number: {patient.co_number}</Typography>
+              <Typography variant="body1">Contact_number: {patient.contact_number}</Typography>
+              <Typography variant="body1">Date: {patient.admit_Date}</Typography>
+              <Typography variant="body1">Medical History: {patient.previous_admit}</Typography>
+
             </Box>
 
           </Grid>
@@ -107,7 +111,7 @@ const DetailsPatient = () => {
             to="/list"
             variant="outlined"
           >
-            Back to person List
+            Back to Patients List
           </Button>
           <Box>
             <Button
@@ -118,7 +122,7 @@ const DetailsPatient = () => {
               color="primary"
               sx={{ mr: 1 }}
             >
-              Edit Book
+              Edit Patient
             </Button>
             <Button
               startIcon={<DeleteIcon />}
@@ -126,7 +130,7 @@ const DetailsPatient = () => {
               variant="contained"
               color="error"
             >
-              Delete Book
+              Delete Patient
             </Button>
           </Box>
         </Box>
@@ -142,7 +146,7 @@ const DetailsPatient = () => {
         <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete this book? This action cannot be undone.
+            Are you sure you want to delete this patient data? This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -158,4 +162,4 @@ const DetailsPatient = () => {
   );
 };
 
-export default  DetailsPatient
+export default PatientDetails
