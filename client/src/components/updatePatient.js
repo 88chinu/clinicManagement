@@ -1,84 +1,176 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL;
-console.log(API_URL)
+function UpdateBookInfo(props) {
+  const [book, setBook] = useState({
+    title: '',
+    isbn: '',
+    author: '',
+    description: '',
+    published_date: '',
+    publisher: '',
+  });
 
-const PatientEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [patient, setPatient] = useState({Patient_name: '', age: '' ,gender:'', contact_number:'',admit_Date:'', previous_admit:''});
 
   useEffect(() => {
-    const fetchPatient = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/${id}`);
-        setPatient(response.data);
-      } catch (error) {
-        console.error('Error fetching patient:', error);
-      }
-    };
-    fetchPatient();
+    axios
+      .get(`/api/books/${id}`)
+      .then((res) => {
+        setBook({
+          title: res.data.title,
+          isbn: res.data.isbn,
+          author: res.data.author,
+          description: res.data.description,
+          published_date: res.data.published_date,
+          publisher: res.data.publisher,
+        });
+      })
+      .catch((err) => {
+        console.log('Error from UpdateBookInfo GET request');
+        console.log(err)
+      });
   }, [id]);
 
-  const handleChange = (e) => {
-    const { Patient_name, value } = e.target;
-    setPatient({ ...patient, [Patient_name]: value });
+  const onChange = (e) => {
+    setBook({ ...book, [e.target.name]: e.target.value });
   };
 
-  const handleUpdate = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    try {
-      await axios.put(`${API_URL}/${id}`, patient);
-      navigate(`/detail/${id}`); // Redirect to person details page after update
-    } catch (error) {
-      console.error('Error updating patient:', error);
-    }
-  };
 
-  const handleCancel = () => {
-    navigate(`/detail/${id}`); // Navigate back to the person details page
-  };
+    const data = {
+      title: book.title,
+      isbn: book.isbn,
+      author: book.author,
+      description: book.description,
+      published_date: book.published_date,
+      publisher: book.publisher,
+    };
 
-  const handleHome = () => {
-    navigate('/'); // Navigate back to the home page
+    axios
+      .put(`/api/books/${id}`, data)
+      .then((res) => {
+        navigate(`/show-book/${id}`);
+      })
+      .catch((err) => {
+        console.log('Error in UpdateBookInfo PUT request ->');
+        console.log(err)
+      });
   };
 
   return (
-    <div className="box-container">
-      <h1>Update Patient</h1>
-      <form onSubmit={handleUpdate} className="form-container">
-        <input type="text" name="Patient_name" placeholder="Name" value={patient.Patient_namename} onChange={handleChange}
-          required className="input-field"/>
-
-        <input type="number" name="age" placeholder="Age" value={patient.age} onChange={handleChange}
-          required className="input-field"/>
-        
-        <select type='select' placeholder="Select Gender" value={patient.gender} onChange={handleChange} required className='input-field'>
-            <option value="" disabled>Select Gender</option> {/* Prompt option */}
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option> </select>
-
-            <input type="number" placeholder="contact-number" value={patient.contact_number} onChange={handleChange} required className="input-field" />
-
-            <input type="date" placeholder="admit date" value={patient.admit_Date} onChange={handleChange} required className="input-field" />
-
-            <select type='select' placeholder="Select Gender" value={patient.previous_admit} onChange={handleChange} required className='input-field'>
-            <option value="" disabled>Select Previously Admit</option> {/* Prompt option */}
-            <option value="true">Yes</option>
-            <option value="false">Never</option> </select>
-
-
-        <div className="person-actions">
-          <button type="submit" className="btn btn-update">Update</button>
-          <button type="button" className="btn btn-cancel" onClick={handleCancel}>Cancel</button>
-          <button type="button" className="btn btn-back" onClick={handleHome}>Back to Home</button>
+    <div className='UpdateBookInfo'>
+      
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-8 m-auto'>
+            <br />
+            <Link to='/' className='btn btn-outline-warning float-left'>
+              Show BooK List
+            </Link>
+          </div>
+          <div className='col-md-8 m-auto'>
+            <h1 className='display-4 text-center'>Edit Book</h1>
+            <p className='lead text-center'>Update Book's Info</p>
+          </div>
         </div>
-      </form>
+
+        <div className='col-md-8 m-auto'>
+          <form noValidate onSubmit={onSubmit}>
+            <div className='form-group'>
+              <label htmlFor='title'>Title</label>
+              <input
+                type='text'
+                placeholder='Title of the Book'
+                name='title'
+                className='form-control'
+                value={book.title}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <div className='form-group'>
+              <label htmlFor='isbn'>ISBN</label>
+              <input
+                type='text'
+                placeholder='ISBN'
+                name='isbn'
+                className='form-control'
+                value={book.isbn}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <div className='form-group'>
+              <label htmlFor='author'>Author</label>
+              <input
+                type='text'
+                placeholder='Author'
+                name='author'
+                className='form-control'
+                value={book.author}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <div className='form-group'>
+              <label htmlFor='description'>Description</label>
+              <textarea
+                type='text'
+                placeholder='Description of the Book'
+                name='description'
+                className='form-control'
+                value={book.description}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <div className='form-group'>
+              <label htmlFor='published_date'>Published Date</label>
+              <input
+                type='text'
+                placeholder='Published Date'
+                name='published_date'
+                className='form-control'
+                value={book.published_date}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <div className='form-group'>
+              <label htmlFor='publisher'>Publisher</label>
+              <input
+                type='text'
+                placeholder='Publisher of the Book'
+                name='publisher'
+                className='form-control'
+                value={book.publisher}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <button
+              type='submit'
+              className='btn btn-outline-info btn-lg btn-block'
+            >
+              Update Book
+            </button>
+            <br /> <br />
+          </form>
+        </div>
+      </div>
+
     </div>
   );
-};
+}
 
-export default PatientEdit;
+export default UpdateBookInfo;
