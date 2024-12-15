@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function UpdateBookInfo(props) {
-  const [book, setBook] = useState({
-    title: '',
-    isbn: '',
-    author: '',
-    description: '',
-    published_date: '',
-    publisher: '',
+function UpdatePatient(props) {
+  const [patient, setPatient] = useState({
+    Patient_name: '',
+    age: '',
+    gender: '',
+    contact_number: '',
+    admit_Date: '',
+    previous_admit: '',
   });
 
   const { id } = useParams();
@@ -17,64 +17,64 @@ function UpdateBookInfo(props) {
 
   useEffect(() => {
     axios
-      .get(`/api/books/${id}`)
+      .get(`/patients/${id}`)
       .then((res) => {
-        setBook({
-          title: res.data.title,
-          isbn: res.data.isbn,
-          author: res.data.author,
-          description: res.data.description,
-          published_date: res.data.published_date,
-          publisher: res.data.publisher,
+        setPatient({
+          Patient_name: res.data.Patient_name,
+          age: res.data.age,
+          gender: res.data.gender,
+          contact_number: res.data.contact_number,
+          admit_Date: res.data.admit_Date,
+          previous_admit: res.data.previous_admit,
         });
       })
       .catch((err) => {
-        console.log('Error from UpdateBookInfo GET request');
+        console.log('Error from UpdatePatient GET request');
         console.log(err)
       });
   }, [id]);
 
   const onChange = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.value });
+    setPatient({ ...patient, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const data = {
-      title: book.title,
-      isbn: book.isbn,
-      author: book.author,
-      description: book.description,
-      published_date: book.published_date,
-      publisher: book.publisher,
+      Patient_name: patient.Patient_name,
+    age: patient.age,
+    gender: patient.gender,
+    contact_number: patient.contact_number,
+    admit_Date: patient.admit_Date,
+    previous_admit: patient.previous_admit
     };
 
     axios
-      .put(`/api/books/${id}`, data)
+      .put(`/patients/${id}`, data)
       .then((res) => {
-        navigate(`/show-book/${id}`);
+        navigate(`/edit/${id}`);
       })
       .catch((err) => {
-        console.log('Error in UpdateBookInfo PUT request ->');
+        console.log('Error in UpdatePatient PUT request ->');
         console.log(err)
       });
   };
 
   return (
-    <div className='UpdateBookInfo'>
+    <div className='UpdatePatient'>
       
       <div className='container'>
         <div className='row'>
           <div className='col-md-8 m-auto'>
             <br />
             <Link to='/' className='btn btn-outline-warning float-left'>
-              Show BooK List
+              Show Patients List
             </Link>
           </div>
           <div className='col-md-8 m-auto'>
-            <h1 className='display-4 text-center'>Edit Book</h1>
-            <p className='lead text-center'>Update Book's Info</p>
+            <h1 className='display-4 text-center'>Edit Patient</h1>
+            <p className='lead text-center'>Update Patient's Info</p>
           </div>
         </div>
 
@@ -83,86 +83,90 @@ function UpdateBookInfo(props) {
             <div className='form-group'>
               <label htmlFor='title'>Title</label>
               <input
-                type='text'
-                placeholder='Title of the Book'
-                name='title'
-                className='form-control'
-                value={book.title}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+                  type="text"
+                  placeholder="Patient Name"
+                  name="Patient_name"
+                  className="form-control"
+                  value={patient.Patient_name}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
 
-            <div className='form-group'>
-              <label htmlFor='isbn'>ISBN</label>
-              <input
-                type='text'
-                placeholder='ISBN'
-                name='isbn'
-                className='form-control'
-                value={book.isbn}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+              <div className="form-group">
+                <input
+                  type="number"
+                  placeholder="Age"
+                  name="age"
+                  className="form-control"
+                  value={patient.age}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
 
-            <div className='form-group'>
-              <label htmlFor='author'>Author</label>
-              <input
-                type='text'
-                placeholder='Author'
-                name='author'
-                className='form-control'
-                value={book.author}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+              <div className="form-group">
+                <select
+                  name="gender"
+                  className="form-control"
+                  value={patient.gender}
+                  onChange={onChange}
+                >
+                  <option value="" disabled>
+                    Select Gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <br />
 
-            <div className='form-group'>
-              <label htmlFor='description'>Description</label>
-              <textarea
-                type='text'
-                placeholder='Description of the Book'
-                name='description'
-                className='form-control'
-                value={book.description}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Contact Number"
+                  name="contact_number"
+                  className="form-control"
+                  value={patient.contact_number}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
 
-            <div className='form-group'>
-              <label htmlFor='published_date'>Published Date</label>
-              <input
-                type='text'
-                placeholder='Published Date'
-                name='published_date'
-                className='form-control'
-                value={book.published_date}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+              <div className="form-group">
+                <input
+                  type="date"
+                  placeholder="Admit Date"
+                  name="admit_Date"
+                  className="form-control"
+                  value={patient.admit_Date}
+                  onChange={onChange}
+                />
+              </div>
+              <br />
 
-            <div className='form-group'>
-              <label htmlFor='publisher'>Publisher</label>
-              <input
-                type='text'
-                placeholder='Publisher of the Book'
-                name='publisher'
-                className='form-control'
-                value={book.publisher}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+              <div className="form-group">
+              <select
+                  name="previous_admit"
+                  className="form-control"
+                  value={patient.previous_admit}
+                  onChange={onChange}
+                >
+                  <option value="" disabled>
+                    Previous Admit
+                  </option>
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+                </select>
+              </div>
+              <br />
 
             <button
               type='submit'
               className='btn btn-outline-info btn-lg btn-block'
             >
-              Update Book
+              Update patient
             </button>
             <br /> <br />
           </form>
@@ -173,4 +177,4 @@ function UpdateBookInfo(props) {
   );
 }
 
-export default UpdateBookInfo;
+export default UpdatePatient;
