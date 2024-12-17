@@ -18,6 +18,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 
+// const APP_API_URL = process.env.REACT_APP_API_URL
+
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   marginTop: theme.spacing(4),
@@ -34,13 +36,12 @@ const PatientDetails = () => {
   
   useEffect(() => {
     axios
-    .get(`/patients/${id}`)
-      // .get(`/api/Patients/${id}`)
+      .get(`/clinics/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
       .catch((err) => {
-        console.log('Error from PatientsDetails');
+        console.log('Error fetching patient details:', err.response || err.message || err);
       });  
   }, [id]);
   const onDeleteClick = () => {
@@ -49,7 +50,7 @@ const PatientDetails = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`/patients/${id}`)
+      .delete(`/clinics/${id}`)
       .then((res) => {
         navigate('/list');
       })
@@ -92,7 +93,7 @@ const PatientDetails = () => {
                 {patient.description}
               </Typography>
               <Typography variant="body1">ID: {patient._id}</Typography>
-              <Typography variant="body1">Name: {patient.patient_name}</Typography>
+              <Typography variant="body1">Name: {patient.Patient_name}</Typography>
               <Typography variant="body1">Age: {patient.age}</Typography>
               <Typography variant="body1">Gender: {patient.gender}</Typography>
               <Typography variant="body1">Contact_number: {patient.contact_number}</Typography>
@@ -162,4 +163,4 @@ const PatientDetails = () => {
   );
 };
 
-export default PatientDetails
+export default PatientDetails;

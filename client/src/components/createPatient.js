@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,7 +9,7 @@ import axios from 'axios';
 // const API_URL = process.env.REACT_APP_API_URL;
 
 const CreatePatient = (props) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [patient, setPatient] = useState({
     Patient_name: '',
     age: '',
@@ -28,7 +28,7 @@ const CreatePatient = (props) => {
     e.preventDefault();
     console.log(patient)
     axios
-    .post("https://5000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/patients", patient)
+    .post("https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics", patient)
       .then((res) => {
         setPatient({
           Patient_name: '',
@@ -171,8 +171,8 @@ const CreatePatient = (props) => {
                   <option value="" disabled>
                     Previous Admit
                   </option>
-                  <option value="True">Yes</option>
-                  <option value="False">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
               </div>
               <br />
@@ -185,6 +185,9 @@ const CreatePatient = (props) => {
 >
   Submit
 </Button>
+<button type="button" className="btn btn-cancel" onClick={() => navigate('/')}>
+                  Cancel
+                </button>
 
             </form>
           </div>
