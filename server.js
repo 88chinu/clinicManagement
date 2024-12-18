@@ -3,6 +3,7 @@ const connectDB = require('./config/db.js');
 const router = require('./routes/clinicRoutes.js'); // Import clinic routes
 const cors = require('cors');
 const bodyParser = require("body-parser");
+const path = require('path');
 require("dotenv").config( { path: "./config.env" } )
 
 const app = express();
@@ -21,6 +22,19 @@ app.get("/", (req, res) => {
 app.use('/api', router);
 
 const PORT = process.env.PORT || 7000;
+
+
+// SERVE STATIC FILES
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./client/build/index.html"),
+        function (err) {
+            res.status(500).send(err);
+        }
+    );
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);

@@ -5,13 +5,13 @@ import {
   Container,
   Paper,
   Typography,
-  Grid,
   Button,
   Card,
   CardMedia,
   Divider,
   Box,
 } from '@mui/material';
+import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditIcon from '@mui/icons-material/Edit';
