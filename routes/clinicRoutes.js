@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const clinicController = require('../controllers/clinicController.js');
 
-// Routes for clinics CRUD operations
 router.post('/clinics', clinicController.createAppointment);      // Create a new patientinfo
 router.get('/clinics', clinicController.getAllPatient);      // Get all patientinfo
 router.get('/clinics/:id', clinicController.getPatientById );  // Get a single patientinfo by ID

@@ -14,14 +14,16 @@ app.use(express.json());
 app.use(cors());
 
 // Basic route for home page
-app.get("/", (req, res) => {
-    res.send("WELL_COME TO MY CLINIC MANAGEMENT PROJECT");
+app.get("/home", (req, res) => {
+     res.send("WELL_COME TO MY CLINIC MANAGEMENT PROJECT");
 });
 
 // Use clinic routes with prefix '/api'
 app.use('/api', router);
 
 const PORT = process.env.PORT || 7000;
+
+
 
 
 // SERVE STATIC FILES
