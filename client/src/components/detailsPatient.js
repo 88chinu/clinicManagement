@@ -36,7 +36,7 @@ const PatientDetails = () => {
   
   useEffect(() => {
     axios
-      .get(`/clinics/${id}`)
+      .get(`https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
@@ -50,7 +50,7 @@ const PatientDetails = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`/clinics/${id}`)
+      .delete(`https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`)
       .then((res) => {
         navigate('/list');
       })

@@ -148,7 +148,7 @@ const CreatePatient = (props) => {
             variant="contained"
             color="secondary"
             fullWidth
-            onClick={() => navigate('/home')}
+            onClick={() => navigate('/')}
           >
             Cancel
           </Button>

@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  Typography,
+  MenuItem,
+  Grid,
+} from "@mui/material";
+import axios from "axios";
 
-function UpdatePatient(props) {
+function UpdatePatient() {
   const [patient, setPatient] = useState({
-    Patient_name: '',
-    age: '',
-    gender: '',
-    contact_number: '',
-    admit_Date: '',
-    previous_admit: '',
+    Patient_name: "",
+    age: "",
+    gender: "",
+    contact_number: "",
+    admit_Date: "",
+    previous_admit: "",
   });
 
   const { id } = useParams();
@@ -17,20 +26,14 @@ function UpdatePatient(props) {
 
   useEffect(() => {
     axios
-      .get(`https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`)
+      .get(
+        `https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`
+      )
       .then((res) => {
-        setPatient({
-          Patient_name: res.data.Patient_name,
-          age: res.data.age,
-          gender: res.data.gender,
-          contact_number: res.data.contact_number,
-          admit_Date: res.data.admit_Date,
-          previous_admit: res.data.previous_admit,
-        });
+        setPatient(res.data);
       })
       .catch((err) => {
-        console.log('Error from UpdatePatient GET request');
-        console.log(err)
+        console.error("Error from UpdatePatient GET request", err);
       });
   }, [id]);
 
@@ -41,139 +44,138 @@ function UpdatePatient(props) {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const data = {
-      Patient_name: patient.Patient_name,
-    age: patient.age,
-    gender: patient.gender,
-    contact_number: patient.contact_number,
-    admit_Date: patient.admit_Date,
-    previous_admit: patient.previous_admit
-    };
-
     axios
-      .put(`/api/clinics/${id}`, data)
-      .then((res) => {
-        navigate(`/edit/${id}`);
+      .put(
+        `https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`,
+        patient
+      )
+      .then(() => {
+        // Navigate to the details page after a successful update
+        navigate(`/detail/${id}`);
       })
       .catch((err) => {
-        console.log('Error in UpdatePatient PUT request ->');
-        console.log(err)
+        console.error("Error in UpdatePatient PUT request", err);
       });
   };
 
   return (
-    <div className='UpdatePatient'>
-      
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-8 m-auto'>
-            <br />
-            <Link to='/' className='btn btn-outline-warning float-left'>
-              Show Patients List
-            </Link>
-          </div>
-          <div className='col-md-8 m-auto'>
-            <h1 className='display-4 text-center'>Edit Patient</h1>
-            <p className='lead text-center'>Update Patient's Info</p>
-          </div>
-        </div>
+    <Container maxWidth="sm">
+      <Box mt={4} mb={2}>
+        <Typography variant="h4" align="center" gutterBottom>
+          Edit Patient
+        </Typography>
+        <Typography variant="subtitle1" align="center" gutterBottom>
+          Update Patient's Information
+        </Typography>
+      </Box>
 
-        <div className='col-md-8 m-auto'>
-          <form noValidate onSubmit={onSubmit}>
-            <div className='form-group'>
-              <label htmlFor='title'>Title</label>
-              <input
-                  type="text"
-                  placeholder="Patient Name"
-                  name="Patient_name"
-                  className="form-control"
-                  value={patient.Patient_name}
-                  onChange={onChange}
-                />
-              </div>
-              <br />
+      <Box mb={2}>
+        <Button
+          component={Link}
+          to="/list"
+          variant="outlined"
+          color="secondary"
+          fullWidth
+        >
+          Show Patients List
+        </Button>
+      </Box>
 
-              <div className="form-group">
-                <input
-                  type="number"
-                  placeholder="Age"
-                  name="age"
-                  className="form-control"
-                  value={patient.age}
-                  onChange={onChange}
-                />
-              </div>
-              <br />
+      <form noValidate onSubmit={onSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Patient Name"
+              name="Patient_name"
+              value={patient.Patient_name}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
 
-              <div className="form-group">
-                <select
-                  name="gender"
-                  className="form-control"
-                  value={patient.gender}
-                  onChange={onChange}
-                >
-                  <option value="" disabled>
-                    Select Gender
-                  </option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <br />
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Age"
+              type="number"
+              name="age"
+              value={patient.age}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
 
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Contact Number"
-                  name="contact_number"
-                  className="form-control"
-                  value={patient.contact_number}
-                  onChange={onChange}
-                />
-              </div>
-              <br />
-
-              <div className="form-group">
-                <input
-                  type="date"
-                  placeholder="Admit Date"
-                  name="admit_Date"
-                  className="form-control"
-                  value={patient.admit_Date}
-                  onChange={onChange}
-                />
-              </div>
-              <br />
-
-              <div className="form-group">
-              <select
-                  name="previous_admit"
-                  className="form-control"
-                  value={patient.previous_admit}
-                  onChange={onChange}
-                >
-                  <option value="" disabled>
-                    Previous Admit
-                  </option>
-                  <option value="True">Yes</option>
-                  <option value="False">No</option>
-                </select>
-              </div>
-              <br />
-
-            <button
-              type='submit'
-              className='btn btn-outline-info btn-lg btn-block'
+          <Grid item xs={12}>
+            <TextField
+              select
+              fullWidth
+              label="Gender"
+              name="gender"
+              value={patient.gender}
+              onChange={onChange}
+              variant="outlined"
             >
-              Update patient
-            </button>
-            <br /> <br />
-          </form>
-        </div>
-      </div>
+              <MenuItem value="Male">Male</MenuItem>
+              <MenuItem value="Female">Female</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
+            </TextField>
+          </Grid>
 
-    </div>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Contact Number"
+              name="contact_number"
+              value={patient.contact_number}
+              onChange={onChange}
+              variant="outlined"
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Admit Date"
+              type="date"
+              name="admit_Date"
+              value={patient.admit_Date}
+              onChange={onChange}
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12}>
+            <TextField
+              select
+              fullWidth
+              label="Previous Admit"
+              name="previous_admit"
+              value={patient.previous_admit}
+              onChange={onChange}
+              variant="outlined"
+            >
+              <MenuItem value="true">Yes</MenuItem>
+              <MenuItem value="false">No</MenuItem>
+            </TextField>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+            >
+              Update Patient
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
   );
 }
 

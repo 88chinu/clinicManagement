@@ -6,6 +6,10 @@ const bodyParser = require("body-parser");
 const path = require('path');
 require("dotenv").config( { path: "./config.env" } )
 
+
+// Connect to MongoDB
+connectDB();
+
 const app = express();
 
 
@@ -24,8 +28,6 @@ app.use('/api', router);
 const PORT = process.env.PORT || 7000;
 
 
-
-
 // SERVE STATIC FILES
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (_, res) {
@@ -41,5 +43,3 @@ app.get("*", function (_, res) {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
-// Connect to MongoDB
-connectDB();
