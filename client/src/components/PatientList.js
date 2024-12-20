@@ -10,11 +10,10 @@ console.log(process.env.REACT_APP_API_URL)
 function PatientList (){
   const[patients, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null); // Error state
 
   useEffect(() => {
     axios
-      .get("https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics")
+      .get("https://patientmanagement-2eye.onrender.com/api/clinics")
       .then((res) => {
         console.log("Fetched patients:", res.data);
         setData(res.data);
@@ -26,20 +25,6 @@ function PatientList (){
       });
   }, []);
   
-
-  // useEffect(() => {
-  //   axios
-  //   .get(`/api/patients`)
-  //   .then((res) => {
-  //     console.log('Response from /patients:', res.data);
-  //     setData(res.data)
-  //     setLoading(false)
-  //   })
-  //   .catch((err) => {
-  //     console.log('Error from PatientList ->', err);
-  //     setLoading(false); // Set loading to false even on error
-  //   });
-  // }, []);
 
    return (
     <Container maxWidth= "lg" sx= {{ py : 1}}>

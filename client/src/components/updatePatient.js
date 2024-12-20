@@ -27,7 +27,7 @@ function UpdatePatient() {
   useEffect(() => {
     axios
       .get(
-        `https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`
+        `https://patientmanagement-2eye.onrender.com/api/clinics/${id}`
       )
       .then((res) => {
         setPatient(res.data);
@@ -46,7 +46,7 @@ function UpdatePatient() {
 
     axios
       .put(
-        `https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`,
+        `https://patientmanagement-2eye.onrender.com/api/clinics/${id}`,
         patient
       )
       .then(() => {

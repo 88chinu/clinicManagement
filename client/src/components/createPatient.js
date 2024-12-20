@@ -23,7 +23,7 @@ const CreatePatient = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics", patient)
+      .post("https://patientmanagement-2eye.onrender.com/api/clinics", patient)
       .then(() => {
         setPatient({
           Patient_name: '',

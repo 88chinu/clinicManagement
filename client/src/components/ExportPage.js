@@ -15,7 +15,7 @@ const ExportPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics')
+        axios.get('https://patientmanagement-2eye.onrender.com/api/clinics')
           .then(res => {
             setPatients(res.data);
             setLoading(false);

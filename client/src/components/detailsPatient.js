@@ -36,7 +36,7 @@ const PatientDetails = () => {
   
   useEffect(() => {
     axios
-      .get(`https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`)
+      .get(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
@@ -50,7 +50,7 @@ const PatientDetails = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`https://7000-88chinu-clinicmanagemen-wpi7z907wk4.ws-us117.gitpod.io/api/clinics/${id}`)
+      .delete(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
       .then((res) => {
         navigate('/list');
       })
