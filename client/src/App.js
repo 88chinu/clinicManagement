@@ -12,6 +12,7 @@ import PatientEdit from './components/updatePatient';
 import Footer from './components/footer';
 import Navbar from './components/Navbar';
 import HomePage from './components/homePage';
+import ExportPage from './components/ExportPage'
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                             <Route path="/edit/:id" element={<PatientEdit />} />
                             <Route path="/detail/:id" element={<PatientDetail />} />
                             <Route exact path="/" element={<HomePage />} />
+                            <Route path="/export" element={<ExportPage />} />
                             <Route path="*" element={<div>404 - Page Not Found</div>} />
                         </Routes>
                     </Container>
