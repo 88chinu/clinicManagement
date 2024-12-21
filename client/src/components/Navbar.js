@@ -42,7 +42,7 @@ const Navbar = () => {
           component="div"
           sx={{ flexGrow: 1, color: 'text.primary', fontFamily: 'Roboto Slab, serif' }}
         >
-          Clinic Management Project
+          Clinic Management
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Button

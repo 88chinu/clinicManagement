@@ -60,7 +60,7 @@ const ExportPage = () => {
               Name: patient.Patient_name,
               Age: patient.age,
               Gender: patient.gender,
-              'Admit Date': new Date(patient.admite_Date).toLocaleDateString()
+              Admit_Date: new Date(patient.admite_Date).toLocaleDateString()
             })));
 
             const workpatient = XLSX.utils.patient_new();
