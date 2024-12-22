@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, TextField, MenuItem, Box, Typography } from '@mui/material';
+import { Button, TextField, MenuItem, Box, Typography, useTheme } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
 
-const CreatePatient = (props) => {
+const CreatePatient = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const theme = useTheme(); // Access the current theme
+  const isDarkMode = theme.palette.mode === 'dark';
+
   const [patient, setPatient] = useState({
     Patient_name: '',
     age: '',
@@ -43,20 +46,31 @@ const CreatePatient = (props) => {
   };
 
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 3, mt: 5, bgcolor: '#f9f9f9', borderRadius: 2 }}>
+    <Box
+      sx={{
+        maxWidth: 600,
+        mx: 'auto',
+        p: 3,
+        mt: 5,
+        bgcolor: isDarkMode ? theme.palette.background.paper : '#f9f9f9',
+        color: isDarkMode ? theme.palette.text.primary : 'inherit',
+        borderRadius: 2,
+        boxShadow: isDarkMode ? '0 4px 10px rgba(0, 0, 0, 0.3)' : '0 4px 10px rgba(0, 0, 0, 0.1)',
+      }}
+    >
       <Typography variant="h4" align="center" gutterBottom>
         Add Patient
       </Typography>
       <Typography variant="body1" align="center" color="textSecondary" gutterBottom>
         Create a new patient record
       </Typography>
-      <div className="col-md-8 m-auto">
-             <br />
-             <Link to="/list" className="btn btn-outline-warning float-left">
-               Show Patient List
-             </Link>
-           </div>
-
+      <Box sx={{ mb: 2 }}>
+        <Link to="/list" style={{ textDecoration: 'none' }}>
+          <Button variant="outlined" color="secondary">
+            Show Patient List
+          </Button>
+        </Link>
+      </Box>
 
       <form noValidate onSubmit={onSubmit}>
         <TextField
