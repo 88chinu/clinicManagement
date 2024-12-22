@@ -1,43 +1,69 @@
 import { createTheme } from '@mui/material/styles';
 
-const lightThemeColors = {
-    base: '#ffffff',
-    surface: '#f9f9f9',
-    overlay: '#e0e0e0',
-    muted: '#9e9e9e',
-    subtle: '#bdbdbd',
-    text: '#333333',
-    primaryMain: '#00796b',
-    secondaryMain: '#0288d1',
-    error: '#d32f2f',
-    warning: '#f9a825',
-    info: '#0288d1',
-    success: '#388e3c',
+const ayuLightColors = {
+    base: '#f8f8f2',
+    surface: '#fcfcfa',
+    overlay: '#e8e8e3',
+    muted: '#a1a1a1',
+    subtle: '#cfcfc9',
+    text: '#575f66',
+    primaryMain: '#55b4d4',
+    secondaryMain: '#f2945e',
+    error: '#f51818',
+    warning: '#ffcb6b',
+    info: '#73d0ff',
+    success: '#91b859',
 };
 
-const darkThemeColors = {
-    base: '#121212',
-    surface: '#1e1e1e',
-    overlay: '#2e2e2e',
-    muted: '#8c8c8c',
-    subtle: '#6d6d6d',
-    text: '#ffffff',
-    primaryMain: '#80cbc4',
-    secondaryMain: '#81d4fa',
-    error: '#ef9a9a',
-    warning: '#ffcc80',
-    info: '#81d4fa',
-    success: '#a5d6a7',
+const ayuDarkColors = {
+    base: '#0f1419',
+    surface: '#1e272e',
+    overlay: '#2c3a41',
+    muted: '#5c6773',
+    subtle: '#3e4b59',
+    text: '#d9d7ce',
+    primaryMain: '#39bae6',
+    secondaryMain: '#f29718',
+    error: '#ef5350',
+    warning: '#ffa726',
+    info: '#5cb3fa',
+    success: '#7fb069',
 };
 
-const getThemeColors = (mode) => (mode === 'light' ? lightThemeColors : darkThemeColors);
+const ayuMirageColors = {
+    base: '#1f2430',
+    surface: '#242936',
+    overlay: '#303744',
+    muted: '#676e95',
+    subtle: '#3e4b59',
+    text: '#c7c9cb',
+    primaryMain: '#59c2ff',
+    secondaryMain: '#e6b673',
+    error: '#ff776e',
+    warning: '#ffcb6b',
+    info: '#73d0ff',
+    success: '#99c794',
+};
 
-const createClinicManagementTheme = (mode) => {
-    const themeColors = getThemeColors(mode);
+const getAyuColors = (mode) => {
+    switch (mode) {
+        case 'light':
+            return ayuLightColors;
+        case 'dark':
+            return ayuDarkColors;
+        case 'mirage':
+            return ayuMirageColors;
+        default:
+            return ayuLightColors;
+    }
+};
+
+const createAyuTheme = (mode) => {
+    const themeColors = getAyuColors(mode);
 
     return createTheme({
         palette: {
-            mode,
+            mode: mode === 'mirage' ? 'dark' : mode,
             background: {
                 default: themeColors.base,
                 paper: themeColors.surface,
@@ -114,13 +140,8 @@ const createClinicManagementTheme = (mode) => {
                     },
                 },
             },
-            // MuiCssBaseline: {
-            //     styleOverrides: `
-            //         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto+Slab:wght@400;700&display=swap');
-            //     `,
-            // },
         },
     });
 };
 
-export default createClinicManagementTheme;
+export default createAyuTheme;

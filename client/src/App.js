@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ThemeModeProvider } from './components/ThemeModeProvider';
 import { CssBaseline, Box, Container } from '@mui/material';
-// import  clinicManagementTheme from './container/Theme';
+import  createAyuTheme from './container/Theme';
 
 import PatientList from './components/PatientList';
 import PatientDetail from './components/detailsPatient';
@@ -17,7 +17,7 @@ import ExportPage from './components/ExportPage'
 
 const App = () => {
     return (
-        <ThemeModeProvider>
+        <ThemeModeProvider theme={createAyuTheme}>
             <CssBaseline />
             <Router>
                 <Box display="flex" flexDirection="column" minHeight="100vh">
