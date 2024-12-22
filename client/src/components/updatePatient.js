@@ -10,6 +10,7 @@ import {
   Grid,
 } from "@mui/material";
 import axios from "axios";
+import { useSnackbar } from "notistack"; // Import the useSnackbar hook
 
 function UpdatePatient() {
   const [patient, setPatient] = useState({
@@ -23,19 +24,19 @@ function UpdatePatient() {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar(); // Initialize the notification hook
 
   useEffect(() => {
     axios
-      .get(
-        `https://patientmanagement-2eye.onrender.com/api/clinics/${id}`
-      )
+      .get(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
       .catch((err) => {
         console.error("Error from UpdatePatient GET request", err);
+        enqueueSnackbar("Failed to fetch patient details.", { variant: "error" });
       });
-  }, [id]);
+  }, [id, enqueueSnackbar]);
 
   const onChange = (e) => {
     setPatient({ ...patient, [e.target.name]: e.target.value });
@@ -45,16 +46,14 @@ function UpdatePatient() {
     e.preventDefault();
 
     axios
-      .put(
-        `https://patientmanagement-2eye.onrender.com/api/clinics/${id}`,
-        patient
-      )
+      .put(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`, patient)
       .then(() => {
-        // Navigate to the details page after a successful update
+        enqueueSnackbar("Patient updated successfully!", { variant: "success" });
         navigate(`/detail/${id}`);
       })
       .catch((err) => {
         console.error("Error in UpdatePatient PUT request", err);
+        enqueueSnackbar("Failed to update patient details. Please try again.", { variant: "error" });
       });
   };
 

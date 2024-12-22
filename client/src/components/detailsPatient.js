@@ -17,8 +17,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-
-// const APP_API_URL = process.env.REACT_APP_API_URL
+import { useSnackbar } from 'notistack'; // Import the useSnackbar hook
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -33,6 +32,7 @@ const PatientDetails = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar(); // Initialize the notification hook
   
   useEffect(() => {
     axios
@@ -41,9 +41,11 @@ const PatientDetails = () => {
         setPatient(res.data);
       })
       .catch((err) => {
-        console.log('Error fetching patient details:', err.response || err.message || err);
-      });  
-  }, [id]);
+        console.error('Error fetching patient details:', err.response || err.message || err);
+        enqueueSnackbar('Error fetching patient details!', { variant: 'error' });
+      });
+  }, [id, enqueueSnackbar]);
+
   const onDeleteClick = () => {
     setOpenDialog(true);
   };
@@ -51,11 +53,13 @@ const PatientDetails = () => {
   const handleDeleteConfirm = () => {
     axios
       .delete(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
-      .then((res) => {
+      .then(() => {
+        enqueueSnackbar('Patient deleted successfully!', { variant: 'success' });
         navigate('/list');
       })
       .catch((err) => {
-        console.log('Error from PatientsDetails_deleteClick');
+        console.error('Error deleting patient:', err);
+        enqueueSnackbar('Failed to delete the patient. Please try again.', { variant: 'error' });
       });
     setOpenDialog(false);
   };
@@ -101,7 +105,6 @@ const PatientDetails = () => {
               <Typography variant="body1">Medical History: {patient.previous_admit}</Typography>
 
             </Box>
-
           </Grid>
         </Grid>
         
@@ -137,7 +140,7 @@ const PatientDetails = () => {
         </Box>
       </StyledPaper>
 
-      {/* Keep the dialog unchanged */}
+      {/* Confirmation Dialog */}
       <Dialog
         open={openDialog}
         onClose={handleDeleteCancel}
