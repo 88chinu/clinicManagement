@@ -6,13 +6,14 @@ import { CssBaseline, Box, Container } from '@mui/material';
 import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
 import createAyuTheme from './container/Theme';
 
+import HomePage from './components/homePage';
+import SearchPage from './components/SearchPatient';
 import PatientList from './components/PatientList';
 import PatientDetail from './components/detailsPatient';
 import PatientAdd from './components/createPatient';
 import PatientEdit from './components/updatePatient';
 import Footer from './components/footer';
 import Navbar from './components/Navbar';
-import HomePage from './components/homePage';
 import ExportPage from './components/ExportPage';
 
 const App = () => {
@@ -32,11 +33,12 @@ const App = () => {
                         <Navbar />
                         <Container component="main" flex="1" className="box-container">
                             <Routes>
+                            <Route exact path="/" element={<HomePage />} />
                                 <Route path="/list" element={<PatientList />} />
                                 <Route path="/add" element={<PatientAdd />} />
                                 <Route path="/edit/:id" element={<PatientEdit />} />
                                 <Route path="/detail/:id" element={<PatientDetail />} />
-                                <Route exact path="/" element={<HomePage />} />
+                                <Route path="/search" element={<SearchPage />} />
                                 <Route path="/export" element={<ExportPage />} />
                                 <Route path="*" element={<div>404 - Page Not Found</div>} />
                             </Routes>
