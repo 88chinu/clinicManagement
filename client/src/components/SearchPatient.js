@@ -125,8 +125,10 @@ const SearchPatient = () => {
                 >
                   <MenuItem value="Patient_name">Patient Name</MenuItem>
                   <MenuItem value="age">Age</MenuItem>
+                  <MenuItem value="gender">Gender</MenuItem>
                   <MenuItem value="contact_number">Contact Number</MenuItem>
                   <MenuItem value="admit_Date">Admit Date</MenuItem>
+                  
                 </Select>
               </FormControl>
             </Grid>
@@ -142,6 +144,7 @@ const SearchPatient = () => {
                 >
                   <MenuItem value="Patient_name">Patient Name</MenuItem>
                   <MenuItem value="age">Age</MenuItem>
+                  <MenuItem value="gender">Gender</MenuItem>
                   <MenuItem value="admit_Date">Admit Date</MenuItem>
                 </Select>
               </FormControl>
