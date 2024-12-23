@@ -62,14 +62,30 @@ const Navbar = () => {
             >
               Create
             </MenuItem>
-            {/* <MenuItem
+            <MenuItem
               component={RouterLink}
-              to="/edit/:id"
+              to="/list"
               onClick={handleMenuClose}
               sx={{ color: 'text.primary', fontFamily: 'Lato, sans-serif' }}
             >
-              Update Patient
-            </MenuItem> */}
+              PatientList
+            </MenuItem>
+            <MenuItem
+              component={RouterLink}
+              to="/search"
+              onClick={handleMenuClose}
+              sx={{ color: 'text.primary', fontFamily: 'Lato, sans-serif' }}
+            >
+              SearchPage
+            </MenuItem>
+            <MenuItem
+              component={RouterLink}
+              to="/export"
+              onClick={handleMenuClose}
+              sx={{ color: 'text.primary', fontFamily: 'Lato, sans-serif' }}
+            >
+              Download List
+            </MenuItem>
             <MenuItem
               component={RouterLink}
               to="/About"
