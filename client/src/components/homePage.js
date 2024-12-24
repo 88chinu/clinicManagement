@@ -18,7 +18,7 @@ const HomePage = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
-        filter: 'brightness(85%)', // Reduce image visibility
+        filter: 'brightness(50%)', // Reduce image visibility
       }}
     >
       <Box
