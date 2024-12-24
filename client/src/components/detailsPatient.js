@@ -10,14 +10,18 @@ import {
   CardMedia,
   Divider,
   Box,
+  Grid,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@mui/material';
-import { Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import { useSnackbar } from 'notistack'; // Import the useSnackbar hook
+import { useSnackbar } from 'notistack';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -32,8 +36,8 @@ const PatientDetails = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar(); // Initialize the notification hook
-  
+  const { enqueueSnackbar } = useSnackbar();
+
   useEffect(() => {
     axios
       .get(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
@@ -77,37 +81,33 @@ const PatientDetails = () => {
               <CardMedia
                 component="img"
                 height="300"
-                image="https://images.app.goo.gl/sWU3ZTCuWeu5qB8L9"
-                alt={patient.Patient_name}
+                image={
+                  patient.imageUrl ||
+                  'https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg'
+                }
+                alt={patient.Patient_name || 'Default Patient Image'}
               />
             </Card>
           </Grid>
           <Grid item xs={12} md={8}>
             <Typography variant="h4" component="h1" gutterBottom>
-              {patient.id}
-            </Typography>
-            <Typography variant="h6" color="textSecondary" gutterBottom>
-              by {patient.Patient_name}
+              {patient.Patient_name || 'Unknown Patient'}
             </Typography>
             <Divider sx={{ my: 2 }} />
-            
-            {/* Display book details one after another */}
             <Box display="flex" flexDirection="column">
               <Typography variant="body1" paragraph>
-                {patient.description}
+                {patient.description || 'No description provided.'}
               </Typography>
               <Typography variant="body1">ID: {patient._id}</Typography>
               <Typography variant="body1">Name: {patient.Patient_name}</Typography>
               <Typography variant="body1">Age: {patient.age}</Typography>
               <Typography variant="body1">Gender: {patient.gender}</Typography>
-              <Typography variant="body1">Contact_number: {patient.contact_number}</Typography>
+              <Typography variant="body1">Contact: {patient.contact_number}</Typography>
               <Typography variant="body1">Date: {patient.admit_Date}</Typography>
               <Typography variant="body1">Medical History: {patient.previous_admit}</Typography>
-
             </Box>
           </Grid>
         </Grid>
-        
         <Box mt={4} display="flex" justifyContent="space-between">
           <Button
             startIcon={<ArrowBackIcon />}
@@ -140,7 +140,6 @@ const PatientDetails = () => {
         </Box>
       </StyledPaper>
 
-      {/* Confirmation Dialog */}
       <Dialog
         open={openDialog}
         onClose={handleDeleteCancel}

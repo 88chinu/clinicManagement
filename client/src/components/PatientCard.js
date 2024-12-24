@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { Card, CardContent, Typography, Button, Box, CardMedia } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const PatientCard = ({ patient }) => {
@@ -19,29 +19,39 @@ const PatientCard = ({ patient }) => {
       }}
     >
       <Link to={`/detail/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-      <img
-        src= 'https://images.app.goo.gl/sWU3ZTCuWeu5qB8L9'
-        alt='Patientes'
-        style={{ height: 200, objectFit: 'cover', width: '100%' }}
-      />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography variant="h6" component="div" color="primary" gutterBottom>
-           Name : {patient.Patient_name} 
-        </Typography>
-        <Typography variant="subtitle1" color="text.secondary">Age : 
-          {patient.age}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}
-                    style={{
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                    }}> Gender : 
-          {patient.gender}
-        </Typography>
-      </CardContent> </Link>
+        <CardMedia
+          component="img"
+          height="200"
+          image={
+            patient.imageUrl ||
+            'https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg'
+          }
+          alt={patient.Patient_name || 'Default Patient'}
+          sx={{ objectFit: 'cover', width: '100%' }}
+        />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" color="primary" gutterBottom>
+            Name: {patient.Patient_name || 'Unknown'}
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Age: {patient.age || 'N/A'}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              mt: 1,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            Gender: {patient.gender || 'N/A'}
+          </Typography>
+        </CardContent>
+      </Link>
       <Box sx={{ p: 2, mt: 'auto' }}>
         <Button
           component={Link}
