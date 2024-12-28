@@ -4,21 +4,21 @@ import './App.css';
 import { ThemeModeProvider } from './components/ThemeModeProvider';
 import { CssBaseline, Box, Container } from '@mui/material';
 import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
-import createAyuTheme from './container/Theme';
+import clinicLightColors from './container/Theme';
 
-import HomePage from './components/homePage';
+import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPatient';
 import PatientList from './components/PatientList';
-import PatientDetail from './components/detailsPatient';
-import PatientAdd from './components/createPatient';
-import PatientEdit from './components/updatePatient';
-import Footer from './components/footer';
+import PatientDetail from './components/DetailsPatient';
+import PatientAdd from './components/CreatePatient';
+import PatientEdit from './components/UpdatePatient';
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
 
 const App = () => {
     return (
-        <ThemeModeProvider theme={createAyuTheme}>
+        <ThemeModeProvider theme={clinicLightColors}>
             <CssBaseline />
             {/* Wrap your application with SnackbarProvider */}
             <SnackbarProvider

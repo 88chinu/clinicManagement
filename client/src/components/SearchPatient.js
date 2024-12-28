@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Typography,
@@ -43,7 +43,7 @@ const SearchPatient = () => {
       });
   }, []);
 
-  const applyFilters = () => {
+  const applyFilters = useCallback(() => {
     let result = [...patients];
 
     // Search filter
@@ -65,11 +65,11 @@ const SearchPatient = () => {
     });
 
     setFilteredPatients(result);
-  };
+  }, [filters, patients]);
 
   useEffect(() => {
     applyFilters();
-  }, [filters]);
+  }, [applyFilters]);
 
   const resetFilters = () => {
     setFilters({
@@ -128,7 +128,6 @@ const SearchPatient = () => {
                   <MenuItem value="gender">Gender</MenuItem>
                   <MenuItem value="contact_number">Contact Number</MenuItem>
                   <MenuItem value="admit_Date">Admit Date</MenuItem>
-                  
                 </Select>
               </FormControl>
             </Grid>
