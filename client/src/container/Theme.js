@@ -1,5 +1,7 @@
+// Theme.js
 import { createTheme } from '@mui/material/styles';
 
+// Define colors for each theme
 const ayuLightColors = {
     base: '#f8f8f2',
     surface: '#fcfcfa',
@@ -45,6 +47,22 @@ const ayuMirageColors = {
     success: '#99c794',
 };
 
+const ayuNightColors = {
+    base: '#121212',
+    surface: '#1f1f1f',
+    overlay: '#2c2c2c',
+    muted: '#6c757d',
+    subtle: '#404040',
+    text: '#ffffff',
+    primaryMain: '#ff6200',
+    secondaryMain: '#7d4b93',
+    error: '#ff3333',
+    warning: '#ffcc00',
+    info: '#00bcd4',
+    success: '#4caf50',
+};
+
+// Function to return the corresponding color palette based on the selected mode
 const getAyuColors = (mode) => {
     switch (mode) {
         case 'light':
@@ -53,17 +71,20 @@ const getAyuColors = (mode) => {
             return ayuDarkColors;
         case 'mirage':
             return ayuMirageColors;
+        case 'night':
+            return ayuNightColors; // Added the 'night' mode
         default:
             return ayuLightColors;
     }
 };
 
-const createAyuTheme = (mode) => {
+// Function to create a theme based on the selected mode
+export const createThemeByMode = (mode) => {
     const themeColors = getAyuColors(mode);
 
     return createTheme({
         palette: {
-            mode: mode === 'mirage' ? 'dark' : mode,
+            mode: mode === 'mirage' || mode === 'night' ? 'dark' : mode, // Set to dark mode for 'mirage' and 'night'
             background: {
                 default: themeColors.base,
                 paper: themeColors.surface,
@@ -92,15 +113,15 @@ const createAyuTheme = (mode) => {
             },
         },
         typography: {
-            fontFamily: '"Lato", "Roboto", "Helvetica", "Arial", sans-serif',
-            h1: { fontFamily: '"Roboto Slab", serif' },
-            h2: { fontFamily: '"Roboto Slab", serif' },
-            h3: { fontFamily: '"Roboto Slab", serif' },
-            h4: { fontFamily: '"Roboto Slab", serif' },
-            h5: { fontFamily: '"Roboto Slab", serif' },
-            h6: { fontFamily: '"Roboto Slab", serif' },
-            body1: { fontFamily: '"Lato", sans-serif' },
-            body2: { fontFamily: '"Lato", sans-serif' },
+            fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif', // Updated font family
+            h1: { fontFamily: '"Poppins", sans-serif', fontWeight: 600, fontSize: '2.5rem' },
+            h2: { fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '2rem' },
+            h3: { fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '1.75rem' },
+            h4: { fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '1.5rem' },
+            h5: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1.25rem' },
+            h6: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1rem' },
+            body1: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1rem' },
+            body2: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '0.875rem' },
         },
         components: {
             MuiAppBar: {
@@ -143,5 +164,3 @@ const createAyuTheme = (mode) => {
         },
     });
 };
-
-export default createAyuTheme;

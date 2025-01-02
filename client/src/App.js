@@ -4,7 +4,7 @@ import './App.css';
 import { ThemeModeProvider } from './components/ThemeModeProvider';
 import { CssBaseline, Box, Container } from '@mui/material';
 import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
-import clinicLightColors from './container/Theme';
+import { createThemeByMode } from './container/Theme'; // Corrected import statement
 
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPatient';
@@ -18,7 +18,7 @@ import ExportPage from './components/ExportPage';
 
 const App = () => {
     return (
-        <ThemeModeProvider theme={clinicLightColors}>
+        <ThemeModeProvider theme={createThemeByMode('light')}>  {/* Set your mode here */}
             <CssBaseline />
             {/* Wrap your application with SnackbarProvider */}
             <SnackbarProvider
@@ -33,7 +33,7 @@ const App = () => {
                         <Navbar />
                         <Container component="main" flex="1" className="box-container">
                             <Routes>
-                            <Route exact path="/" element={<HomePage />} />
+                                <Route exact path="/" element={<HomePage />} />
                                 <Route path="/list" element={<PatientList />} />
                                 <Route path="/add" element={<PatientAdd />} />
                                 <Route path="/edit/:id" element={<PatientEdit />} />

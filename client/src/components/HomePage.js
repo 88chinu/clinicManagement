@@ -206,6 +206,20 @@ const PatientHomePage = () => {
 
               <Grid item xs={12} sm={6} md={4}>
                 <Button
+                  component={Link}
+                  to="/export"
+                  variant="contained"
+                  size="large"
+                  startIcon={<GroupIcon />}
+                  fullWidth
+                  sx={{ py: 2 }}
+                >
+                  Download Patients List
+                </Button>
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={4}>
+                <Button
                   component="a"
                   href="https://github.com/88chinu/clinicManagement"
                   target="_blank"
