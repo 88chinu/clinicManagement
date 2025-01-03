@@ -1,26 +1,27 @@
-// src/components/ThemeSwitcher.js
-import React, { useContext } from 'react';
-import { ThemeContext } from './ThemeModeProvider';
-import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+// src/components/ThemeModeProvider.js
+import React, { createContext, useState, useMemo } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { createThemeByMode } from '../container/Theme';
 
-const ThemeSwitcher = () => {
-    const { currentTheme, toggleTheme } = useContext(ThemeContext);
+export const ThemeModeContext = createContext();
+
+export const ThemeModeProvider = ({ children }) => {
+    const [mode, setMode] = useState('light');
+
+    const toggleTheme = () => {
+        const nextMode = mode === 'light' ? 'dark' : mode === 'dark' ? 'mirage' : 'light';
+        setMode(nextMode);
+    };
+
+    const theme = useMemo(() => createThemeByMode(mode), [mode]);
 
     return (
-        <FormControl variant="outlined" size="small" style={{ marginLeft: 'auto' }}>
-            <InputLabel>Theme</InputLabel>
-            <Select
-                value={currentTheme}
-                onChange={(e) => toggleTheme(e.target.value)}
-                label="Theme"
-            >
-                <MenuItem value="nightOwlBlack">Night Owl Black</MenuItem>
-                <MenuItem value="matrix">Matrix</MenuItem>
-                <MenuItem value="cyberpunk">Cyberpunk</MenuItem>
-                <MenuItem value="amethystLight">Amethyst Light</MenuItem>
-            </Select>
-        </FormControl>
+        <ThemeModeContext.Provider value={{ mode, toggleTheme }}>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                {children}
+            </ThemeProvider>
+        </ThemeModeContext.Provider>
     );
 };
-
-export default ThemeSwitcher;

@@ -2,89 +2,55 @@
 import { createTheme } from '@mui/material/styles';
 
 // Define colors for each theme
-const ayuLightColors = {
-    base: '#f8f8f2',
-    surface: '#fcfcfa',
-    overlay: '#e8e8e3',
-    muted: '#a1a1a1',
-    subtle: '#cfcfc9',
-    text: '#575f66',
-    primaryMain: '#55b4d4',
-    secondaryMain: '#f2945e',
-    error: '#f51818',
+const noctisHibernusColors = {
+    base: '#1b1d1e',
+    surface: '#282a36',
+    overlay: '#3c3f4c',
+    muted: '#6c7078',
+    subtle: '#474a52',
+    text: '#f8f8f2',
+    primaryMain: '#f07178',
+    secondaryMain: '#82aaff',
+    error: '#ff5370',
     warning: '#ffcb6b',
-    info: '#73d0ff',
-    success: '#91b859',
+    info: '#89ddff',
+    success: '#c3e88d',
 };
 
-const ayuDarkColors = {
-    base: '#0f1419',
-    surface: '#1e272e',
-    overlay: '#2c3a41',
-    muted: '#5c6773',
-    subtle: '#3e4b59',
-    text: '#d9d7ce',
-    primaryMain: '#39bae6',
-    secondaryMain: '#f29718',
-    error: '#ef5350',
-    warning: '#ffa726',
-    info: '#5cb3fa',
-    success: '#7fb069',
-};
-
-const ayuMirageColors = {
-    base: '#1f2430',
-    surface: '#242936',
-    overlay: '#303744',
-    muted: '#676e95',
-    subtle: '#3e4b59',
-    text: '#c7c9cb',
-    primaryMain: '#59c2ff',
-    secondaryMain: '#e6b673',
-    error: '#ff776e',
-    warning: '#ffcb6b',
-    info: '#73d0ff',
-    success: '#99c794',
-};
-
-const ayuNightColors = {
-    base: '#121212',
-    surface: '#1f1f1f',
+const noctisObscuroColors = {
+    base: '#191919',
+    surface: '#212121',
     overlay: '#2c2c2c',
-    muted: '#6c757d',
-    subtle: '#404040',
-    text: '#ffffff',
-    primaryMain: '#ff6200',
-    secondaryMain: '#7d4b93',
-    error: '#ff3333',
-    warning: '#ffcc00',
-    info: '#00bcd4',
-    success: '#4caf50',
+    muted: '#707070',
+    subtle: '#373737',
+    text: '#e8e8e8',
+    primaryMain: '#c792ea',
+    secondaryMain: '#ffcb6b',
+    error: '#ff5370',
+    warning: '#f78c6c',
+    info: '#89ddff',
+    success: '#c3e88d',
 };
 
 // Function to return the corresponding color palette based on the selected mode
-const getAyuColors = (mode) => {
+const getThemeColors = (mode) => {
     switch (mode) {
-        case 'light':
-            return ayuLightColors;
-        case 'dark':
-            return ayuDarkColors;
-        case 'mirage':
-            return ayuMirageColors;
-        case 'night':
-            return ayuNightColors; // Added the 'night' mode
+        case 'hibernus':
+            return noctisHibernusColors;
+        case 'obscuro':
+            return noctisObscuroColors;
         default:
-            return ayuLightColors;
+            return noctisHibernusColors; // Default to Hibernus if no mode is specified
     }
 };
 
 // Function to create a theme based on the selected mode
 export const createThemeByMode = (mode) => {
-    const themeColors = getAyuColors(mode);
+    const themeColors = getThemeColors(mode);
 
     return createTheme({
         palette: {
-            mode: mode === 'mirage' || mode === 'night' ? 'dark' : mode, // Set to dark mode for 'mirage' and 'night'
+            mode: 'dark', // Both themes are dark
             background: {
                 default: themeColors.base,
                 paper: themeColors.surface,
@@ -113,15 +79,18 @@ export const createThemeByMode = (mode) => {
             },
         },
         typography: {
-            fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif', // Updated font family
-            h1: { fontFamily: '"Poppins", sans-serif', fontWeight: 600, fontSize: '2.5rem' },
-            h2: { fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '2rem' },
-            h3: { fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '1.75rem' },
-            h4: { fontFamily: '"Poppins", sans-serif', fontWeight: 500, fontSize: '1.5rem' },
-            h5: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1.25rem' },
-            h6: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1rem' },
-            body1: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1rem' },
-            body2: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '0.875rem' },
+            fontFamily:
+                mode === 'hibernus'
+                    ? '"JetBrains Mono", "Roboto Mono", monospace'
+                    : '"Fira Code", "Courier New", monospace',
+            h1: { fontWeight: 700, fontSize: '2.5rem' },
+            h2: { fontWeight: 600, fontSize: '2rem' },
+            h3: { fontWeight: 500, fontSize: '1.75rem' },
+            h4: { fontWeight: 500, fontSize: '1.5rem' },
+            h5: { fontWeight: 400, fontSize: '1.25rem' },
+            h6: { fontWeight: 400, fontSize: '1rem' },
+            body1: { fontWeight: 400, fontSize: '1rem' },
+            body2: { fontWeight: 400, fontSize: '0.875rem' },
         },
         components: {
             MuiAppBar: {
@@ -136,7 +105,7 @@ export const createThemeByMode = (mode) => {
                 styleOverrides: {
                     root: {
                         textTransform: 'none',
-                        borderRadius: '8px',
+                        borderRadius: '12px',
                     },
                     contained: {
                         backgroundColor: themeColors.primaryMain,
