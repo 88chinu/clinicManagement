@@ -1,27 +1,24 @@
-// src/components/ThemeModeProvider.js
-import React, { createContext, useState, useMemo } from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { createThemeByMode } from '../container/Theme';
+// src/components/ThemeSwitcher.js
+import React, { useContext } from 'react';
+import { ThemeModeContext } from './ThemeModeProvider';
+import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
-export const ThemeModeContext = createContext();
-
-export const ThemeModeProvider = ({ children }) => {
-    const [mode, setMode] = useState('light');
-
-    const toggleTheme = () => {
-        const nextMode = mode === 'light' ? 'dark' : mode === 'dark' ? 'mirage' : 'light';
-        setMode(nextMode);
-    };
-
-    const theme = useMemo(() => createThemeByMode(mode), [mode]);
+const ThemeSwitcher = () => {
+    const { mode, toggleTheme } = useContext(ThemeModeContext);
 
     return (
-        <ThemeModeContext.Provider value={{ mode, toggleTheme }}>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                {children}
-            </ThemeProvider>
-        </ThemeModeContext.Provider>
+        <FormControl variant="outlined" size="small" style={{ marginLeft: 'auto' }}>
+            <InputLabel>Theme</InputLabel>
+            <Select
+                value={mode}
+                onChange={(e) => toggleTheme(e.target.value)}
+                label="Theme"
+            >
+                <MenuItem value="hibernus">Noctis Hibernus</MenuItem>
+                <MenuItem value="obscuro">Noctis Obscuro</MenuItem>
+            </Select>
+        </FormControl>
     );
 };
+
+export default ThemeSwitcher;

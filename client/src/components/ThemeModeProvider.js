@@ -7,10 +7,9 @@ import { createThemeByMode } from '../container/Theme';
 export const ThemeModeContext = createContext();
 
 export const ThemeModeProvider = ({ children }) => {
-    const [mode, setMode] = useState('light');
+    const [mode, setMode] = useState('hibernus'); // Default theme: Hibernus
 
-    const toggleTheme = () => {
-        const nextMode = mode === 'light' ? 'dark' : mode === 'dark' ? 'mirage' : 'light';
+    const toggleTheme = (nextMode) => {
         setMode(nextMode);
     };
 
