@@ -1,56 +1,56 @@
-// Theme.js
+// src/container/Theme.js
 import { createTheme } from '@mui/material/styles';
 
 // Define colors for each theme
-const noctisHibernusColors = {
-    base: '#1b1d1e',
-    surface: '#282a36',
-    overlay: '#3c3f4c',
-    muted: '#6c7078',
-    subtle: '#474a52',
-    text: '#f8f8f2',
-    primaryMain: '#f07178',
-    secondaryMain: '#82aaff',
-    error: '#ff5370',
-    warning: '#ffcb6b',
-    info: '#89ddff',
-    success: '#c3e88d',
+const noctisObscuroColors = {
+    base: '#121212',
+    surface: '#1f1f1f',
+    overlay: '#2c2c2c',
+    muted: '#6c757d',
+    subtle: '#404040',
+    text: '#ffffff',
+    primaryMain: '#ff6200',
+    secondaryMain: '#7d4b93',
+    error: '#ff3333',
+    warning: '#ffcc00',
+    info: '#00bcd4',
+    success: '#4caf50',
 };
 
-const noctisObscuroColors = {
-    base: '#191919',
-    surface: '#212121',
-    overlay: '#2c2c2c',
-    muted: '#707070',
-    subtle: '#373737',
-    text: '#e8e8e8',
-    primaryMain: '#c792ea',
-    secondaryMain: '#ffcb6b',
-    error: '#ff5370',
-    warning: '#f78c6c',
-    info: '#89ddff',
-    success: '#c3e88d',
+const noctisHibernusColors = {
+    base: '#fafafa', // Light off-white base background
+    surface: '#ffffff', // White surface for cards and containers
+    overlay: '#f0f0f0', // Light gray overlay
+    muted: '#8a8a8a', // Muted text color
+    subtle: '#c0c0c0', // Soft secondary text color
+    text: '#333333', // Dark text for readability
+    primaryMain: '#1e90ff', // Blue primary color
+    secondaryMain: '#f2945e', // Coral/orange secondary color
+    error: '#f44336', // Red for errors
+    warning: '#ff9800', // Orange for warnings
+    info: '#2196f3', // Blue for info
+    success: '#4caf50', // Green for success
 };
 
 // Function to return the corresponding color palette based on the selected mode
-const getThemeColors = (mode) => {
+const getNoctisColors = (mode) => {
     switch (mode) {
-        case 'hibernus':
-            return noctisHibernusColors;
-        case 'obscuro':
+        case 'noctis-obscuro':
             return noctisObscuroColors;
+        case 'noctis-hibernus':
+            return noctisHibernusColors;
         default:
-            return noctisHibernusColors; // Default to Hibernus if no mode is specified
+            return noctisHibernusColors;
     }
 };
 
 // Function to create a theme based on the selected mode
 export const createThemeByMode = (mode) => {
-    const themeColors = getThemeColors(mode);
+    const themeColors = getNoctisColors(mode);
 
     return createTheme({
         palette: {
-            mode: 'dark', // Both themes are dark
+            mode: mode === 'noctis-obscuro' ? 'dark' : 'light',
             background: {
                 default: themeColors.base,
                 paper: themeColors.surface,
@@ -79,18 +79,15 @@ export const createThemeByMode = (mode) => {
             },
         },
         typography: {
-            fontFamily:
-                mode === 'hibernus'
-                    ? '"JetBrains Mono", "Roboto Mono", monospace'
-                    : '"Fira Code", "Courier New", monospace',
-            h1: { fontWeight: 700, fontSize: '2.5rem' },
-            h2: { fontWeight: 600, fontSize: '2rem' },
-            h3: { fontWeight: 500, fontSize: '1.75rem' },
-            h4: { fontWeight: 500, fontSize: '1.5rem' },
-            h5: { fontWeight: 400, fontSize: '1.25rem' },
-            h6: { fontWeight: 400, fontSize: '1rem' },
-            body1: { fontWeight: 400, fontSize: '1rem' },
-            body2: { fontWeight: 400, fontSize: '0.875rem' },
+            fontFamily: mode === 'noctis-obscuro' ? '"Orbitron", "Roboto", sans-serif' : '"Poppins", "Roboto", sans-serif',
+            h1: { fontFamily: '"Orbitron", sans-serif', fontWeight: 600, fontSize: '2.5rem' },
+            h2: { fontFamily: '"Orbitron", sans-serif', fontWeight: 500, fontSize: '2rem' },
+            h3: { fontFamily: '"Orbitron", sans-serif', fontWeight: 500, fontSize: '1.75rem' },
+            h4: { fontFamily: '"Orbitron", sans-serif', fontWeight: 500, fontSize: '1.5rem' },
+            h5: { fontFamily: '"Orbitron", sans-serif', fontWeight: 400, fontSize: '1.25rem' },
+            h6: { fontFamily: '"Orbitron", sans-serif', fontWeight: 400, fontSize: '1rem' },
+            body1: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1rem' },
+            body2: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '0.875rem' },
         },
         components: {
             MuiAppBar: {
@@ -105,7 +102,7 @@ export const createThemeByMode = (mode) => {
                 styleOverrides: {
                     root: {
                         textTransform: 'none',
-                        borderRadius: '12px',
+                        borderRadius: '8px',
                     },
                     contained: {
                         backgroundColor: themeColors.primaryMain,

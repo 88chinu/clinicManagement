@@ -12,8 +12,6 @@ import {
     Tooltip,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ThemeModeContext } from './ThemeModeProvider';
 
 const Navbar = () => {
@@ -44,18 +42,9 @@ const Navbar = () => {
                         variant="contained"
                         color="secondary"
                         onClick={toggleTheme}
-                        startIcon={
-                            mode === 'light' ? (
-                                <Brightness4Icon />
-                            ) : mode === 'dark' ? (
-                                <Brightness7Icon />
-                            ) : (
-                                <Brightness4Icon style={{ transform: 'rotate(45deg)' }} />
-                            )
-                        }
                         sx={{ marginRight: 2 }}
                     >
-                        {mode === 'light' ? 'Light Mode' : mode === 'dark' ? 'Dark Mode' : 'Custom'}
+                        {mode === 'noctis-obscuro' ? 'Switch to Hibernus' : 'Switch to Obscuro'}
                     </Button>
                 </Tooltip>
                 <IconButton onClick={handleMenuOpen} color="inherit">
