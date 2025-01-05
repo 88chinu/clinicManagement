@@ -1,46 +1,29 @@
 // src/container/Theme.js
 import { createTheme } from '@mui/material/styles';
 
-// Define colors for each theme
-const noctisObscuroColors = {
-    base: '#121212',
-    surface: '#1f1f1f',
-    overlay: '#2c2c2c',
-    muted: '#6c757d',
-    subtle: '#404040',
-    text: '#ffffff',
-    primaryMain: '#ff6200',
-    secondaryMain: '#7d4b93',
-    error: '#ff3333',
-    warning: '#ffcc00',
-    info: '#00bcd4',
-    success: '#4caf50',
+// Define colors for Noctis Lilac theme
+const noctisLilacColors = {
+    base: '#2d2a55', // Background base
+    surface: '#3b3758', // Card and container background
+    overlay: '#4c3c72', // Overlay elements
+    muted: '#b3b1c4', // Muted text
+    subtle: '#726e97', // Subtle secondary text
+    text: '#f8f8f2', // Primary text color
+    primaryMain: '#c792ea', // Purple primary color
+    secondaryMain: '#82aaff', // Blue secondary color
+    error: '#ff5370', // Red for errors
+    warning: '#ffcb6b', // Yellow for warnings
+    info: '#89ddff', // Light blue for info
+    success: '#c3e88d', // Light green for success
 };
 
-const noctisHibernusColors = {
-    base: '#fafafa', // Light off-white base background
-    surface: '#ffffff', // White surface for cards and containers
-    overlay: '#f0f0f0', // Light gray overlay
-    muted: '#8a8a8a', // Muted text color
-    subtle: '#c0c0c0', // Soft secondary text color
-    text: '#333333', // Dark text for readability
-    primaryMain: '#1e90ff', // Blue primary color
-    secondaryMain: '#f2945e', // Coral/orange secondary color
-    error: '#f44336', // Red for errors
-    warning: '#ff9800', // Orange for warnings
-    info: '#2196f3', // Blue for info
-    success: '#4caf50', // Green for success
-};
-
-// Function to return the corresponding color palette based on the selected mode
+// Function to return the Noctis Lilac palette
 const getNoctisColors = (mode) => {
     switch (mode) {
-        case 'noctis-obscuro':
-            return noctisObscuroColors;
-        case 'noctis-hibernus':
-            return noctisHibernusColors;
+        case 'noctis-lilac':
+            return noctisLilacColors;
         default:
-            return noctisHibernusColors;
+            return noctisLilacColors; // Default to Noctis Lilac if no match
     }
 };
 
@@ -50,7 +33,7 @@ export const createThemeByMode = (mode) => {
 
     return createTheme({
         palette: {
-            mode: mode === 'noctis-obscuro' ? 'dark' : 'light',
+            mode: 'dark',
             background: {
                 default: themeColors.base,
                 paper: themeColors.surface,
@@ -79,15 +62,15 @@ export const createThemeByMode = (mode) => {
             },
         },
         typography: {
-            fontFamily: mode === 'noctis-obscuro' ? '"Orbitron", "Roboto", sans-serif' : '"Poppins", "Roboto", sans-serif',
-            h1: { fontFamily: '"Orbitron", sans-serif', fontWeight: 600, fontSize: '2.5rem' },
-            h2: { fontFamily: '"Orbitron", sans-serif', fontWeight: 500, fontSize: '2rem' },
-            h3: { fontFamily: '"Orbitron", sans-serif', fontWeight: 500, fontSize: '1.75rem' },
-            h4: { fontFamily: '"Orbitron", sans-serif', fontWeight: 500, fontSize: '1.5rem' },
-            h5: { fontFamily: '"Orbitron", sans-serif', fontWeight: 400, fontSize: '1.25rem' },
-            h6: { fontFamily: '"Orbitron", sans-serif', fontWeight: 400, fontSize: '1rem' },
-            body1: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '1rem' },
-            body2: { fontFamily: '"Poppins", sans-serif', fontWeight: 400, fontSize: '0.875rem' },
+            fontFamily: '"Fira Code", "Roboto Mono", monospace',
+            h1: { fontWeight: 600, fontSize: '2.5rem' },
+            h2: { fontWeight: 500, fontSize: '2rem' },
+            h3: { fontWeight: 500, fontSize: '1.75rem' },
+            h4: { fontWeight: 500, fontSize: '1.5rem' },
+            h5: { fontWeight: 400, fontSize: '1.25rem' },
+            h6: { fontWeight: 400, fontSize: '1rem' },
+            body1: { fontWeight: 400, fontSize: '1rem' },
+            body2: { fontWeight: 400, fontSize: '0.875rem' },
         },
         components: {
             MuiAppBar: {

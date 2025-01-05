@@ -1,9 +1,11 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeModeProvider } from './components/ThemeModeProvider';
 import { SnackbarProvider } from 'notistack';
 import { CssBaseline, Box, Container } from '@mui/material';
+
+import { createThemeByMode } from './container/Theme'; // Import theme creation
+import { ThemeProvider } from '@mui/material/styles'; // Wrap app with theme provider
 
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPatient';
@@ -16,8 +18,10 @@ import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
 
 const App = () => {
+    const theme = createThemeByMode('noctis-lilac'); // Default to noctis-lilac
+
     return (
-        <ThemeModeProvider>
+        <ThemeProvider theme={theme}>
             <CssBaseline />
             <SnackbarProvider
                 maxSnack={3}
@@ -45,7 +49,7 @@ const App = () => {
                     </Box>
                 </Router>
             </SnackbarProvider>
-        </ThemeModeProvider>
+        </ThemeProvider>
     );
 };
 

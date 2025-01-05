@@ -69,12 +69,12 @@ const PatientHomePage = () => {
       sx={{
         position: 'relative',
         minHeight: '100vh',
-        backgroundImage: 'url(https://media.gettyimages.com/id/1312706413/photo/modern-hospital-building.jpg?s=1024x1024&w=gi&k=20&c=2nU8Ac2_g9NiiRTgZXfBqSRx50tR4x8R7io7X1OCUFg=)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        filter: 'brightness(50%)',
+        // backgroundImage: 'url(https://media.gettyimages.com/id/1312706413/photo/modern-hospital-building.jpg?s=1024x1024&w=gi&k=20&c=2nU8Ac2_g9NiiRTgZXfBqSRx50tR4x8R7io7X1OCUFg=)',
+        // backgroundRepeat: 'no-repeat',
+        // backgroundSize: 'cover',
+        // backgroundPosition: 'center',
+        // backgroundAttachment: 'fixed',
+        // filter: 'brightness(50%)',
       }}
     >
       {/* Overlay to ensure text readability */}

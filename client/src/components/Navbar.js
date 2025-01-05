@@ -1,5 +1,5 @@
 // src/components/Navbar.js
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
     AppBar,
@@ -8,15 +8,12 @@ import {
     IconButton,
     Menu,
     MenuItem,
-    Button,
     Tooltip,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { ThemeModeContext } from './ThemeModeProvider';
 
 const Navbar = () => {
     const [menuAnchorEl, setMenuAnchorEl] = useState(null);
-    const { mode, toggleTheme } = useContext(ThemeModeContext);
 
     const handleMenuOpen = (event) => setMenuAnchorEl(event.currentTarget);
     const handleMenuClose = () => setMenuAnchorEl(null);
@@ -37,19 +34,11 @@ const Navbar = () => {
                 >
                     Clinic Management
                 </Typography>
-                <Tooltip title="Toggle Theme">
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        onClick={toggleTheme}
-                        sx={{ marginRight: 2 }}
-                    >
-                        {mode === 'noctis-obscuro' ? 'Switch to Hibernus' : 'Switch to Obscuro'}
-                    </Button>
+                <Tooltip title="Menu">
+                    <IconButton onClick={handleMenuOpen} color="inherit">
+                        <MenuIcon />
+                    </IconButton>
                 </Tooltip>
-                <IconButton onClick={handleMenuOpen} color="inherit">
-                    <MenuIcon />
-                </IconButton>
                 <Menu
                     anchorEl={menuAnchorEl}
                     open={Boolean(menuAnchorEl)}
