@@ -9,8 +9,8 @@ import axios from 'axios';
 const CreatePatient = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const theme = useTheme();
-  const isDarkMode = theme.palette.mode === 'dark';
+  const theme = useTheme(); // Access the theme object
+  const isDarkMode = theme.palette.mode === 'dark'; // Check the current mode
 
   const [patient, setPatient] = useState({
     Patient_name: '',
@@ -51,7 +51,7 @@ const CreatePatient = () => {
           previous_admit: '',
         });
         enqueueSnackbar('Patient added successfully!', { variant: 'success' });
-        navigate('/');
+        navigate('/list');
       })
       .catch((err) => {
         console.error('Error in creating patient:', err);
@@ -66,19 +66,24 @@ const CreatePatient = () => {
         mx: 'auto',
         p: 3,
         mt: 5,
-        bgcolor: isDarkMode ? theme.palette.background.paper : '#f9f9f9',
-        color: isDarkMode ? theme.palette.text.primary : 'inherit',
+        bgcolor: isDarkMode ? theme.palette.background.paper : theme.palette.background.default,
+        color: isDarkMode ? theme.palette.text.primary : theme.palette.text.secondary,
         borderRadius: 2,
-        boxShadow: isDarkMode ? '0 4px 10px rgba(0, 0, 0, 0.3)' : '0 4px 10px rgba(0, 0, 0, 0.1)',
+        boxShadow: isDarkMode ? '0 4px 10px rgba(0, 0, 0, 0.5)' : '0 4px 10px rgba(0, 0, 0, 0.1)',
       }}
     >
       <Typography variant="h4" align="center" gutterBottom>
         Add Patient
       </Typography>
-      <Typography variant="body1" align="center" color="textSecondary" gutterBottom>
+      <Typography
+        variant="body1"
+        align="center"
+        color={isDarkMode ? 'textSecondary' : 'textPrimary'}
+        gutterBottom
+      >
         Create a new patient record
       </Typography>
-      <Box sx={{ mb: 2 }}>
+      <Box sx={{ mb: 2, textAlign: 'center' }}>
         <Link to="/list" style={{ textDecoration: 'none' }}>
           <Button variant="outlined" color="secondary">
             Show Patient List
@@ -137,7 +142,9 @@ const CreatePatient = () => {
             inputStyle={{
               width: '100%',
               padding: '10px',
-              borderColor: contactError ? 'red' : '#ced4da',
+              borderColor: contactError ? theme.palette.error.main : '#ced4da',
+              backgroundColor: isDarkMode ? theme.palette.background.paper : 'white',
+              color: isDarkMode ? theme.palette.text.primary : theme.palette.text.secondary,
             }}
             containerStyle={{ marginBottom: '16px' }}
             isValid={!contactError} // Validation for the phone input

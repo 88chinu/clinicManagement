@@ -95,16 +95,21 @@ const PatientDetails = () => {
             </Typography>
             <Divider sx={{ my: 2 }} />
             <Box display="flex" flexDirection="column">
-              <Typography variant="body1" paragraph>
+              {/* <Typography variant="body1" paragraph>
                 {patient.description || 'No description provided.'}
-              </Typography>
+              </Typography> */}
               <Typography variant="body1">ID: {patient._id}</Typography>
               <Typography variant="body1">Name: {patient.Patient_name}</Typography>
               <Typography variant="body1">Age: {patient.age}</Typography>
               <Typography variant="body1">Gender: {patient.gender}</Typography>
               <Typography variant="body1">Contact: {patient.contact_number}</Typography>
-              <Typography variant="body1">Date: {patient.admit_Date}</Typography>
-              <Typography variant="body1">Previous Admit: {patient.previous_admit}</Typography>
+              <Typography variant="body1">
+                 Date: {patient.admit_Date ? new Date(patient.admit_Date).toLocaleDateString() : 'N/A'}
+              </Typography>
+              <Typography variant="body1">
+                 Previous Admit: {patient.previous_admit === true ? 'Yes' : patient.previous_admit === false ? 'No' : 'N/A'}
+              </Typography>
+
             </Box>
           </Grid>
         </Grid>
