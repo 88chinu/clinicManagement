@@ -180,7 +180,7 @@
 - Patient medical records management
 - Advanced analytics for clinic performance
 - Multi-language support
-- 
+  
 ## Contributing
 - Feel free to fork the repository and submit pull requests.
 
