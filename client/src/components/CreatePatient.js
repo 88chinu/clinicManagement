@@ -29,7 +29,7 @@ const CreatePatient = () => {
 
   const handlePhoneChange = (value) => {
     setPatient({ ...patient, contact_number: value });
-    setContactError(value.length < 8 || value.length > 15); // Basic validation for phone length
+    setContactError(value.length < 8 || value.length > 12); // Basic validation for phone length
   };
 
   const onSubmit = (e) => {

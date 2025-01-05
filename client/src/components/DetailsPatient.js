@@ -104,7 +104,7 @@ const PatientDetails = () => {
               <Typography variant="body1">Gender: {patient.gender}</Typography>
               <Typography variant="body1">Contact: {patient.contact_number}</Typography>
               <Typography variant="body1">Date: {patient.admit_Date}</Typography>
-              <Typography variant="body1">Medical History: {patient.previous_admit}</Typography>
+              <Typography variant="body1">Previous Admit: {patient.previous_admit}</Typography>
             </Box>
           </Grid>
         </Grid>
