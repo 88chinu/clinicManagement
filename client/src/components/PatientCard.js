@@ -30,7 +30,7 @@ const PatientCard = ({ patient }) => {
           sx={{ objectFit: 'cover', width: '100%' }}
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="h6" component="div" color="primary" gutterBottom>
+          <Typography variant="h5" component="div" color="primary" gutterBottom>
             Name: {patient.Patient_name || 'Unknown'}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">

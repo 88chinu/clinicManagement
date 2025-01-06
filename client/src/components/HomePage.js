@@ -101,7 +101,7 @@ const PatientHomePage = () => {
           <Container maxWidth="lg" sx={{ py: 4 }}>
             {/* Welcome Section */}
             <Box textAlign="center" mb={6}>
-              <Typography variant="h3" component="h1" color="primary.light" gutterBottom>
+              <Typography variant="h2" component="h1" color="primary.light" gutterBottom>
                 Welcome to the Patient Management System
               </Typography>
               <Typography variant="h6" color="primary.light" gutterBottom>

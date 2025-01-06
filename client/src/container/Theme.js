@@ -63,14 +63,14 @@ export const createThemeByMode = (mode) => {
         },
         typography: {
             fontFamily: '"Fira Code", "Roboto Mono", monospace',
-            h1: { fontWeight: 600, fontSize: '2.5rem' },
-            h2: { fontWeight: 500, fontSize: '2rem' },
-            h3: { fontWeight: 500, fontSize: '1.75rem' },
-            h4: { fontWeight: 500, fontSize: '1.5rem' },
-            h5: { fontWeight: 400, fontSize: '1.25rem' },
-            h6: { fontWeight: 400, fontSize: '1rem' },
-            body1: { fontWeight: 400, fontSize: '1rem' },
-            body2: { fontWeight: 400, fontSize: '0.875rem' },
+            h1: { fontWeight: 600, fontSize: '5rem' },
+            h2: { fontWeight: 500, fontSize: '4rem' },
+            h3: { fontWeight: 500, fontSize: '3.75rem' },
+            h4: { fontWeight: 500, fontSize: '2.5rem' },
+            h5: { fontWeight: 400, fontSize: '2rem' },
+            h6: { fontWeight: 400, fontSize: '1.75rem' },
+            body1: { fontWeight: 400, fontSize: '1.75rem' },
+            body2: { fontWeight: 400, fontSize: '1.55rem' },
         },
         components: {
             MuiAppBar: {
