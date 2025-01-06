@@ -19,6 +19,7 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import NoteIcon from '@mui/icons-material/Note';
+import QrCodeIcon from '@mui/icons-material/QrCode';
 import axios from 'axios';
 
 const PatientHomePage = () => {
@@ -224,7 +225,7 @@ const PatientHomePage = () => {
                   to="/scan"
                   variant="contained"
                   size="large"
-                  startIcon={<GroupIcon />}
+                  startIcon={<QrCodeIcon />}
                   fullWidth
                   sx={{ py: 2 }}
                 >
@@ -250,7 +251,7 @@ const PatientHomePage = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Button
                   component="a"
-                  href="https://github.com/88chinu/clinicManagement"
+                  href="https://docs.google.com/document/d/1z5jlCUQCnseKXfEx0OPbSf-uA9YbQBDXU7vncDMGUE0/edit?tab=t.0#heading=h.kum8f7324oo"
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="contained"

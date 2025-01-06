@@ -57,7 +57,7 @@ const QRCodePage = () => {
       ctx.drawImage(img, 0, 0); // Draw the image onto the canvas
 
       const a = document.createElement('a'); // Create an anchor element for download
-      a.download = `QR-${patientName.replace(/\s+/g, '-')}.png`; // Set download filename
+      a.download = `QR-${patientName.replace(/\s+/g, '-')}.png`; // Set download filename //regular expression
       a.href = canvas.toDataURL('image/png'); // Set the image data as the download URL
       a.click(); // Trigger the download
     };
