@@ -13,14 +13,17 @@ import {
   CircularProgress,
 } from '@mui/material';
 import GroupIcon from '@mui/icons-material/Group';
-import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import AddIcon from '@mui/icons-material/Add';
-import SearchIcon from '@mui/icons-material/Search';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import ChatIcon from '@mui/icons-material/Chat';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import NoteIcon from '@mui/icons-material/Note';
 import QrCodeIcon from '@mui/icons-material/QrCode';
 import axios from 'axios';
+
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 const PatientHomePage = () => {
   const [stats, setStats] = useState({
@@ -29,26 +32,24 @@ const PatientHomePage = () => {
     recentRegistration: null,
   });
   const [loading, setLoading] = useState(true);
+  const [isButtonsVisible, setIsButtonsVisible] = useState(false);
 
   useEffect(() => {
-    axios.get("https://patientmanagement-2eye.onrender.com/api/clinics")
+    // Fetch patient stats
+    axios.get(`${URL}/api/clinics`)
       .then(res => {
         const patients = res.data;
-        
-        // Calculate unique doctors
         const uniqueDoctors = new Set(patients.map(patient => patient.doctor)).size;
-  
-        // Find the most recent registration
         const recentRegistration = patients.sort((a, b) =>
           new Date(b.registration_date) - new Date(a.registration_date)
         )[0]?.name; // Assuming each patient has a 'name' field
-  
+
         setStats({
           totalPatients: patients.length,
           totalDoctors: uniqueDoctors,
-          recentRegistration: recentRegistration || 'No recent registrations'
+          recentRegistration: recentRegistration || 'No recent registrations',
         });
-  
+
         setLoading(false);
       })
       .catch(err => {
@@ -56,7 +57,22 @@ const PatientHomePage = () => {
         setLoading(false);
       });
   }, []);
-  
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+
+    // Buttons appear after scrolling 400px down
+    if (scrollPosition > 400) {
+      setIsButtonsVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   if (loading) {
     return (
@@ -67,19 +83,7 @@ const PatientHomePage = () => {
   }
 
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        minHeight: '100vh',
-        // backgroundImage: 'url(https://media.gettyimages.com/id/1312706413/photo/modern-hospital-building.jpg?s=1024x1024&w=gi&k=20&c=2nU8Ac2_g9NiiRTgZXfBqSRx50tR4x8R7io7X1OCUFg=)',
-        // backgroundRepeat: 'no-repeat',
-        // backgroundSize: 'cover',
-        // backgroundPosition: 'center',
-        // backgroundAttachment: 'fixed',
-        // filter: 'brightness(50%)',
-      }}
-    >
-      {/* Overlay to ensure text readability */}
+    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
       <Box
         sx={{
           position: 'absolute',
@@ -87,26 +91,20 @@ const PatientHomePage = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
           zIndex: 1,
         }}
       ></Box>
 
-      <Box
-        sx={{
-          position: 'relative',
-          zIndex: 2,
-          color: '#fff', // White text for better contrast
-        }}
-      >
+      <Box sx={{ position: 'relative', zIndex: 2, color: 'text.primary' }}>
         <Fade in={true} timeout={800}>
           <Container maxWidth="lg" sx={{ py: 4 }}>
             {/* Welcome Section */}
             <Box textAlign="center" mb={6}>
-              <Typography variant="h2" component="h1" color="primary.light" gutterBottom>
+              <Typography variant="h2" component="h1" color="primary" gutterBottom>
                 Welcome to the Patient Management System
               </Typography>
-              <Typography variant="h6" color="primary.light" gutterBottom>
+              <Typography variant="h6" color="text.secondary" gutterBottom>
                 Efficiently manage patient records and appointments
               </Typography>
             </Box>
@@ -114,7 +112,7 @@ const PatientHomePage = () => {
             {/* Stats Cards */}
             <Grid container spacing={4} mb={6}>
               <Grid item xs={12} md={4}>
-                <Card sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 2 }}>
                   <CardContent sx={{ textAlign: 'center', width: '100%' }}>
                     <GroupIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
                     <Typography variant="h4" gutterBottom>
@@ -128,9 +126,9 @@ const PatientHomePage = () => {
               </Grid>
 
               <Grid item xs={12} md={4}>
-                <Card sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 2 }}>
+                  <LocalHospitalIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
                   <CardContent sx={{ textAlign: 'center', width: '100%' }}>
-                    <MedicalServicesIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
                     <Typography variant="h4" gutterBottom>
                       {stats.totalDoctors}
                     </Typography>
@@ -142,9 +140,9 @@ const PatientHomePage = () => {
               </Grid>
 
               <Grid item xs={12} md={4}>
-                <Card sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
+                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 2 }}>
+                  <CalendarTodayIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
                   <CardContent sx={{ textAlign: 'center', width: '100%' }}>
-                    <CalendarTodayIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
                     <Typography variant="h4" gutterBottom>
                       Latest Registration
                     </Typography>
@@ -156,9 +154,16 @@ const PatientHomePage = () => {
               </Grid>
             </Grid>
 
-            {/* Features Section */}
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
-              <Typography variant="h5" gutterBottom color="primary.light">
+            {/* Features Section (Appears after scrolling) */}
+            <Box
+              id="buttonSection"
+              sx={{
+                display: isButtonsVisible ? 'block' : 'none',
+                textAlign: 'center',
+                mb: 4,
+              }}
+            >
+              <Typography variant="h5" gutterBottom color="primary">
                 Available Features
               </Typography>
             </Box>
@@ -172,7 +177,7 @@ const PatientHomePage = () => {
                   size="large"
                   startIcon={<GroupIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'primary.main', '&:hover': { bgcolor: 'primary.dark' } }}
                 >
                   View Patients
                 </Button>
@@ -184,9 +189,9 @@ const PatientHomePage = () => {
                   to="/add"
                   variant="contained"
                   size="large"
-                  startIcon={<AddIcon />}
+                  startIcon={<AddCircleOutlineIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' } }}
                 >
                   Add New Patient
                 </Button>
@@ -198,9 +203,9 @@ const PatientHomePage = () => {
                   to="search"
                   variant="contained"
                   size="large"
-                  startIcon={<SearchIcon />}
+                  startIcon={<ChatIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'info.main', '&:hover': { bgcolor: 'info.dark' } }}
                 >
                   Search Patients
                 </Button>
@@ -212,13 +217,14 @@ const PatientHomePage = () => {
                   to="/export"
                   variant="contained"
                   size="large"
-                  startIcon={<GroupIcon />}
+                  startIcon={<FileCopyIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'success.main', '&:hover': { bgcolor: 'success.dark' } }}
                 >
                   Download Patients List
                 </Button>
               </Grid>
+
               <Grid item xs={12} sm={6} md={4}>
                 <Button
                   component={Link}
@@ -227,7 +233,7 @@ const PatientHomePage = () => {
                   size="large"
                   startIcon={<QrCodeIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'warning.main', '&:hover': { bgcolor: 'warning.dark' } }}
                 >
                   QRCode Page
                 </Button>
@@ -243,11 +249,12 @@ const PatientHomePage = () => {
                   size="large"
                   startIcon={<GitHubIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'info.main', '&:hover': { bgcolor: 'info.dark' } }}
                 >
                   GitHub
                 </Button>
               </Grid>
+
               <Grid item xs={12} sm={6} md={4}>
                 <Button
                   component="a"
@@ -258,7 +265,7 @@ const PatientHomePage = () => {
                   size="large"
                   startIcon={<NoteIcon />}
                   fullWidth
-                  sx={{ py: 2 }}
+                  sx={{ py: 2, bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' } }}
                 >
                   Documentation
                 </Button>

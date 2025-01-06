@@ -7,7 +7,7 @@ import PatientCard from './PatientCard';
 
 const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
-console.log(process.env.REACT_APP_API_URL)
+// console.log(process.env.REACT_APP_API_URL)
 
 function PatientList (){
   const[patients, setData] = useState([]);

@@ -11,11 +11,13 @@ const PatientCard = ({ patient }) => {
         flexDirection: 'column',
         transition: 'transform 0.2s, box-shadow 0.2s',
         borderRadius: 2,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Darker background
         boxShadow: 3,
         '&:hover': {
           transform: 'scale(1.05)',
           boxShadow: 6,
         },
+        color: '#fff', // White text for better contrast
       }}
     >
       <Link to={`/detail/${patient._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -30,7 +32,7 @@ const PatientCard = ({ patient }) => {
           sx={{ objectFit: 'cover', width: '100%' }}
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="h5" component="div" color="primary" gutterBottom>
+          <Typography variant="h5" component="div" gutterBottom>
             Name: {patient.Patient_name || 'Unknown'}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">

@@ -91,16 +91,16 @@ const SearchPatient = () => {
   }
 
   return (
-    <Box sx={{ maxWidth: 800, mx: 'auto', p: 3, mt: 5, bgcolor: '#f9f9f9', borderRadius: 2 }}>
-      <Typography variant="h4" align="center" gutterBottom>
+    <Box sx={{ maxWidth: 1000, mx: 'auto', p: 3, mt: 5, bgcolor: 'background.default', borderRadius: 2 }}>
+      <Typography variant="h4" align="center" color="text.primary" gutterBottom>
         Search Patient
       </Typography>
-      <Typography variant="body1" align="center" color="textSecondary" gutterBottom>
+      <Typography variant="body1" align="center" color="text.secondary" gutterBottom>
         Find a patient record from the database
       </Typography>
 
       {/* Search and Filter Section */}
-      <Card sx={{ p: 3, mt: 3 }}>
+      <Card sx={{ p: 3, mt: 3, bgcolor: 'background.paper', borderRadius: 2 }}>
         <CardContent>
           <Grid container spacing={2} alignItems="center">
             {/* Search Field */}
@@ -113,6 +113,7 @@ const SearchPatient = () => {
                 InputProps={{
                   startAdornment: <SearchIcon sx={{ mr: 1, color: 'text.secondary' }} />,
                 }}
+                sx={{ bgcolor: 'background.default', borderRadius: 1 }}
               />
             </Grid>
 
@@ -124,6 +125,7 @@ const SearchPatient = () => {
                   value={filters.searchField}
                   label="Search By"
                   onChange={(e) => setFilters({ ...filters, searchField: e.target.value })}
+                  sx={{ bgcolor: 'background.default', borderRadius: 1 }}
                 >
                   <MenuItem value="Patient_name">Patient Name</MenuItem>
                   <MenuItem value="age">Age</MenuItem>
@@ -142,6 +144,7 @@ const SearchPatient = () => {
                   value={filters.sortBy}
                   label="Sort By"
                   onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
+                  sx={{ bgcolor: 'background.default', borderRadius: 1 }}
                 >
                   <MenuItem value="Patient_name">Patient Name</MenuItem>
                   <MenuItem value="age">Age</MenuItem>
@@ -159,6 +162,7 @@ const SearchPatient = () => {
                   value={filters.sortOrder}
                   label="Order"
                   onChange={(e) => setFilters({ ...filters, sortOrder: e.target.value })}
+                  sx={{ bgcolor: 'background.default', borderRadius: 1 }}
                 >
                   <MenuItem value="asc">Ascending</MenuItem>
                   <MenuItem value="desc">Descending</MenuItem>
@@ -173,6 +177,7 @@ const SearchPatient = () => {
                   variant="outlined"
                   startIcon={<RestartAltIcon />}
                   onClick={resetFilters}
+                  sx={{ mt: 2, borderRadius: 1 }}
                 >
                   Reset Filters
                 </Button>
@@ -183,7 +188,7 @@ const SearchPatient = () => {
       </Card>
 
       {/* Results Section */}
-      <Typography variant="body2" color="textSecondary" sx={{ mt: 3 }}>
+      <Typography variant="body2" color="text.secondary" sx={{ mt: 3 }}>
         Found {filteredPatients.length} patients
       </Typography>
 
