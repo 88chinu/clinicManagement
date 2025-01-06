@@ -18,6 +18,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import NoteIcon from '@mui/icons-material/Note';
 import axios from 'axios';
 
 const PatientHomePage = () => {
@@ -217,6 +218,19 @@ const PatientHomePage = () => {
                   Download Patients List
                 </Button>
               </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Button
+                  component={Link}
+                  to="/scan"
+                  variant="contained"
+                  size="large"
+                  startIcon={<GroupIcon />}
+                  fullWidth
+                  sx={{ py: 2 }}
+                >
+                  QRCode Page
+                </Button>
+              </Grid>
 
               <Grid item xs={12} sm={6} md={4}>
                 <Button
@@ -231,6 +245,21 @@ const PatientHomePage = () => {
                   sx={{ py: 2 }}
                 >
                   GitHub
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Button
+                  component="a"
+                  href="https://github.com/88chinu/clinicManagement"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  size="large"
+                  startIcon={<NoteIcon />}
+                  fullWidth
+                  sx={{ py: 2 }}
+                >
+                  Documentation
                 </Button>
               </Grid>
             </Grid>

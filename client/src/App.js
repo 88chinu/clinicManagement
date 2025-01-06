@@ -16,6 +16,7 @@ import PatientEdit from './components/UpdatePatient';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
+import QRCodePage from './components/QRcode';
 
 const App = () => {
     const theme = createThemeByMode('noctis-lilac'); // Default to noctis-lilac
@@ -42,6 +43,7 @@ const App = () => {
                                 <Route path="/detail/:id" element={<PatientDetail />} />
                                 <Route path="/search" element={<SearchPage />} />
                                 <Route path="/export" element={<ExportPage />} />
+                                <Route path='/scan' element={<QRCodePage />} />
                                 <Route path="*" element={<div>404 - Page Not Found</div>} />
                             </Routes>
                         </Container>
