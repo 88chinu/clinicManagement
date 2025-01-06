@@ -14,6 +14,8 @@ import {
 import DownloadIcon from '@mui/icons-material/Download'; // Icon for the download button
 import axios from 'axios'; // Axios for API requests
 
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
 const QRCodePage = () => {
   // State for storing clinic data
   const [patients, setPatients] = useState([]); // Ensure initial state is an empty array
@@ -21,12 +23,12 @@ const QRCodePage = () => {
   const [loading, setLoading] = useState(true);
 
   // Base URL for accessing clinic details (to be embedded in QR code)
-  const baseUrl = 'https://patientmanagement-2eye.onrender.com/detail/';
+  const baseUrl = `${URL}/detail/`;
 
   // Fetch clinic data when the component loads
   useEffect(() => {
     axios
-      .get('https://patientmanagement-2eye.onrender.com/api/clinics') // API endpoint to fetch clinic data
+      .get(`${URL}/api/clinics`) // API endpoint to fetch clinic data
       .then(res => {
         console.log(res.data); // Debug: inspect the API response
         // Safeguard: Ensure patients is an array

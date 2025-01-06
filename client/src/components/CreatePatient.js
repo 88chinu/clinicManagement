@@ -23,6 +23,12 @@ const CreatePatient = () => {
 
   const [contactError, setContactError] = useState(false);
 
+  const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
+  if (!URL) {
+    console.error('REACT_APP_API_URL is not defined in the environment variables'); // Log error for undefined URL
+  }
+
   const onChange = (e) => {
     setPatient({ ...patient, [e.target.name]: e.target.value });
   };
@@ -40,7 +46,7 @@ const CreatePatient = () => {
     }
 
     axios
-      .post("https://patientmanagement-2eye.onrender.com/api/clinics", patient)
+      .post(`${URL}/api/clinics`, patient) // Use dynamic URL for API calls
       .then(() => {
         setPatient({
           Patient_name: '',

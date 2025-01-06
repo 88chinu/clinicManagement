@@ -1,13 +1,23 @@
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
+require('dotenv').config(); // Ensure dotenv is loaded to access environment variables
+
 const connectDB = async () => {
-    try {
-        // await mongoose.connect('mongodb://localhost:27017/mydatabase');
-        await mongoose.connect('mongodb+srv://clinic_admin:clinic_admin@cluster0.5l48z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
-        console.log('Connected to MongoDB');
-    } catch (err) {
-        console.error('Failed to connect to MongoDB', err);
-        process.exit(1);
-    }
+  const uri = process.env.DATABASE;
+
+  if (!uri) {
+    console.error('DATABASE URI is not defined in the environment variables');
+    process.exit(1); // Exit the process if the URI is undefined
+  }
+
+  try {
+    await mongoose.connect(uri, {
+      useNewUrlParser: true,
+    });
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error('Failed to connect to MongoDB', err);
+    process.exit(1); // Exit the process on connection failure
+  }
 };
 
-module.exports = connectDB
+module.exports = connectDB;

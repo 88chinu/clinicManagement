@@ -18,6 +18,8 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import PatientCard from './PatientCard';
 import axios from 'axios';
 
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
 const SearchPatient = () => {
   const [patients, setPatients] = useState([]);
   const [filteredPatients, setFilteredPatients] = useState([]);
@@ -31,7 +33,7 @@ const SearchPatient = () => {
 
   useEffect(() => {
     axios
-      .get('https://patientmanagement-2eye.onrender.com/api/clinics')
+      .get(`${URL}/api/clinics`)
       .then((res) => {
         setPatients(res.data);
         setFilteredPatients(res.data);

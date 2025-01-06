@@ -5,6 +5,8 @@ import { Typography, Grid, Button, Container, CircularProgress, Box } from '@mui
 
 import PatientCard from './PatientCard';
 
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
 console.log(process.env.REACT_APP_API_URL)
 
 function PatientList (){
@@ -13,7 +15,7 @@ function PatientList (){
 
   useEffect(() => {
     axios
-      .get("https://patientmanagement-2eye.onrender.com/api/clinics")
+      .get(`${URL}/api/clinics`)
       .then((res) => {
         console.log("Fetched patients:", res.data);
         setData(res.data);

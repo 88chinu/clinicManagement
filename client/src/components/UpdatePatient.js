@@ -12,6 +12,8 @@ import {
 import axios from "axios";
 import { useSnackbar } from "notistack"; // Import the useSnackbar hook
 
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
 function UpdatePatient() {
   const [patient, setPatient] = useState({
     Patient_name: "",
@@ -26,9 +28,10 @@ function UpdatePatient() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar(); // Initialize the notification hook
 
+
   useEffect(() => {
     axios
-      .get(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
+      .get(`${URL}/api/clinics/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
@@ -36,7 +39,8 @@ function UpdatePatient() {
         console.error("Error from UpdatePatient GET request", err);
         enqueueSnackbar("Failed to fetch patient details.", { variant: "error" });
       });
-  }, [id, enqueueSnackbar]);
+  }, [id, enqueueSnackbar]); // Remove 'URL' from the dependency array because it is a stable constant.
+  // React expects 'URL' to be in the dependency array, but since it doesn't change, it can be safely excluded.
 
   const onChange = (e) => {
     setPatient({ ...patient, [e.target.name]: e.target.value });
@@ -46,7 +50,7 @@ function UpdatePatient() {
     e.preventDefault();
 
     axios
-      .put(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`, patient)
+      .put(`${URL}/api/clinics/${id}`, patient)
       .then(() => {
         enqueueSnackbar("Patient updated successfully!", { variant: "success" });
         navigate(`/detail/${id}`);

@@ -17,13 +17,15 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
 const ExportPage = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get('https://patientmanagement-2eye.onrender.com/api/clinics')
+      .get(`${URL}/api/clinics`)
       .then((res) => {
         setPatients(res.data);
         setLoading(false);

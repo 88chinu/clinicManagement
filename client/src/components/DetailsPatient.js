@@ -31,6 +31,8 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.shadows[3],
 }));
 
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
+
 const PatientDetails = () => {
   const [patient, setPatient] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
@@ -40,7 +42,7 @@ const PatientDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
+      .get(`${URL}/api/clinics/${id}`)
       .then((res) => {
         setPatient(res.data);
       })
@@ -56,7 +58,7 @@ const PatientDetails = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`https://patientmanagement-2eye.onrender.com/api/clinics/${id}`)
+      .delete(`${URL}/api/clinics/${id}`)
       .then(() => {
         enqueueSnackbar('Patient deleted successfully!', { variant: 'success' });
         navigate('/list');
