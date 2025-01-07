@@ -7,6 +7,7 @@ import { CssBaseline, Box, Container } from '@mui/material';
 import { createThemeByMode } from './container/Theme'; // Import theme creation
 import { ThemeProvider } from '@mui/material/styles'; // Wrap app with theme provider
 
+// Existing components
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPatient';
 import PatientList from './components/PatientList';
@@ -17,6 +18,10 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
 import QRCodePage from './components/QRcode';
+
+// New authentication components
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 
 const App = () => {
     const theme = createThemeByMode('noctis-lilac'); // Default to noctis-lilac
@@ -36,6 +41,7 @@ const App = () => {
                         <Navbar />
                         <Container component="main" flex="1" className="box-container">
                             <Routes>
+                                {/* Existing routes */}
                                 <Route exact path="/" element={<HomePage />} />
                                 <Route path="/list" element={<PatientList />} />
                                 <Route path="/add" element={<PatientAdd />} />
@@ -43,7 +49,13 @@ const App = () => {
                                 <Route path="/detail/:id" element={<PatientDetail />} />
                                 <Route path="/search" element={<SearchPage />} />
                                 <Route path="/export" element={<ExportPage />} />
-                                <Route path='/scan' element={<QRCodePage />} />
+                                <Route path="/scan" element={<QRCodePage />} />
+
+                                {/* New authentication routes */}
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/register" element={<Register />} />
+
+                                {/* Fallback for undefined routes */}
                                 <Route path="*" element={<div>404 - Page Not Found</div>} />
                             </Routes>
                         </Container>
