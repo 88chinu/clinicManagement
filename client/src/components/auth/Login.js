@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Snackbar, Alert, Button, TextField, Box } from '@mui/material';
+import { Snackbar, Alert, Button, TextField, Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { Link as RouterLink } from 'react-router-dom';
 
 const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
@@ -71,6 +72,32 @@ const Login = () => {
                     }}
                 >
                     Login
+                </Button>
+                <Typography
+                    variant="body1"
+                    align="center"
+                    sx={{
+                        color: theme.palette.text.secondary,
+                        fontWeight: 500,
+                    }}
+                >
+                    or
+                </Typography>
+                <Button
+                    component={RouterLink}
+                    to="/register"
+                    variant="outlined"
+                    color="secondary"
+                    sx={{
+                        padding: '10px 20px',
+                        textTransform: 'none',
+                        borderColor: theme.palette.secondary.main,
+                        '&:hover': {
+                            backgroundColor: theme.palette.action.hover,
+                        },
+                    }}
+                >
+                    Register
                 </Button>
             </Box>
             <Snackbar open={notification.open} autoHideDuration={6000} onClose={handleClose}>

@@ -8,6 +8,7 @@ import {
   Menu,
   MenuItem,
   Tooltip,
+  Button,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -41,6 +42,25 @@ const Navbar = () => {
         >
           Clinic Management
         </Typography>
+
+         {/* Login Button */}
+         <Button
+          component={RouterLink}
+          to="/login"
+          variant="outlined"
+          sx={{
+            marginLeft: 2,
+            borderColor: '#fff',
+            color: '#fff',
+            '&:hover': {
+              borderColor: '#e0e0e0',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            },
+          }}
+        >
+          Login
+        </Button>
+
 
         {/* Menu Icon for Smaller Screens */}
         <Tooltip title="Menu">
@@ -76,6 +96,8 @@ const Navbar = () => {
             </MenuItem>
           ))}
         </Menu>
+
+        
       </Toolbar>
     </AppBar>
   );
