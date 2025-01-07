@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const path = require('path');
 require("dotenv").config( { path: "./config.env" } )
-
+const authRoutes = require('./routes/authRoutes');
 
 // Connect to MongoDB
 connectDB();
@@ -24,6 +24,9 @@ app.get("/home", (req, res) => {
 
 // Use clinic routes with prefix '/api'
 app.use('/api', router);
+
+app.use('/api/auth', authRoutes); // Add authentication routes
+
 
 const PORT = process.env.PORT || 7000;
 
