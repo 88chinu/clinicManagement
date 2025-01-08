@@ -2,6 +2,12 @@ import React from 'react';
 import { Card, CardContent, Typography, Button, Box, CardMedia } from '@mui/material';
 import { Link } from 'react-router-dom';
 
+// const CARDI = process.env.CARD_IMAGE
+
+// if (!URL) {
+//   console.error('CARDI is not defined in the environment variables'); // Log error for undefined URL
+// }
+
 const PatientCard = ({ patient }) => {
   return (
     <Card
@@ -25,8 +31,7 @@ const PatientCard = ({ patient }) => {
           component="img"
           height="200"
           image={
-            patient.imageUrl ||
-            'https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg'
+            patient.imageUrl || "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
           }
           alt={patient.Patient_name || 'Default Patient'}
           sx={{ objectFit: 'cover', width: '100%' }}
