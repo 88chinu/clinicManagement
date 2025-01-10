@@ -105,7 +105,7 @@
     npm run dev
   
 ### Step 4: Running the Application
- - Backend will run on: http://localhost:5000
+ - Backend will run on: http://localhost:7000
  - Frontend will run on: http://localhost:3000
  - Access the application through frontend URL
    
