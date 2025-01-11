@@ -84,6 +84,9 @@ const PatientHomePage = () => {
 
   return (
     <Box sx={{ position: 'relative', minHeight: '100vh' }}>
+      <Container>
+        Well-come to my homepage
+      </Container>
       <Box
         sx={{
           position: 'absolute',

@@ -40,7 +40,7 @@ const Navbar = () => {
             fontFamily: '"Poppins", sans-serif',
           }}
         >
-          Clinic Management
+          Curesync.org
         </Typography>
 
          {/* Login Button */}
