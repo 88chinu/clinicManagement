@@ -84,9 +84,20 @@ const PatientHomePage = () => {
 
   return (
     <Box sx={{ position: 'relative', minHeight: '100vh' }}>
-      <Container>
-        Well-come to my homepage
-      </Container>
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          // Uncomment the line below and provide the path to your image
+          backgroundImage: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCxVwNJRx68aBZ2rE3Ace4V9k2pPcWdpbb-MA4GK8c218XyGA6)', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          zIndex: 1,
+        }}
+      ></Box>
       <Box
         sx={{
           position: 'absolute',

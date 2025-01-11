@@ -1,22 +1,22 @@
 // src/container/Theme.js
 import { createTheme } from '@mui/material/styles';
 
-// Define colors for the updated vibrant theme
+// Define colors for the updated eye-catching theme
 const vibrantColors = {
-    base: '#1a1b27', // Dark background base
-    surface: '#232536', // Slightly lighter surface
-    overlay: 'rgba(255, 255, 255, 0.1)', // Transparent overlay
-    muted: '#a0a3b1', // Muted text for low emphasis
-    subtle: '#6c6f8c', // Subtle text for secondary information
-    text: '#e4e6f0', // Primary text color
-    primaryMain: '#7c4dff', // Bright violet primary color
-    primaryGradient: 'linear-gradient(90deg, #7c4dff, #cbbcff)', // Primary gradient
-    secondaryMain: '#1de9b6', // Vibrant teal secondary color
-    secondaryGradient: 'linear-gradient(90deg, #1de9b6, #64ffda)', // Secondary gradient
-    error: '#ff5252', // Bright red for errors
-    warning: '#ffab40', // Orange for warnings
-    info: '#40c4ff', // Sky blue for informational messages
-    success: '#69f0ae', // Bright green for success
+    base: '#ffffff', // Light background base
+    surface: '#f3f4f6', // Light surface color
+    overlay: 'rgba(0, 0, 0, 0.05)', // Subtle overlay
+    muted: '#707070', // Muted text for low emphasis
+    subtle: '#505050', // Subtle text for secondary information
+    text: '#333333', // Primary text color
+    primaryMain: '#047a9e', // Eye-catching teal blue
+    primaryGradient: 'linear-gradient(90deg, #047a9e, #04a9e6)', // Vibrant gradient
+    secondaryMain: '#f73079', // Bright pink
+    secondaryGradient: 'linear-gradient(90deg, #f73079, #ff85a2)', // Secondary gradient
+    error: '#ff4c4c', // Bright red for errors
+    warning: '#ffac33', // Orange for warnings
+    info: '#04a9e6', // Sky blue for informational messages
+    success: '#33cc99', // Bright green for success
 };
 
 // Function to return the vibrant palette
@@ -35,7 +35,7 @@ export const createThemeByMode = (mode) => {
 
     return createTheme({
         palette: {
-            mode: 'dark',
+            mode: 'light',
             background: {
                 default: themeColors.base,
                 paper: themeColors.surface,
@@ -94,7 +94,7 @@ export const createThemeByMode = (mode) => {
                     },
                     contained: {
                         backgroundImage: themeColors.primaryGradient,
-                        color: themeColors.text,
+                        color: '#fff',
                         '&:hover': {
                             backgroundImage: themeColors.secondaryGradient,
                             boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.2)',
@@ -122,7 +122,7 @@ export const createThemeByMode = (mode) => {
                 styleOverrides: {
                     root: {
                         background: themeColors.surface,
-                        boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
+                        boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.1)',
                         borderRadius: '12px',
                     },
                 },
@@ -131,7 +131,7 @@ export const createThemeByMode = (mode) => {
                 styleOverrides: {
                     root: {
                         background: themeColors.surface,
-                        boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
+                        boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.1)',
                         borderRadius: '12px',
                     },
                 },
