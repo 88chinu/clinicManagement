@@ -16,11 +16,12 @@ import GroupIcon from '@mui/icons-material/Group';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import ChatIcon from '@mui/icons-material/Chat';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import SavedSearchIcon from '@mui/icons-material/SavedSearch';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import NoteIcon from '@mui/icons-material/Note';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
 import QrCodeIcon from '@mui/icons-material/QrCode';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import axios from 'axios';
 
 const URL = process.env.REACT_APP_API_URL; // Access environment variable
@@ -217,7 +218,7 @@ const PatientHomePage = () => {
                   to="search"
                   variant="contained"
                   size="large"
-                  startIcon={<ChatIcon />}
+                  startIcon={<SavedSearchIcon />}
                   fullWidth
                   sx={{ py: 2, bgcolor: 'info.main', '&:hover': { bgcolor: 'info.dark' } }}
                 >
@@ -277,11 +278,26 @@ const PatientHomePage = () => {
                   rel="noopener noreferrer"
                   variant="contained"
                   size="large"
-                  startIcon={<NoteIcon />}
+                  startIcon={<InsertDriveFileIcon />}
                   fullWidth
                   sx={{ py: 2, bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' } }}
                 >
                   Documentation
+                </Button>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Button
+                  component="a"
+                  href="https://drive.google.com/file/d/1x6cP-tqjVKEcteK7qo6Sbpgo7FYKiv16/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  size="large"
+                  startIcon={<ContactPageIcon />}
+                  fullWidth
+                  sx={{ py: 2, bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' } }}
+                >
+                  Resume
                 </Button>
               </Grid>
             </Grid>

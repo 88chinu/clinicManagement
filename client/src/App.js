@@ -34,8 +34,7 @@ const App = () => {
                 anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'left',
-                }}
-            >
+                }}>
                 <Router>
                     <Box display="flex" flexDirection="column" minHeight="100vh">
                         <Navbar />

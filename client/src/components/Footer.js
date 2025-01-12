@@ -24,7 +24,7 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography variant="body2" color="inherit">
-              Email: curesync.org@clinic.com
+              Email: curesyncorg@clinic.com
             </Typography>
             <Typography variant="body2" color="inherit">
               Phone: +1 234 567 890
@@ -56,7 +56,7 @@ const Footer = () => {
               </Link>
               <Link
                 component="a"
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/chinmaya-panigrahi-a155b6326/"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
@@ -116,7 +116,7 @@ const Footer = () => {
         <Divider sx={{ my: 4, bgcolor: 'primary.light' }} />
 
     <Typography variant="body2" sx={{ mt: 2 }}>
-      © {new Date().getFullYear()} Bsc Cohort | All Rights Reserved
+      © {new Date().getFullYear()} ClinicManagement | All Rights Reserved
     </Typography>
       </Container>
     </Box>
