@@ -115,10 +115,9 @@ const Footer = () => {
 
         <Divider sx={{ my: 4, bgcolor: 'primary.light' }} />
 
-        {/* Copyright */}
-        <Typography variant="body2" color="inherit" sx={{ mb: 2 }}>
-          © 2025 Patient Management System | All rights reserved
-        </Typography>
+    <Typography variant="body2" sx={{ mt: 2 }}>
+      © {new Date().getFullYear()} Bsc Cohort | All Rights Reserved
+    </Typography>
       </Container>
     </Box>
   );
