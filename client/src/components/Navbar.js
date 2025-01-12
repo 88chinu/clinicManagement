@@ -30,37 +30,52 @@ const Navbar = () => {
     >
       <Toolbar>
         {/* Logo and Brand Name */}
-        <Box display="flex" alignItems="center">
-          <Box
-            component={RouterLink}
-            to="/"
+        <Box
+          component={RouterLink}
+          to="/"
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            textDecoration: 'none',
+          }}
+        >
+          <img
+            src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT96IuJzpcwrZ6swgbVUYB-HNs8id8HCh5lrI_Vi07t9ZDrc-wB"
+            alt="Logo"
+            style={{
+              width: 40,
+              height: 40,
+              marginRight: '1rem',
+              borderRadius: '50%',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.1)';
+              e.currentTarget.style.boxShadow = '0px 6px 15px rgba(0, 0, 0, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
+            }}
+          />
+          <Typography
+            variant="h5"
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              textDecoration: 'none',
+              color: '#FFD700', // Gold color
+              fontWeight: 900,
+              fontFamily: '"Roboto Slab", serif',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+              letterSpacing: '1.5px',
+              transition: 'transform 0.3s ease, color 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.1)',
+                color: '#FFFFFF',
+              },
             }}
           >
-            <img
-              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT96IuJzpcwrZ6swgbVUYB-HNs8id8HCh5lrI_Vi07t9ZDrc-wB"
-              alt="Logo"
-              style={{
-                width: 40,
-                height: 40,
-                marginRight: '1rem',
-                borderRadius: '50%',
-              }}
-            />
-            <Typography
-              variant="h5"
-              sx={{
-                color: '#fff',
-                fontWeight: 700,
-                fontFamily: '"Poppins", sans-serif',
-              }}
-            >
-              Curesync.org
-            </Typography>
-          </Box>
+            Curesync.org
+          </Typography>
         </Box>
 
         {/* Spacer to push content to the right */}

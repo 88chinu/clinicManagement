@@ -24,7 +24,7 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography variant="body2" color="inherit">
-              Email: support@clinic.com
+              Email: curesync.org@clinic.com
             </Typography>
             <Typography variant="body2" color="inherit">
               Phone: +1 234 567 890
@@ -32,72 +32,6 @@ const Footer = () => {
             <Typography variant="body2" color="inherit">
               Address: 1234 Health St, Wellness City, 56789
             </Typography>
-          </Grid>
-
-          {/* Quick Links */}
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" color="inherit" gutterBottom>
-              Quick Links
-            </Typography>
-            <Link
-              component="a"
-              href="/list"
-              variant="body2"
-              color="inherit"
-              sx={{
-                display: 'block',
-                '&:hover': {
-                  color: 'primary.light',
-                },
-                mb: 1,
-              }}
-            >
-              View Patients
-            </Link>
-            <Link
-              component="a"
-              href="/add"
-              variant="body2"
-              color="inherit"
-              sx={{
-                display: 'block',
-                '&:hover': {
-                  color: 'primary.light',
-                },
-                mb: 1,
-              }}
-            >
-              Add New Patient
-            </Link>
-            <Link
-              component="a"
-              href="/export"
-              variant="body2"
-              color="inherit"
-              sx={{
-                display: 'block',
-                '&:hover': {
-                  color: 'primary.light',
-                },
-                mb: 1,
-              }}
-            >
-              Download Patients List
-            </Link>
-            <Link
-              component="a"
-              href="/scan"
-              variant="body2"
-              color="inherit"
-              sx={{
-                display: 'block',
-                '&:hover': {
-                  color: 'primary.light',
-                },
-              }}
-            >
-              QR Code Page
-            </Link>
           </Grid>
 
           {/* Social Media Links */}

@@ -17,7 +17,7 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ChatIcon from '@mui/icons-material/Chat';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import NoteIcon from '@mui/icons-material/Note';
 import QrCodeIcon from '@mui/icons-material/QrCode';
@@ -231,7 +231,7 @@ const PatientHomePage = () => {
                   to="/export"
                   variant="contained"
                   size="large"
-                  startIcon={<FileCopyIcon />}
+                  startIcon={<FileDownloadIcon />}
                   fullWidth
                   sx={{ py: 2, bgcolor: 'success.main', '&:hover': { bgcolor: 'success.dark' } }}
                 >
