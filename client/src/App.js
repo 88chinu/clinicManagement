@@ -18,9 +18,6 @@ import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
 import QRCodePage from './components/QRcode';
 
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-
 const App = () => {
   const theme = createThemeByMode('noctis-lilac');
 
@@ -37,18 +34,6 @@ const App = () => {
         <Router>
           <Box display="flex" flexDirection="column" minHeight="100vh">
             <Navbar />
-            <Container
-              component="main"
-              // Remove any custom classes if they are interfering
-              // and use sx for styling to align content at the top
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                flexGrow: 1,
-                paddingTop: '1rem', // optional: add padding if needed
-              }}
-            >
               <Routes>
                 <Route exact path="/" element={<HomePage />} />
                 <Route path="/list" element={<PatientList />} />
@@ -58,11 +43,8 @@ const App = () => {
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/export" element={<ExportPage />} />
                 <Route path="/scan" element={<QRCodePage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
                 <Route path="*" element={<div>404 - Page Not Found</div>} />
               </Routes>
-            </Container>
             <Footer />
           </Box>
         </Router>
