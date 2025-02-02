@@ -81,24 +81,6 @@ const Navbar = () => {
         {/* Spacer to push content to the right */}
         <Box flexGrow={1} />
 
-        {/* Login Button */}
-        <Button
-          component={RouterLink}
-          to="/login"
-          variant="outlined"
-          sx={{
-            marginLeft: 2,
-            borderColor: '#fff',
-            color: '#fff',
-            '&:hover': {
-              borderColor: '#04a9e6',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            },
-          }}
-        >
-          Login
-        </Button>
-
         {/* Menu Icon for Smaller Screens */}
         <Tooltip title="Menu">
           <IconButton onClick={handleMenuOpen} color="inherit">
