@@ -8,7 +8,6 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-  Button,
   Box,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -23,12 +22,12 @@ const Navbar = () => {
     <AppBar
       position="sticky"
       sx={{
-        background: 'linear-gradient(90deg, #047a9e, #04a9e6)',
+        backgroundColor: '#047a9e',
         color: '#fff',
-        boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.1)',
+        boxShadow: '2px 4px 15px rgba(1, 1, 1, 1.2)',
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         {/* Logo and Brand Name */}
         <Box
           component={RouterLink}
@@ -43,34 +42,31 @@ const Navbar = () => {
             src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT96IuJzpcwrZ6swgbVUYB-HNs8id8HCh5lrI_Vi07t9ZDrc-wB"
             alt="Logo"
             style={{
-              width: 40,
-              height: 40,
+              width: 45,
+              height: 45,
               marginRight: '1rem',
               borderRadius: '50%',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+              transition: 'transform 0.3s, box-shadow 0.3s',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'scale(1.1)';
-              e.currentTarget.style.boxShadow = '0px 6px 15px rgba(0, 0, 0, 0.3)';
+              e.currentTarget.style.boxShadow = '0px 8px 16px rgba(0, 0, 0, 0.4)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
+              e.currentTarget.style.boxShadow = 'none';
             }}
           />
           <Typography
             variant="h5"
             sx={{
-              color: '#FFD700', // Gold color
-              fontWeight: 900,
+              color: '#FFD700',
+              fontWeight: 800,
               fontFamily: '"Roboto Slab", serif',
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+              textShadow: '2px 2px 5px rgba(0, 0, 0, 0.5)',
               letterSpacing: '1.5px',
-              transition: 'transform 0.3s ease, color 0.3s ease',
               '&:hover': {
-                transform: 'scale(1.1)',
-                color: '#FFFFFF',
+                color: '#FFF',
               },
             }}
           >
@@ -78,13 +74,10 @@ const Navbar = () => {
           </Typography>
         </Box>
 
-        {/* Spacer to push content to the right */}
-        <Box flexGrow={1} />
-
-        {/* Menu Icon for Smaller Screens */}
+        {/* Menu for Smaller Screens */}
         <Tooltip title="Menu">
-          <IconButton onClick={handleMenuOpen} color="inherit">
-            <MenuIcon />
+          <IconButton onClick={handleMenuOpen} color="inherit" sx={{ p: 1 }}>
+            <MenuIcon sx={{ fontSize: 30 }} />
           </IconButton>
         </Tooltip>
 
@@ -93,7 +86,13 @@ const Navbar = () => {
           anchorEl={menuAnchorEl}
           open={Boolean(menuAnchorEl)}
           onClose={handleMenuClose}
-          sx={{ mt: 1 }}
+          sx={{
+            mt: 1,
+            '& .MuiPaper-root': {
+              backgroundColor: '#005f73',
+              color: '#ffffff',
+            },
+          }}
         >
           {[
             { label: 'Create', path: '/add' },
@@ -108,7 +107,8 @@ const Navbar = () => {
               to={menuItem.path}
               onClick={handleMenuClose}
               sx={{
-                '&:hover': { backgroundColor: 'rgba(4, 122, 158, 0.2)' },
+                '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+                padding: '12px 24px',
               }}
             >
               {menuItem.label}

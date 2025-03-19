@@ -115,9 +115,11 @@ const Footer = () => {
 
         <Divider sx={{ my: 4, bgcolor: 'primary.light' }} />
 
-    <Typography variant="body2" sx={{ mt: 2 }}>
+        <Typography variant="body2" sx={{ mt: 2, color: 'white' }}>
+        <Typography variant="body2" sx={{ mt: 2, color: 'white' }}> 
+           Made with 💙 By Chinmaya  </Typography>
       © {new Date().getFullYear()} ClinicManagement | All Rights Reserved
-    </Typography>
+      </Typography>
       </Container>
     </Box>
   );

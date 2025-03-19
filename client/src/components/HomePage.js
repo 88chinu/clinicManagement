@@ -42,8 +42,8 @@ const PatientHomePage = () => {
         const patients = res.data;
         const uniqueDoctors = new Set(patients.map(patient => patient.doctor)).size;
         const recentRegistration = patients.sort((a, b) =>
-          new Date(b.registration_date) - new Date(a.registration_date)
-        )[0]?.name; // Assuming each patient has a 'name' field
+        new Date(b.registration_date) - new Date(a.registration_date)
+        )[0]?.Patient_name; // Assuming each patient has a 'name' field
 
         setStats({
           totalPatients: patients.length,
@@ -113,16 +113,13 @@ const PatientHomePage = () => {
 
       <Box sx={{ position: 'relative', zIndex: 2, color: 'text.primary' }}>
         <Fade in={true} timeout={800}>
-          <Container maxWidth="lg" sx={{ py: 4 }}>
-            {/* Welcome Section */}
-            <Box textAlign="center" mb={6}>
-              <Typography variant="h2" component="h1" color="primary" gutterBottom>
-                Welcome to the Patient Management System
-              </Typography>
-              <Typography variant="h6" color="text.secondary" gutterBottom>
-                Efficiently manage patient records and appointments
-              </Typography>
-            </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, color: 'white', textAlign: 'center', py: 8 }}>
+          <Typography variant="h2" component="h1" gutterBottom>
+            Welcome to the Patient Management System
+          </Typography>
+          <Typography variant="h6" sx={{ mb: 6 }}>
+            Efficiently manage patient records and appointments
+          </Typography>
 
             {/* Stats Cards */}
             <Grid container spacing={4} mb={6}>

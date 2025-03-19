@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
-import { CssBaseline, Box, Container } from '@mui/material';
+import { CssBaseline, Box } from '@mui/material';
 
 import { createThemeByMode } from './container/Theme';
 import { ThemeProvider } from '@mui/material/styles';
