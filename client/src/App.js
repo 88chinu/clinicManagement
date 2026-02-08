@@ -4,19 +4,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
 import { CssBaseline, Box } from '@mui/material';
 
-import { createThemeByMode } from './container/Theme';
+import { createThemeByMode } from '../../container/Theme';
 import { ThemeProvider } from '@mui/material/styles';
 
-import HomePage from './components/HomePage';
-import SearchPage from './components/SearchPatient';
-import PatientList from './components/PatientList';
-import PatientDetail from './components/DetailsPatient';
-import PatientAdd from './components/CreatePatient';
-import PatientEdit from './components/UpdatePatient';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import ExportPage from './components/ExportPage';
-import QRCodePage from './components/QRcode';
+import HomePage from '../../components/HomePage';
+import SearchPage from '../../components/SearchPatient';
+import PatientList from '../../components/PatientList';
+import PatientDetail from '../../components/DetailsPatient';
+import PatientAdd from '../../components/CreatePatient';
+import PatientEdit from '../../components/UpdatePatient';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
+import ExportPage from '../../components/ExportPage';
+import QRCodePage from '../../components/QRcode';
 
 const App = () => {
   const theme = createThemeByMode('noctis-lilac');
