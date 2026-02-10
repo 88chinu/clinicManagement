@@ -24,7 +24,7 @@ import QrCodeIcon from '@mui/icons-material/QrCode';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import axios from 'axios';
 
-const URL = process.env.REACT_APP_API_URL; // Access environment variable
+// const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 const PatientHomePage = () => {
   const [stats, setStats] = useState({
@@ -35,26 +35,49 @@ const PatientHomePage = () => {
   const [loading, setLoading] = useState(true);
   const [isButtonsVisible, setIsButtonsVisible] = useState(false);
 
+  // useEffect(() => {
+  //   // Fetch patient stats
+  //   axios.get(`${URL}/api/clinics`)
+  //     .then(res => {
+  //       const patients = res.data;
+  //       const uniqueDoctors = new Set(patients.map(patient => patient.doctor)).size;
+  //       const recentRegistration = patients.sort((a, b) =>
+  //       new Date(b.registration_date) - new Date(a.registration_date)
+  //       )[0]?.Patient_name; // Assuming each patient has a 'name' field
+
+  //       setStats({
+  //         totalPatients: patients.length,
+  //         totalDoctors: uniqueDoctors,
+  //         recentRegistration: recentRegistration || 'No recent registrations',
+  //       });
+
+  //       setLoading(false);
+  //     })
+  //     .catch(err => {
+  //       console.error('Error fetching patient stats:', err);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    // Fetch patient stats
     axios.get(`${URL}/api/clinics`)
       .then(res => {
         const patients = res.data;
-        const uniqueDoctors = new Set(patients.map(patient => patient.doctor)).size;
-        const recentRegistration = patients.sort((a, b) =>
-        new Date(b.registration_date) - new Date(a.registration_date)
-        )[0]?.Patient_name; // Assuming each patient has a 'name' field
+
+        const recentRegistration = patients.sort(
+          (a, b) => new Date(b.admit_Date) - new Date(a.admit_Date)
+        )[0]?.Patient_name;
 
         setStats({
           totalPatients: patients.length,
-          totalDoctors: uniqueDoctors,
-          recentRegistration: recentRegistration || 'No recent registrations',
+          totalDoctors: 0, // doctor field not available
+          recentRegistration: recentRegistration || 'No recent registrations'
         });
 
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching patient stats:', err);
+        console.error(err);
         setLoading(false);
       });
   }, []);

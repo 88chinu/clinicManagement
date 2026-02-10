@@ -4,7 +4,6 @@ const clinicSchema = new mongoose.Schema({
     Patient_name: {
         type: String,
         required: true,
-        unique: true
     },
     age: {
         type: Number,
@@ -17,7 +16,8 @@ const clinicSchema = new mongoose.Schema({
     },
     contact_number: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     admit_Date: {
         type: Date,

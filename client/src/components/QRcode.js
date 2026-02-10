@@ -14,7 +14,7 @@ import {
 import DownloadIcon from '@mui/icons-material/Download'; // Icon for the download button
 import axios from 'axios'; // Axios for API requests
 
-const URL = process.env.REACT_APP_API_URL; // Access environment variable
+// const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 const QRCodePage = () => {
   // State for storing clinic data

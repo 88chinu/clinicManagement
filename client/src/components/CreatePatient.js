@@ -23,7 +23,7 @@ const CreatePatient = () => {
 
   const [contactError, setContactError] = useState(false);
 
-  const URL = process.env.REACT_APP_API_URL; // Access environment variable
+  // const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
   if (!URL) {
     console.error('REACT_APP_API_URL is not defined in the environment variables'); // Log error for undefined URL
@@ -189,8 +189,8 @@ const CreatePatient = () => {
           <MenuItem value="" disabled>
             Previous Admit
           </MenuItem>
-          <MenuItem value="true">Yes</MenuItem>
-          <MenuItem value="false">No</MenuItem>
+          <MenuItem value={true}>Yes</MenuItem>
+          <MenuItem value={false}>No</MenuItem>
         </TextField>
 
         <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>

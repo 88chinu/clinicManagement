@@ -31,7 +31,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.shadows[3],
 }));
 
-const URL = process.env.REACT_APP_API_URL; // Access environment variable
+// const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 const PatientDetails = () => {
   const [patient, setPatient] = useState({});
