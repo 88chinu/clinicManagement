@@ -1,24 +1,40 @@
 {
   "name": "clinicmanagement",
   "version": "1.0.0",
+  "description": "- A comprehensive CRUD application for managing clinic operations, built with the MERN stack (MongoDB, Express, React, Node.js) and Material UI.",
+  "keywords": [],
+  "homepage": "https://github.com/88chinu/clinicManagement#readme",
+  "bugs": {
+    "url": "https://github.com/88chinu/clinicManagement/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/88chinu/clinicManagement.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
-    "prod": "cd client && npm run build && cd .. && npm run server"
+    "prod": "cd client && npm run build && cd .. && npm run server",
+    "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
-    "express": "^4.21.0",
+    "express": "^4.22.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.7.0",
+    "mongodb": "^7.1.0",
+    "mongoose": "^8.23.0",
     "nodemon": "^3.1.7",
-    "react-phone-input-2": "^2.15.1"
+    "react-phone-input-2": "^2.15.1",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }

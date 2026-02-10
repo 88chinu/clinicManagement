@@ -42,7 +42,7 @@ exports.updatePatient = async (req, res) => {
         const updatedPatient = await ClinicModel.findByIdAndUpdate(req.params.id, {
             Patient_name: req.body.Patient_name, age: req.body.age, gender:req.body.gender, 
             contact_number:req.body.contact_number, admit_Date: req.body.admit_Date,
-            medical_history:req.body.medical_history,admit:req.body.previous_admit
+            medical_history:req.body.medical_history,previous_admit: req.body.previous_admit
         }, { new: true }); // Return the updated patientinfo
 
         if (!updatedPatient) return res.status(404).send('Patient not found in database'); // If patientinfo is not found, return 404

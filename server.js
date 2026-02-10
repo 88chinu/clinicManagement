@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const path = require('path');
 require("dotenv").config( { path: "./config.env" } )
 
-// Connect to MongoDB
+// connect to MongoDB
 connectDB();
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // Basic route for home page
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
      res.send("WELL_COME TO MY CLINIC MANAGEMENT PROJECT");
 });
 
