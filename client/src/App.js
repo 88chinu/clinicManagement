@@ -6,7 +6,7 @@ import { CssBaseline, Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { createThemeByMode } from './container/Theme';
 
-import HomePage from './components/HomePage';
+import HomePage from './components/HomePage'
 import SearchPage from './components/SearchPatient';
 import PatientList from './components/PatientList';
 import PatientDetail from './components/DetailsPatient';
@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
 import QRCodePage from './components/QRcode';
+import { Component } from 'react';
 
 
 const App = () => {

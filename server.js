@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // Basic route for home page
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
      res.send("WELL_COME TO MY CLINIC MANAGEMENT PROJECT");
 });
 
