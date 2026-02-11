@@ -13,7 +13,12 @@ const app = express();
 
 // Middleware to parse JSON requests
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+// const cors = require("cors");
+
+app.use(cors({
+  origin: "*"
+}));
 
 // Basic route for home page
 app.get("/home", (req, res) => {

@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ExportPage from './components/ExportPage';
 import QRCodePage from './components/QRcode';
-import { Component } from 'react';
+// import { Component } from 'react';
 
 
 const App = () => {
