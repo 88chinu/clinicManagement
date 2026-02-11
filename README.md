@@ -3,7 +3,7 @@
 - A comprehensive CRUD application for managing clinic operations, built with the MERN stack (MongoDB, Express, React, Node.js) and Material UI.
 
 ### Here are some of the important links:
-- The app - [https://patientmanagement-2eye.onrender.com](https://patientmanagement-2eye.onrender.com)
+- The app - [https://patientmanagement-2eye.onrender.com](https://clinic-management-rphk.vercel.app/)
 - The API of the app - [https://patientmanagement-2eye.onrender.com/api/patients](https://patientmanagement-2eye.onrender.com/api)
 - The documentation for the app - [Clinic Management Documentation](https://docs.google.com/document/d/1z5jlCUQCnseKXfEx0OPbSf-uA9YbQBDXU7vncDMGUE0/edit?tab=t.0#heading=h.kum8f7324oo)
 - URL to MongoDB cluster - `mongodb+srv://<username>:<db_password><cluster_name>mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
