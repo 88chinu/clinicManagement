@@ -5,7 +5,7 @@ import { Typography, Grid, Button, Container, CircularProgress, Box } from '@mui
 
 import PatientCard from './PatientCard';
 
-// const URL = process.env.REACT_APP_API_URL; // Access environment variable
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 // console.log(process.env.REACT_APP_API_URL)
 

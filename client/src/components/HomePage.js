@@ -24,7 +24,7 @@ import QrCodeIcon from '@mui/icons-material/QrCode';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import axios from 'axios';
 
-// const URL = process.env.REACT_APP_API_URL; // Access environment variable
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 const PatientHomePage = () => {
   const [stats, setStats] = useState({

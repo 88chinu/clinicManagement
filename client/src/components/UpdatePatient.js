@@ -12,7 +12,7 @@ import {
 import axios from "axios";
 import { useSnackbar } from "notistack"; // Import the useSnackbar hook
 
-// const URL = process.env.REACT_APP_API_URL; // Access environment variable
+const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
 function UpdatePatient() {
   const [patient, setPatient] = useState({

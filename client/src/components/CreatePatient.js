@@ -23,7 +23,7 @@ const CreatePatient = () => {
 
   const [contactError, setContactError] = useState(false);
 
-  // const URL = process.env.REACT_APP_API_URL; // Access environment variable
+  const URL = process.env.REACT_APP_API_URL; // Access environment variable
 
   if (!URL) {
     console.error('REACT_APP_API_URL is not defined in the environment variables'); // Log error for undefined URL
