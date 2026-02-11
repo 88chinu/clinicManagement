@@ -4,7 +4,7 @@
 
 ### Here are some of the important links:
 - The app - [https://patientmanagement-2eye.onrender.com](https://clinic-management-rphk.vercel.app/)
-- The API of the app - [https://patientmanagement-2eye.onrender.com/api/patients](https://patientmanagement-2eye.onrender.com/api)
+- The API of the app - [https://patientmanagement-2eye.onrender.com/api/patients](https://clinic-management-rphk.vercel.app/api)
 - The documentation for the app - [Clinic Management Documentation](https://docs.google.com/document/d/1z5jlCUQCnseKXfEx0OPbSf-uA9YbQBDXU7vncDMGUE0/edit?tab=t.0#heading=h.kum8f7324oo)
 - URL to MongoDB cluster - `mongodb+srv://<username>:<db_password><cluster_name>mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
@@ -141,8 +141,9 @@
 ### Deployment
  The application is deployed on Render:
 
-- Frontend & Backend: [https://patientmanagement-2eye.onrender.com](https://patientmanagement-2eye.onrender.com)
-- API Endpoint: [https://patientmanagement-2eye.onrender.com/api/patients](https://patientmanagement-2eye.onrender.com/api/patients)
+- Frontend: [https://clinicmanagement-hcgs.onrender.com](https://clinicmanagement-hcgs.onrender.com) 
+- Backend: [https://clinic-management-rphk.vercel.app/](https://clinic-management-rphk.vercel.app/)
+- API Endpoint: [https://clinic-management-rphk.vercel.app/api/patients](https://clinic-management-rphk.vercel.app//api/patients)
   
 ## Common Issues & Troubleshooting
 ### MongoDB Connection Issues
