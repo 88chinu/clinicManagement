@@ -13,7 +13,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 import GroupIcon from '@mui/icons-material/Group';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+// import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
@@ -29,7 +29,7 @@ const URL = process.env.REACT_APP_API_URL; // Access environment variable
 const PatientHomePage = () => {
   const [stats, setStats] = useState({
     totalPatients: 0,
-    totalDoctors: 0,
+    // totalDoctors: 0,
     recentRegistration: null,
   });
   const [loading, setLoading] = useState(true);
@@ -70,7 +70,7 @@ const PatientHomePage = () => {
 
         setStats({
           totalPatients: patients.length,
-          totalDoctors: 0, // doctor field not available
+          // totalDoctors: 0, // doctor field not available
           recentRegistration: recentRegistration || 'No recent registrations'
         });
 
@@ -145,22 +145,104 @@ const PatientHomePage = () => {
           </Typography>
 
             {/* Stats Cards */}
-            <Grid container spacing={4} mb={6}>
-              <Grid item xs={12} md={4}>
-                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 2 }}>
-                  <CardContent sx={{ textAlign: 'center', width: '100%' }}>
-                    <GroupIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
-                    <Typography variant="h4" gutterBottom>
-                      {stats.totalPatients}
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                      Total Patients
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
+            <Grid container spacing={4} mb={6} justifyContent="center">
+  <Grid item xs={12} md={6}>
+    <Card
+      sx={{
+        height: 250,
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 3,
+        boxShadow: 4,
+      }}
+    >
+      <CardContent
+        sx={{
+          textAlign: "center",
+          width: "100%",
+        }}
+      >
+        <GroupIcon color="primary" sx={{ fontSize: 50, mb: 2 }} />
 
-              <Grid item xs={12} md={4}>
+        <Typography
+          variant="h4"
+          sx={{
+            minHeight: 50,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {stats.totalPatients}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          sx={{ mt: 1 }}
+        >
+          Total Patients
+        </Typography>
+      </CardContent>
+    </Card>
+  </Grid>
+
+  <Grid item xs={12} md={6}>
+    <Card
+      sx={{
+        height: 250,
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 3,
+        boxShadow: 4,
+      }}
+    >
+      <CardContent
+        sx={{
+          textAlign: "center",
+          width: "100%",
+        }}
+      >
+        <CalendarTodayIcon
+          color="primary"
+          sx={{ fontSize: 50, mb: 2 }}
+        />
+
+        <Typography
+          variant="h4"
+          sx={{
+            minHeight: 50,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Latest Registration
+        </Typography>
+
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          sx={{
+            mt: 1,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {stats.recentRegistration || "No recent registrations"}
+        </Typography>
+      </CardContent>
+    </Card>
+  </Grid>
+</Grid>
+
+              {/* Optional Total Doctor Grid (Kept nested within the container if uncommented) */}
+              {/* <Grid item xs={12} md={4}>
                 <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 2 }}>
                   <LocalHospitalIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
                   <CardContent sx={{ textAlign: 'center', width: '100%' }}>
@@ -173,21 +255,8 @@ const PatientHomePage = () => {
                   </CardContent>
                 </Card>
               </Grid>
+              */}
 
-              <Grid item xs={12} md={4}>
-                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 2 }}>
-                  <CalendarTodayIcon color="primary" sx={{ fontSize: 40, mb: 2 }} />
-                  <CardContent sx={{ textAlign: 'center', width: '100%' }}>
-                    <Typography variant="h4" gutterBottom>
-                      Latest Registration
-                    </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                      {stats.recentRegistration || 'No recent registrations'}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
 
             {/* Features Section (Appears after scrolling) */}
             <Box
